@@ -1,9 +1,9 @@
 language: csharp
-solution: travis-mono-test.sln
+mono: none
+dotnet: 2.0.0
 
-matrix:
-  include:
-    - dotnet: 2.1.502
-      mono: none
-      env: DOTNETCORE=2  # optional, can be used to take different code paths in your script
-    - mono: lates
+install:
+- dotnet restore
+
+script:
+ - dotnet build
