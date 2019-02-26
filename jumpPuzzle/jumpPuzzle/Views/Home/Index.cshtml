@@ -5,13 +5,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 full-height" style="background-color: black; color: white;">
-            <button>Uitvoeren</button>
+            <button onclick="DecodeInput()">Uitvoeren</button>
             <textarea id="codeArea">
 herhaal 
 {
-    Beweeg(1);
-    Als (x = 10) {
-        spring(100);
+    beweeg(1);
+    als(x = 10) {
+        spring(1);
     }
 }
             
@@ -25,49 +25,105 @@ herhaal
 
 @section Scripts
 {
+    <script src="js/DataTree.js"></script>
+    <script src="js/ArrayExtensions.js"></script>
     <script>
-        var canvas = document.getElementById("gameCanvas");
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-        var context = canvas.getContext("2d");
+    var canvas = document.getElementById("gameCanvas");
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    var context = canvas.getContext("2d");
 
 
-        //Draw the sprite
-        var img = new Image();
-        img.src = "images/avery walking-b.svg";
+    //Draw the sprite
+    var img = new Image();
+    img.src = "images/avery walking-b.svg";
 
-        var x = 0;
+    const base_y = 400;
+    const base_x = 0;
+    var x = base_x;
+    var y = base_y;
 
-        Update();
+    var tree = new Tree("CODE");
+    tree._root = new Node("CODE");
+    var currentPlayNode = tree._root;
+    var hasNewTree = false;
 
-        function Update() {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            context.fillStyle = "#d90eef";
-            context.fillRect(600, 400, 500, 400);
+    Update();
 
-            context.drawImage(img, x, 400, 75, 300);
+    function Update() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = "#d90eef";
+        context.fillRect(600, 400, 500, 400);
 
-            DecodeInput();
-
-            requestAnimationFrame(Update);
-        }
-
-        function DecodeInput() {
-            var code = document.getElementById("codeArea");
-            var text = code.value;
-            var split = text.split(' ');
-            var filtered = split.filter(function(el) {
-                return el != null && el != ' ' && el != "";
-            });
-            var length = filtered.length;
-
-            for (var i = 0; i < length; i++) {
-                if (filtered[i].includes("Beweeg")) {
-                    var amount = filtered[i].split('(')[1].replace(')', '').replace(';', '');
-                    x += Number(amount);
-                    console.log(amount);
-                }
+        if (hasNewTree) {
+            if (currentPlayNode.data == "CODE") {
+                //traverse into the tree
+                currentPlayNode = currentPlayNode.children[0];
+            } else if (currentPlayNode.data == "herhaal") {
+                //traverse into the tree
+                currentPlayNode = currentPlayNode.children[0];
+            } else if (currentPlayNode.data.includes("als")) {
+                var split = currentPlayNode.data.split('(', ')');
+            } else if (currentPlayNode.data.includes("beweeg")) {
+                var amount = currentPlayNode.data.split('(')[1].replace(')', '').replace(';', '');
+                Move(Number(amount));
             }
         }
-    </script>
+
+        context.drawImage(img, x, y, 75, 300);
+
+        requestAnimationFrame(Update);
+    }
+
+    function DecodeInput() {
+        tree = new Tree("CODE");
+        const textArea = document.getElementById("codeArea");
+        const text = textArea.value;
+        const split = text.split(' ');
+        const filtered = split.filter(function(el) {
+            return el != null && el != ' ' && el != "";
+        });
+        const length = filtered.length;
+
+
+        //reset canvas
+        x = base_x;
+        y = base_y;
+        tree = new Tree("CODE");
+        tree._root = new Node("CODE");
+        var currentRoot = tree._root;
+        hasNewTree = false;
+
+        for (let i = 0; i < length; i++) {
+            if (filtered[i].includes("herhaal")) {
+                currentRoot.children.push(new Node(filtered[i]));
+                currentRoot.children.last().parent = currentRoot;
+                currentRoot = currentRoot.children.last();
+            } else if (filtered[i].includes("als")) {
+                currentRoot.children.push(new Node(filtered[i]));
+                currentRoot.children.last().parent = currentRoot;
+                currentRoot = currentRoot.children.last();
+            } else if (filtered[i].includes("beweeg")) {
+                currentRoot.children.push(new Node(filtered[i]));
+                currentRoot.children.last().parent = currentRoot;
+            } else if (filtered[i].includes("spring")) {
+                currentRoot.children.push(new Node(filtered[i]));
+                currentRoot.children.last().parent = currentRoot;
+            } else if (filtered[i] == "}") {
+                currentRoot = currentRoot.parent;
+            }
+        }
+        currentPlayNode = tree._root;
+        hasNewTree = true;
+        }
+        
+        function Move(steps) {
+            x += steps;
+        }
+        
+        function Jump(height) {
+            y += height;
+        }
+       
+        </script>
 }

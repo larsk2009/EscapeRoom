@@ -23,33 +23,76 @@
     <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb5e7f71-64db-4229-97eb-d0ce1de4f23e" name="Default Changelist" comment="" />
+    <list default="true" id="bb5e7f71-64db-4229-97eb-d0ce1de4f23e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/ArrayExtensions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/DataTree.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.jumpPuzzle/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.jumpPuzzle/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.jumpPuzzle/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.jumpPuzzle/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.jumpPuzzle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.jumpPuzzle/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.dll" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/jumpPuzzle.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/jumpPuzzle.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Home/About.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Home/About.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Home/Contact.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Home/Contact.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Home/Index.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Home/Index.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Home/Privacy.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Home/Privacy.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/Error.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/Error.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_Layout.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_Layout.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/_ViewImports.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/_ViewImports.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/_ViewStart.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/_ViewStart.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.dll" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/jumpPuzzle.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/jumpPuzzle.csproj.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/jumpPuzzle.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/jumpPuzzle.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/project.packagespec.json" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="jumpPuzzle" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+            <state relative-caret-position="143">
+              <caret line="61" column="59" lean-forward="true" selection-start-line="61" selection-start-column="59" selection-end-line="61" selection-end-column="59" />
               <folding>
-                <marker date="1551176291997" expanded="true" signature="0:41" ph="@..." />
-                <marker date="1551176291997" expanded="true" signature="43:510" ph="&lt;div.../&gt;" />
-                <marker date="1551176291997" expanded="true" signature="71:503" ph="&lt;div.../&gt;" />
-                <marker date="1551176291997" expanded="true" signature="97:368" ph="&lt;div.../&gt;" />
-                <marker date="1551176291997" expanded="true" signature="230:353" ph="&lt;textarea.../&gt;" />
-                <marker date="1551176291997" expanded="true" signature="377:492" ph="&lt;div.../&gt;" />
-                <marker date="1551176291997" expanded="true" signature="512:1887" ph="@{...}" />
-                <marker date="1551176291997" expanded="true" signature="535:1885" ph="&lt;script.../&gt;" />
-                <marker date="1551176291997" expanded="true" signature="912:1208" ph="{...}" />
-                <marker date="1551176291997" expanded="true" signature="1241:1871" ph="{...}" />
-                <marker date="1551176291997" expanded="true" signature="1432:1507" ph="{...}" />
+                <marker date="1551192424118" expanded="true" signature="0:41" ph="@..." />
+                <marker date="1551192424118" expanded="true" signature="43:531" ph="&lt;div.../&gt;" />
+                <marker date="1551192424118" expanded="true" signature="71:524" ph="&lt;div.../&gt;" />
+                <marker date="1551192424118" expanded="true" signature="97:389" ph="&lt;div.../&gt;" />
+                <marker date="1551192424118" expanded="true" signature="254:374" ph="&lt;textarea.../&gt;" />
+                <marker date="1551192424118" expanded="true" signature="398:513" ph="&lt;div.../&gt;" />
+                <marker date="1551192424118" expanded="true" signature="533:3803" ph="@{...}" />
+                <marker date="1551192424118" expanded="true" signature="649:3802" ph="&lt;script.../&gt;" />
+                <marker date="1551192424118" expanded="true" signature="1192:2135" ph="{...}" />
+                <marker date="1551192424118" expanded="true" signature="2388:2455" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/js/DataTree.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1470">
+              <caret line="98" column="2" selection-start-line="98" selection-start-column="2" selection-end-line="98" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -86,32 +129,42 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
         <option value="Lars Koopmans" />
       </list>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Views/_ViewStart.cshtml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Privacy.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/jumpPuzzle/Views/Shared/_CookieConsentPartial.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/jumpPuzzle/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/jumpPuzzle/Models/ErrorViewModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/680D0A75-2A4E-40EB-A596-BAD88FBFB729/88/3e547f68/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Views/_ViewStart.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Privacy.cshtml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/jumpPuzzle/Views/Shared/_Layout.cshtml" />
         <option value="$PROJECT_DIR$/jumpPuzzle/wwwroot/css/site.css" />
-        <option value="$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" />
         <option value="$PROJECT_DIR$/jumpPuzzle/Controllers/HomeController.cs" />
+        <option value="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/DataTree.js" />
+        <option value="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/ArrayExtensions.js" />
+        <option value="$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" />
       </list>
     </option>
   </component>
@@ -127,8 +180,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AssemblyExplorer" />
       <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
@@ -145,32 +198,6 @@
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
               <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Models" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Views" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Views" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Home" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Views" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Shared" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
               <item name="wwwroot" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
@@ -178,7 +205,7 @@
               <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
               <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
               <item name="wwwroot" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="images" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="js" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
@@ -195,7 +222,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -241,6 +268,7 @@
       <updated>1551098125170</updated>
       <workItem from="1551098128396" duration="8357000" />
       <workItem from="1551174382356" duration="3086000" />
+      <workItem from="1551186041414" duration="6618000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1551176302004</created>
@@ -260,7 +288,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11443000" />
+    <option name="totallyTimeSpent" value="18061000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -273,16 +301,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.25302014" />
-      <window_info id="Structure" order="1" sideWeight="0.5021097" side_tool="true" weight="0.24966443" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.25637585" />
+      <window_info id="Structure" order="1" sideWeight="0.5021097" side_tool="true" weight="0.25637585" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Favorites" order="4" sideWeight="0.5021097" side_tool="true" weight="0.25637585" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.40084985" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -295,7 +324,7 @@
       <window_info anchor="bottom" id="NuGet" order="13" weight="0.3286119" />
       <window_info anchor="bottom" id="Unit Tests" order="14" />
       <window_info anchor="bottom" id="Database Changes" order="15" />
-      <window_info anchor="bottom" id="Version Control" order="16" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Version Control" order="16" weight="0.3286119" />
       <window_info anchor="bottom" id="TeamCity" order="17" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -312,6 +341,9 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Fixed namespaces in solution (jumpPuzle =&gt; jumpPuzzle)" />
     <option name="LAST_COMMIT_MESSAGE" value="Fixed namespaces in solution (jumpPuzle =&gt; jumpPuzzle)" />
@@ -328,9 +360,7 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/jumpPuzzle.sln.DotSettings.user">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle.sln.DotSettings.user" />
     <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Shared/_CookieConsentPartial.cshtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -394,32 +424,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Shared/_Layout.cshtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-          <folding>
-            <marker date="1551176292114" expanded="true" signature="16:2105" ph="&lt;html.../&gt;" />
-            <marker date="1551176292114" expanded="true" signature="23:838" ph="&lt;head.../&gt;" />
-            <marker date="1551176292114" expanded="true" signature="190:378" ph="&lt;environment.../&gt;" />
-            <marker date="1551176292114" expanded="true" signature="383:830" ph="&lt;environment.../&gt;" />
-            <marker date="1551176292114" expanded="true" signature="839:2097" ph="&lt;body.../&gt;" />
-            <marker date="1551176292114" expanded="true" signature="895:956" ph="&lt;div.../&gt;" />
-            <marker date="1551176292114" expanded="true" signature="958:1196" ph="&lt;environment.../&gt;" />
-            <marker date="1551176292114" expanded="true" signature="1197:2045" ph="&lt;environment.../&gt;" />
-            <marker date="1551176292114" expanded="true" signature="1237:1565" ph="&lt;script.../&gt;" />
-            <marker date="1551176292114" expanded="true" signature="1570:1959" ph="&lt;script.../&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/css/site.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jumpPuzzle/Models/ErrorViewModel.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -448,22 +452,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Shared/_Layout.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+          <folding>
+            <marker date="1551176292114" expanded="true" signature="16:2105" ph="&lt;html.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="23:838" ph="&lt;head.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="190:378" ph="&lt;environment.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="383:830" ph="&lt;environment.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="839:2097" ph="&lt;body.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="895:956" ph="&lt;div.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="958:1196" ph="&lt;environment.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="1197:2045" ph="&lt;environment.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="1237:1565" ph="&lt;script.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="1570:1959" ph="&lt;script.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/css/site.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/js/site.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/js/ArrayExtensions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/js/DataTree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="98" column="2" selection-start-line="98" selection-start-column="2" selection-end-line="98" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+        <state relative-caret-position="143">
+          <caret line="61" column="59" lean-forward="true" selection-start-line="61" selection-start-column="59" selection-end-line="61" selection-end-column="59" />
           <folding>
-            <marker date="1551176291997" expanded="true" signature="0:41" ph="@..." />
-            <marker date="1551176291997" expanded="true" signature="43:510" ph="&lt;div.../&gt;" />
-            <marker date="1551176291997" expanded="true" signature="71:503" ph="&lt;div.../&gt;" />
-            <marker date="1551176291997" expanded="true" signature="97:368" ph="&lt;div.../&gt;" />
-            <marker date="1551176291997" expanded="true" signature="230:353" ph="&lt;textarea.../&gt;" />
-            <marker date="1551176291997" expanded="true" signature="377:492" ph="&lt;div.../&gt;" />
-            <marker date="1551176291997" expanded="true" signature="512:1887" ph="@{...}" />
-            <marker date="1551176291997" expanded="true" signature="535:1885" ph="&lt;script.../&gt;" />
-            <marker date="1551176291997" expanded="true" signature="912:1208" ph="{...}" />
-            <marker date="1551176291997" expanded="true" signature="1241:1871" ph="{...}" />
-            <marker date="1551176291997" expanded="true" signature="1432:1507" ph="{...}" />
+            <marker date="1551192424118" expanded="true" signature="0:41" ph="@..." />
+            <marker date="1551192424118" expanded="true" signature="43:531" ph="&lt;div.../&gt;" />
+            <marker date="1551192424118" expanded="true" signature="71:524" ph="&lt;div.../&gt;" />
+            <marker date="1551192424118" expanded="true" signature="97:389" ph="&lt;div.../&gt;" />
+            <marker date="1551192424118" expanded="true" signature="254:374" ph="&lt;textarea.../&gt;" />
+            <marker date="1551192424118" expanded="true" signature="398:513" ph="&lt;div.../&gt;" />
+            <marker date="1551192424118" expanded="true" signature="533:3803" ph="@{...}" />
+            <marker date="1551192424118" expanded="true" signature="649:3802" ph="&lt;script.../&gt;" />
+            <marker date="1551192424118" expanded="true" signature="1192:2135" ph="{...}" />
+            <marker date="1551192424118" expanded="true" signature="2388:2455" ph="{...}" />
           </folding>
         </state>
       </provider>

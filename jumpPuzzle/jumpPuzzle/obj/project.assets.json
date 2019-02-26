@@ -11825,11 +11825,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\onedrive\\OneDrive - Office 365 Fontys\\fontys\\minor\\jumpPuzzle\\jumpPuzzle\\jumpPuzzle.csproj",
+      "projectUniqueName": "D:\\Users\\larsk\\Documents\\BeCreative software\\EscapeRoom\\jumpPuzzle\\jumpPuzzle\\jumpPuzzle.csproj",
       "projectName": "jumpPuzzle",
-      "projectPath": "D:\\onedrive\\OneDrive - Office 365 Fontys\\fontys\\minor\\jumpPuzzle\\jumpPuzzle\\jumpPuzzle.csproj",
+      "projectPath": "D:\\Users\\larsk\\Documents\\BeCreative software\\EscapeRoom\\jumpPuzzle\\jumpPuzzle\\jumpPuzzle.csproj",
       "packagesPath": "C:\\Users\\larsk\\.nuget\\packages\\",
-      "outputPath": "D:\\onedrive\\OneDrive - Office 365 Fontys\\fontys\\minor\\jumpPuzzle\\jumpPuzzle\\obj\\",
+      "outputPath": "D:\\Users\\larsk\\Documents\\BeCreative software\\EscapeRoom\\jumpPuzzle\\jumpPuzzle\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
