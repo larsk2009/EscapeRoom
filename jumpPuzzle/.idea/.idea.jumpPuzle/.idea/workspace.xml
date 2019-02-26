@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BuildServerSettings">
+    <option name="LOGIN" value="" />
+    <option name="SERVER_URL" value="http://buildserver" />
+    <option name="REMEMBER_ME" value="true" />
+    <option name="USE_IDEA_PROXY_SETTINGS" value="true" />
+    <option name="INSPECTIONS_BUILD_TYPE_IDS" />
+    <option name="DUPLICATES_BUILD_TYPE_IDS" />
+    <option name="COVERAGE_SETTINGS" />
+    <option name="TEST_STATUS_ENABLED" value="true" />
+    <option name="TEST_STATUS_SHOW_SUCCESSFUL" value="false" />
+    <option name="POSTPONE_SUITABLE_CONFIGURATIONS_SEARCH" value="false" />
+    <option name="ARTIFACTS_BUILD_TYPE_IDS" />
+    <option name="PERFORM_COMMIT_IF_SUCCESSFUL" value="true" />
+    <option name="PERFORM_COMMIT_IF_NO_NEW_FAILED_TESTS" value="false" />
+    <option name="REQUEST_CONFIRMATON" value="false" />
+    <option name="PRE_TESTED_COMMIT" value="true" />
+    <option name="FILTER_BY_STATUS" value="false" />
+    <option name="FILTER_MARKED_AS_FIXED" value="false" />
+    <option name="SHOW_CLOSE_PROMPT" value="true" />
+    <option name="TOOL_WINDOW_SELECTED_CONTENT_INDEX" value="0" />
+    <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c7bb1c53-1df9-4e53-98e9-2cfd34da1512" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/jumpPuzle.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Controllers/HomeController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Models/ErrorViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Properties/launchSettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Startup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Views/Home/About.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Views/Home/Contact.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Views/Home/Privacy.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Views/Shared/Error.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Views/Shared/_CookieConsentPartial.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Views/Shared/_ValidationScriptsPartial.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Views/_ViewImports.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/Views/_ViewStart.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/appsettings.Development.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/jumpPuzzle.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/css/site.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/css/site.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/images/banner1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/images/banner2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/images/banner3.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/site.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/site.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/.bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/css/bootstrap-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/css/bootstrap-theme.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/css/bootstrap-theme.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/css/bootstrap-theme.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/js/npm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery-validation-unobtrusive/.bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery-validation/.bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery-validation/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery-validation/dist/additional-methods.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery-validation/dist/additional-methods.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery-validation/dist/jquery.validate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery/.bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery/dist/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery/dist/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/jquery/dist/jquery.min.map" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="240" />
+    <option name="y" value="127" />
+    <option name="width" value="1440" />
+    <option name="height" value="774" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AssemblyExplorer" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="jumpPuzle" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="jumpPuzle" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/jumpPuzle/jumpPuzle.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.1" />
+      <option name="LAUNCH_PROFILE_NAME" value="jumpPuzle" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c7bb1c53-1df9-4e53-98e9-2cfd34da1512" name="Default Changelist" comment="" />
+      <created>1551097754628</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1551097754628</updated>
+      <workItem from="1551097768380" duration="199000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="199000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Capture Tool" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Unit Tests" />
+      <window_info anchor="bottom" id="TeamCity" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Performance Profiler" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BuildServerSettings">
+    <option name="LOGIN" value="" />
+    <option name="SERVER_URL" value="http://buildserver" />
+    <option name="REMEMBER_ME" value="true" />
+    <option name="USE_IDEA_PROXY_SETTINGS" value="true" />
+    <option name="INSPECTIONS_BUILD_TYPE_IDS" />
+    <option name="DUPLICATES_BUILD_TYPE_IDS" />
+    <option name="COVERAGE_SETTINGS" />
+    <option name="TEST_STATUS_ENABLED" value="true" />
+    <option name="TEST_STATUS_SHOW_SUCCESSFUL" value="false" />
+    <option name="POSTPONE_SUITABLE_CONFIGURATIONS_SEARCH" value="false" />
+    <option name="ARTIFACTS_BUILD_TYPE_IDS" />
+    <option name="PERFORM_COMMIT_IF_SUCCESSFUL" value="true" />
+    <option name="PERFORM_COMMIT_IF_NO_NEW_FAILED_TESTS" value="false" />
+    <option name="REQUEST_CONFIRMATON" value="false" />
+    <option name="PRE_TESTED_COMMIT" value="true" />
+    <option name="FILTER_BY_STATUS" value="false" />
+    <option name="FILTER_MARKED_AS_FIXED" value="false" />
+    <option name="SHOW_CLOSE_PROMPT" value="true" />
+    <option name="TOOL_WINDOW_SELECTED_CONTENT_INDEX" value="0" />
+    <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bb5e7f71-64db-4229-97eb-d0ce1de4f23e" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+              <folding>
+                <marker date="1551176291997" expanded="true" signature="0:41" ph="@..." />
+                <marker date="1551176291997" expanded="true" signature="43:510" ph="&lt;div.../&gt;" />
+                <marker date="1551176291997" expanded="true" signature="71:503" ph="&lt;div.../&gt;" />
+                <marker date="1551176291997" expanded="true" signature="97:368" ph="&lt;div.../&gt;" />
+                <marker date="1551176291997" expanded="true" signature="230:353" ph="&lt;textarea.../&gt;" />
+                <marker date="1551176291997" expanded="true" signature="377:492" ph="&lt;div.../&gt;" />
+                <marker date="1551176291997" expanded="true" signature="512:1887" ph="@{...}" />
+                <marker date="1551176291997" expanded="true" signature="535:1885" ph="&lt;script.../&gt;" />
+                <marker date="1551176291997" expanded="true" signature="912:1208" ph="{...}" />
+                <marker date="1551176291997" expanded="true" signature="1241:1871" ph="{...}" />
+                <marker date="1551176291997" expanded="true" signature="1432:1507" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Shared/_Layout.cshtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+              <folding>
+                <marker date="1551176292114" expanded="true" signature="16:2105" ph="&lt;html.../&gt;" />
+                <marker date="1551176292114" expanded="true" signature="23:838" ph="&lt;head.../&gt;" />
+                <marker date="1551176292114" expanded="true" signature="190:378" ph="&lt;environment.../&gt;" />
+                <marker date="1551176292114" expanded="true" signature="383:830" ph="&lt;environment.../&gt;" />
+                <marker date="1551176292114" expanded="true" signature="839:2097" ph="&lt;body.../&gt;" />
+                <marker date="1551176292114" expanded="true" signature="895:956" ph="&lt;div.../&gt;" />
+                <marker date="1551176292114" expanded="true" signature="958:1196" ph="&lt;environment.../&gt;" />
+                <marker date="1551176292114" expanded="true" signature="1197:2045" ph="&lt;environment.../&gt;" />
+                <marker date="1551176292114" expanded="true" signature="1237:1565" ph="&lt;script.../&gt;" />
+                <marker date="1551176292114" expanded="true" signature="1570:1959" ph="&lt;script.../&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/css/site.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Lars Koopmans" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Views/_ViewStart.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Privacy.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Views/Shared/_CookieConsentPartial.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jumpPuzzle/Models/ErrorViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/680D0A75-2A4E-40EB-A596-BAD88FBFB729/88/3e547f68/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/jumpPuzzle/Views/Shared/_Layout.cshtml" />
+        <option value="$PROJECT_DIR$/jumpPuzzle/wwwroot/css/site.css" />
+        <option value="$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" />
+        <option value="$PROJECT_DIR$/jumpPuzzle/Controllers/HomeController.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="240" />
+    <option name="y" value="125" />
+    <option name="width" value="1440" />
+    <option name="height" value="775" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Models" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Views" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Views" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Home" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Views" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Shared" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="wwwroot" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="wwwroot" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="images" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/jumpPuzzle/wwwroot/images/avery walking-b.svg" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.jumpPuzzle: jumpPuzle">
+    <configuration name="jumpPuzzle: jumpPuzle JavaScript" type="JavascriptDebugType" uri="https://localhost:5001">
+      <method v="2" />
+    </configuration>
+    <configuration name="jumpPuzzle: jumpPuzle" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/jumpPuzzle/jumpPuzzle.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.1" />
+      <option name="LAUNCH_PROFILE_NAME" value="jumpPuzle" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue=".NET Launch Settings Profile.jumpPuzzle: jumpPuzle" />
+      <item itemvalue="JavaScript Debug.jumpPuzzle: jumpPuzle JavaScript" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bb5e7f71-64db-4229-97eb-d0ce1de4f23e" name="Default Changelist" comment="" />
+      <created>1551098125170</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1551098125170</updated>
+      <workItem from="1551098128396" duration="8357000" />
+      <workItem from="1551174382356" duration="3086000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1551176302004</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1551176302005</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fixed namespaces in solution (jumpPuzle =&gt; jumpPuzzle)">
+      <created>1551176967364</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1551176967364</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="11443000" />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.25302014" />
+      <window_info id="Structure" order="1" sideWeight="0.5021097" side_tool="true" weight="0.24966443" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.3286119" />
+      <window_info anchor="bottom" id="REST Client" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Performance Profiler" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="NuGet" order="13" weight="0.3286119" />
+      <window_info anchor="bottom" id="Unit Tests" order="14" />
+      <window_info anchor="bottom" id="Database Changes" order="15" />
+      <window_info anchor="bottom" id="Version Control" order="16" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="TeamCity" order="17" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
+      <window_info anchor="right" id="Errors In Solution" order="6" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="Fixed namespaces in solution (jumpPuzle =&gt; jumpPuzzle)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed namespaces in solution (jumpPuzle =&gt; jumpPuzzle)" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle.sln.DotSettings.user">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Shared/_CookieConsentPartial.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Privacy.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1551097732223" expanded="true" signature="0:46" ph="@..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/_ViewStart.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1551097732258" expanded="true" signature="0:28" ph="@..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/lib/bootstrap/dist/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/images/avery walking-b.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/680D0A75-2A4E-40EB-A596-BAD88FBFB729/88/3e547f68/ExceptionDispatchInfo.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="91" column="6" selection-start-line="91" selection-start-column="6" selection-end-line="91" selection-end-column="6" />
+          <folding>
+            <marker date="1551098418645" expanded="true" signature="0:360" ph="/* Decompiled with JetBrains decompiler ... */" />
+            <marker date="1551098418645" expanded="true" signature="431:2426" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="477:2424" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="759:1239" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="1280:1360" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="1296:1354" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="1395:1470" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="1411:1464" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="1513:1585" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="1529:1579" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="1625:1701" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="1641:1695" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="1739:1817" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="1755:1811" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="1884:2049" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="2087:2158" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="2103:2152" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="2206:2307" ph="{...}" />
+            <marker date="1551098418645" expanded="true" signature="2355:2420" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Shared/_Layout.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+          <folding>
+            <marker date="1551176292114" expanded="true" signature="16:2105" ph="&lt;html.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="23:838" ph="&lt;head.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="190:378" ph="&lt;environment.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="383:830" ph="&lt;environment.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="839:2097" ph="&lt;body.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="895:956" ph="&lt;div.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="958:1196" ph="&lt;environment.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="1197:2045" ph="&lt;environment.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="1237:1565" ph="&lt;script.../&gt;" />
+            <marker date="1551176292114" expanded="true" signature="1570:1959" ph="&lt;script.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/css/site.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Models/ErrorViewModel.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="31" lean-forward="true" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+          <folding>
+            <marker date="1551176910670" expanded="true" signature="27:193" ph="{...}" />
+            <marker date="1551176910670" expanded="true" signature="61:191" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Controllers/HomeController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="25" column="9" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+          <folding>
+            <marker date="1551176910996" expanded="true" signature="6:82" ph="..." />
+            <marker date="1551176910996" expanded="true" signature="116:912" ph="{...}" />
+            <marker date="1551176910996" expanded="true" signature="163:910" ph="{...}" />
+            <marker date="1551176910996" expanded="true" signature="206:253" ph="{...}" />
+            <marker date="1551176910996" expanded="true" signature="291:411" ph="{...}" />
+            <marker date="1551176910996" expanded="true" signature="451:555" ph="{...}" />
+            <marker date="1551176910996" expanded="true" signature="595:642" ph="{...}" />
+            <marker date="1551176910996" expanded="true" signature="773:904" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+          <folding>
+            <marker date="1551176291997" expanded="true" signature="0:41" ph="@..." />
+            <marker date="1551176291997" expanded="true" signature="43:510" ph="&lt;div.../&gt;" />
+            <marker date="1551176291997" expanded="true" signature="71:503" ph="&lt;div.../&gt;" />
+            <marker date="1551176291997" expanded="true" signature="97:368" ph="&lt;div.../&gt;" />
+            <marker date="1551176291997" expanded="true" signature="230:353" ph="&lt;textarea.../&gt;" />
+            <marker date="1551176291997" expanded="true" signature="377:492" ph="&lt;div.../&gt;" />
+            <marker date="1551176291997" expanded="true" signature="512:1887" ph="@{...}" />
+            <marker date="1551176291997" expanded="true" signature="535:1885" ph="&lt;script.../&gt;" />
+            <marker date="1551176291997" expanded="true" signature="912:1208" ph="{...}" />
+            <marker date="1551176291997" expanded="true" signature="1241:1871" ph="{...}" />
+            <marker date="1551176291997" expanded="true" signature="1432:1507" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

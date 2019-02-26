@@ -1,0 +1,49 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "D:\\onedrive\\OneDrive - Office 365 Fontys\\fontys\\minor\\jumpPuzzle\\jumpPuzzle\\jumpPuzzle.csproj",
+    "projectName": "jumpPuzzle",
+    "projectPath": "D:\\onedrive\\OneDrive - Office 365 Fontys\\fontys\\minor\\jumpPuzzle\\jumpPuzzle\\jumpPuzzle.csproj",
+    "outputPath": "D:\\onedrive\\OneDrive - Office 365 Fontys\\fontys\\minor\\jumpPuzzle\\jumpPuzzle\\obj\\",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp2.1"
+    ],
+    "frameworks": {
+      "netcoreapp2.1": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.1": {
+      "dependencies": {
+        "Microsoft.AspNetCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.1.1, )",
+          "autoReferenced": true
+        },
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.1.0, )",
+          "autoReferenced": true
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}
