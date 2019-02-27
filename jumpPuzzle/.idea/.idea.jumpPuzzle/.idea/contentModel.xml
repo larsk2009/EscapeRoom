@@ -57,7 +57,9 @@
           </e>
           <e p="js" t="Include">
             <e p="ArrayExtensions.js" t="Include" />
+            <e p="CommandDecode.js" t="Include" />
             <e p="DataTree.js" t="Include" />
+            <e p="GameLogic.js" t="Include" />
             <e p="site.js" t="Include" />
             <e p="site.min.js" t="Include" />
           </e>

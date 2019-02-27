@@ -1,11 +1,12 @@
-function Node(data) {
-    this.data = data;
+function Node(command) {
+    this.data = null;
+    this.method = command;
     this.parent = null;
     this.children = [];
 }
 
-function Tree(data) {
-    var node = new Node(data);
+function Tree(command) {
+    var node = new Node(command);
     this._root = node;
 }
 
