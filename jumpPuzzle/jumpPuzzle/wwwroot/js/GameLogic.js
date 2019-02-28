@@ -86,6 +86,8 @@ function Update() {
         }
     }
 
+    DoGravity();
+
     context.drawImage(img, x, y, 75, 300);
 
     if (CheckWinCondition()) {
@@ -145,6 +147,12 @@ function DecodeInput() {
     Update();
 }
 
+function DoGravity() {
+    if ((y < start_y && (x + img.width) < rectangle_x) || (((y + img.height + 110) < rectangle_y) && (x + img.width) > rectangle_x)) {
+        y += 5;
+    }
+}
+
 /**
  * @return {boolean}
  */
@@ -198,6 +206,9 @@ function Move(steps) {
 }
 
 function Jump(height) {
+    if (height > 500) {
+        height = 500;
+    }
     y -= height; //Decrease y because origin is in the top left corner of the canvas 
                  // so jumping actually decreases the distance from the origin instead of increasing it
 }
