@@ -102,9 +102,16 @@ function Update() {
 
     if (CheckWinCondition()) {
         //Show win
+
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", "Home/GetWinNumber", false); // false for synchronous request
+        xmlHttp.send(null);
+        var number = Number(xmlHttp.responseText);
+        
         context.fillStyle = "#4dee00";
         context.font = "30px Arial";
         context.fillText("YOU WIN!", canvas.width / 2 - 100, canvas.height / 2 - 100);
+        context.fillText(number, canvas.width / 2 - 50, canvas.height / 2 - 50);
     } else if (CheckLoseCondition()) {
         //Show lose
         context.fillStyle = "#ee002b";
@@ -235,7 +242,9 @@ function Move(steps) {
 }
 
 function Jump(height) {
-    if (height > 500) {
+    if (y < start_y) {
+        height = 0;
+    } else if (height > 500) {
         height = 500;
     }
     y -= height; //Decrease y because origin is in the top left corner of the canvas 
