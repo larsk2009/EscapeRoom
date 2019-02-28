@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using jumpPuzzle.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,6 +35,11 @@ namespace jumpPuzzle.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
+        }
+
+        public ActionResult<int> GetWinNumber()
+        {
+            return new Random().Next(0, 10);
         }
     }
 }
