@@ -50,7 +50,10 @@
           </e>
           <e p="favicon.ico" t="Include" />
           <e p="images" t="Include">
+            <e p="avery walking-a.svg" t="Include" />
             <e p="avery walking-b.svg" t="Include" />
+            <e p="avery walking-c.svg" t="Include" />
+            <e p="avery walking-d.svg" t="Include" />
             <e p="banner1.svg" t="Include" />
             <e p="banner2.svg" t="Include" />
             <e p="banner3.svg" t="Include" />

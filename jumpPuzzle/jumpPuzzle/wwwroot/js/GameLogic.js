@@ -5,8 +5,16 @@ var context = canvas.getContext("2d");
 
 
 //Draw the sprite
-var img = new Image();
-img.src = "images/avery walking-b.svg";
+var sprite_0 = new Image();
+sprite_0.src = "images/avery walking-a.svg";
+var sprite_1 = new Image();
+sprite_1.src = "images/avery walking-b.svg";
+var sprite_2 = new Image();
+sprite_2.src = "images/avery walking-c.svg";
+var sprite_3 = new Image();
+sprite_3.src = "images/avery walking-d.svg";
+
+var img = sprite_0;
 
 const start_y = 400;
 const start_x = 0;
@@ -88,7 +96,9 @@ function Update() {
 
     DoGravity();
 
-    context.drawImage(img, x, y, 75, 300);
+    context.drawImage(img, x, y, img.width * 1.55, img.height * 1.55);
+
+    SelectNextSprite();
 
     if (CheckWinCondition()) {
         //Show win
@@ -147,8 +157,27 @@ function DecodeInput() {
     Update();
 }
 
+function SelectNextSprite() {
+    if (typeof SelectNextSprite.counter == 'undefined') {
+        SelectNextSprite.counter = 0;
+    }
+    SelectNextSprite.counter++;
+    if (SelectNextSprite.counter > 15) {
+        SelectNextSprite.counter = 0;
+        if (img == sprite_0) {
+            img = sprite_1;
+        } else if (img == sprite_1) {
+            img = sprite_2;
+        } else if (img == sprite_2) {
+            img = sprite_3;
+        } else if (img == sprite_3) {
+            img = sprite_0;
+        }
+    }
+}
+
 function DoGravity() {
-    if ((y < start_y && (x + img.width) < rectangle_x) || (((y + img.height + 110) < rectangle_y) && (x + img.width) > rectangle_x)) {
+    if ((y < start_y && (x + sprite_1.width) < rectangle_x) || (((y + sprite_1.height + 110) < rectangle_y) && (x + sprite_1.width) > rectangle_x)) {
         y += 5;
     }
 }
@@ -164,7 +193,7 @@ function CheckWinCondition() {
  * @return {boolean}
  */
 function CheckLoseCondition() {
-    return x + img.width >= rectangle_x && y + img.height + 100 >= rectangle_y;
+    return x + sprite_1.width >= rectangle_x && y + sprite_1.height + 100 >= rectangle_y;
 
 }
 
