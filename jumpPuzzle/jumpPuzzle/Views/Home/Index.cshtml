@@ -5,13 +5,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 full-height" style="background-color: black; color: white;">
-            <button>Uitvoeren</button>
+            <button onclick="DecodeInput()">Uitvoeren</button>
             <textarea id="codeArea">
 herhaal 
 {
-    Beweeg(1);
-    Als (x = 10) {
-        spring(100);
+    beweeg(10);
+    als(x == 500) {
+        spring(500);
     }
 }
             
@@ -25,49 +25,8 @@ herhaal
 
 @section Scripts
 {
-    <script>
-        var canvas = document.getElementById("gameCanvas");
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-        var context = canvas.getContext("2d");
-
-
-        //Draw the sprite
-        var img = new Image();
-        img.src = "images/avery walking-b.svg";
-
-        var x = 0;
-
-        Update();
-
-        function Update() {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            context.fillStyle = "#d90eef";
-            context.fillRect(600, 400, 500, 400);
-
-            context.drawImage(img, x, 400, 75, 300);
-
-            DecodeInput();
-
-            requestAnimationFrame(Update);
-        }
-
-        function DecodeInput() {
-            var code = document.getElementById("codeArea");
-            var text = code.value;
-            var split = text.split(' ');
-            var filtered = split.filter(function(el) {
-                return el != null && el != ' ' && el != "";
-            });
-            var length = filtered.length;
-
-            for (var i = 0; i < length; i++) {
-                if (filtered[i].includes("Beweeg")) {
-                    var amount = filtered[i].split('(')[1].replace(')', '').replace(';', '');
-                    x += Number(amount);
-                    console.log(amount);
-                }
-            }
-        }
-    </script>
+    <script src="js/DataTree.js"></script>
+    <script src="js/CommandDecode.js"></script>
+    <script src="js/ArrayExtensions.js"></script>
+    <script src="js/GameLogic.js"></script>
 }

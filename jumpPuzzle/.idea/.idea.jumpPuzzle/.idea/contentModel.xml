@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\larsk\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\larsk\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_jumpPuzzle.277689844.00" t="ExcludeRecursive" />
-    <e p="D:\onedrive\OneDrive - Office 365 Fontys\fontys\minor\jumpPuzzle" t="IncludeFlat">
+    <e p="C:\Users\larsk\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_jumpPuzzle.411675292.00" t="ExcludeRecursive" />
+    <e p="D:\Users\larsk\Documents\BeCreative software\EscapeRoom\jumpPuzzle" t="IncludeFlat">
       <e p="jumpPuzzle" t="IncludeRecursive">
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
@@ -50,12 +50,19 @@
           </e>
           <e p="favicon.ico" t="Include" />
           <e p="images" t="Include">
+            <e p="avery walking-a.svg" t="Include" />
             <e p="avery walking-b.svg" t="Include" />
+            <e p="avery walking-c.svg" t="Include" />
+            <e p="avery walking-d.svg" t="Include" />
             <e p="banner1.svg" t="Include" />
             <e p="banner2.svg" t="Include" />
             <e p="banner3.svg" t="Include" />
           </e>
           <e p="js" t="Include">
+            <e p="ArrayExtensions.js" t="Include" />
+            <e p="CommandDecode.js" t="Include" />
+            <e p="DataTree.js" t="Include" />
+            <e p="GameLogic.js" t="Include" />
             <e p="site.js" t="Include" />
             <e p="site.min.js" t="Include" />
           </e>
