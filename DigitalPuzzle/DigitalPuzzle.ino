@@ -150,7 +150,6 @@ void ApplyResults()
   {
 	  digitalWrite(GreenPin[1], HIGH);
 	  digitalWrite(RedPin[1], LOW);
-	  Serial.println("True");
   }
   else
   {	  digitalWrite(GreenPin[1], LOW);
