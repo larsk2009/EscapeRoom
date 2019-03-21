@@ -236,12 +236,12 @@ int CompareNFC (unsigned char tagID[]) {
       }
     }
   }
-  if (tagID[0] == EEPROM.read(10)){
-    if (tagID[1] == EEPROM.read(11)){
-      if (tagID[2] == EEPROM.read(12)){
-        if (tagID[3] == EEPROM.read(13)){
+  if (tagID[0] == EEPROM.read(4)){
+    if (tagID[1] == EEPROM.read(5)){
+      if (tagID[2] == EEPROM.read(6)){
+        if (tagID[3] == EEPROM.read(7)){
           gate = 2; // or gate
-		  Serial.println("OR GATE");
+          Serial.println("OR GATE");
         }
       }
     }
@@ -249,6 +249,17 @@ int CompareNFC (unsigned char tagID[]) {
   return gate;
 }
 
+void PutTagInEEPROM(unsigned char tagID[], int address) {
+  for (int i = 0; i <= 3; i++){
+    EEPROM.put(4*address + i, tagID[i]);
+  }
+}
+
+void CalibrateTags(){
+  for(int i = 0; i<2; i++){
+    PutTagInEEPROM(ReadRFID(i), i);
+  }
+}
 
 void setup()
 {
