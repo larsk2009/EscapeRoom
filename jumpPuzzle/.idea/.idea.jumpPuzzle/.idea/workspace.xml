@@ -23,7 +23,16 @@
     <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb5e7f71-64db-4229-97eb-d0ce1de4f23e" name="Default Changelist" comment="Added walking animation, closes #8" />
+    <list default="true" id="bb5e7f71-64db-4229-97eb-d0ce1de4f23e" name="Default Changelist" comment="Added walking animation, closes #8">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.jumpPuzzle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.jumpPuzzle/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_Layout.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_Layout.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,38 +44,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+            <state relative-caret-position="180">
+              <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
               <folding>
-                <marker date="1551343999112" expanded="true" signature="0:41" ph="@..." />
-                <marker date="1551343999112" expanded="true" signature="43:536" ph="&lt;div.../&gt;" />
-                <marker date="1551343999112" expanded="true" signature="71:529" ph="&lt;div.../&gt;" />
-                <marker date="1551343999112" expanded="true" signature="97:394" ph="&lt;div.../&gt;" />
-                <marker date="1551343999112" expanded="true" signature="254:379" ph="&lt;textarea.../&gt;" />
-                <marker date="1551343999112" expanded="true" signature="403:518" ph="&lt;div.../&gt;" />
-                <marker date="1551343999112" expanded="true" signature="538:743" ph="@{...}" />
+                <marker date="1552387380259" expanded="true" signature="0:41" ph="@..." />
+                <marker date="1552387380259" expanded="true" signature="43:567" ph="&lt;div.../&gt;" />
+                <marker date="1552387380259" expanded="true" signature="71:560" ph="&lt;div.../&gt;" />
+                <marker date="1552387380259" expanded="true" signature="97:425" ph="&lt;div.../&gt;" />
+                <marker date="1552387380259" expanded="true" signature="285:410" ph="&lt;textarea.../&gt;" />
+                <marker date="1552387380259" expanded="true" signature="434:549" ph="&lt;div.../&gt;" />
+                <marker date="1552387380259" expanded="true" signature="569:774" ph="@{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1695">
-              <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jumpPuzzle/Controllers/HomeController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+            <state relative-caret-position="465">
+              <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
               <folding>
                 <marker date="1551365107753" expanded="false" signature="6:96" ph="..." />
                 <marker date="1551365107753" expanded="true" signature="130:1040" ph="{...}" />
@@ -78,6 +78,15 @@
                 <marker date="1551365107753" expanded="true" signature="787:918" ph="{...}" />
                 <marker date="1551365107753" expanded="true" signature="967:1032" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="44" column="82" lean-forward="true" selection-start-line="44" selection-start-column="82" selection-end-line="44" selection-end-column="82" />
             </state>
           </provider>
         </entry>
@@ -167,12 +176,12 @@
         <option value="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/ArrayExtensions.js" />
         <option value="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/CommandDecode.js" />
         <option value="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/DataTree.js" />
-        <option value="$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" />
         <option value="$PROJECT_DIR$/jumpPuzzle/package.json" />
         <option value="$PROJECT_DIR$/jumpPuzzle/bundleconfig.json" />
         <option value="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/site.js" />
-        <option value="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js" />
         <option value="$PROJECT_DIR$/jumpPuzzle/Controllers/HomeController.cs" />
+        <option value="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js" />
+        <option value="$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" />
       </list>
     </option>
   </component>
@@ -188,20 +197,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
       <pane id="SolutionExplorer">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="jumpPuzzle" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
         <option name="show-all-files" value="false" />
       </pane>
-      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -213,7 +213,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -263,6 +263,10 @@
       <workItem from="1551256711142" duration="13238000" />
       <workItem from="1551343158903" duration="7897000" />
       <workItem from="1551365166776" duration="59000" />
+      <workItem from="1551366749350" duration="654000" />
+      <workItem from="1552295065049" duration="670000" />
+      <workItem from="1552304256246" duration="3980000" />
+      <workItem from="1552383096355" duration="2956000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1551176302004</created>
@@ -310,7 +314,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39499000" />
+    <option name="totallyTimeSpent" value="47759000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -324,7 +328,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.2671141" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.22281879" />
       <window_info id="Structure" order="1" sideWeight="0.5021097" side_tool="true" weight="0.25637585" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -332,7 +336,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932885" visible="true" weight="0.40084985" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932885" weight="0.40084985" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -526,26 +530,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml">
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Controllers/HomeController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+        <state relative-caret-position="465">
+          <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
           <folding>
-            <marker date="1551343999112" expanded="true" signature="0:41" ph="@..." />
-            <marker date="1551343999112" expanded="true" signature="43:536" ph="&lt;div.../&gt;" />
-            <marker date="1551343999112" expanded="true" signature="71:529" ph="&lt;div.../&gt;" />
-            <marker date="1551343999112" expanded="true" signature="97:394" ph="&lt;div.../&gt;" />
-            <marker date="1551343999112" expanded="true" signature="254:379" ph="&lt;textarea.../&gt;" />
-            <marker date="1551343999112" expanded="true" signature="403:518" ph="&lt;div.../&gt;" />
-            <marker date="1551343999112" expanded="true" signature="538:743" ph="@{...}" />
+            <marker date="1551365107753" expanded="false" signature="6:96" ph="..." />
+            <marker date="1551365107753" expanded="true" signature="130:1040" ph="{...}" />
+            <marker date="1551365107753" expanded="true" signature="177:1038" ph="{...}" />
+            <marker date="1551365107753" expanded="true" signature="220:267" ph="{...}" />
+            <marker date="1551365107753" expanded="true" signature="305:425" ph="{...}" />
+            <marker date="1551365107753" expanded="true" signature="465:569" ph="{...}" />
+            <marker date="1551365107753" expanded="true" signature="609:656" ph="{...}" />
+            <marker date="1551365107753" expanded="true" signature="787:918" ph="{...}" />
+            <marker date="1551365107753" expanded="true" signature="967:1032" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1695">
-          <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -582,20 +581,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Controllers/HomeController.cs">
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        <state relative-caret-position="660">
+          <caret line="44" column="82" lean-forward="true" selection-start-line="44" selection-start-column="82" selection-end-line="44" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
           <folding>
-            <marker date="1551365107753" expanded="false" signature="6:96" ph="..." />
-            <marker date="1551365107753" expanded="true" signature="130:1040" ph="{...}" />
-            <marker date="1551365107753" expanded="true" signature="177:1038" ph="{...}" />
-            <marker date="1551365107753" expanded="true" signature="220:267" ph="{...}" />
-            <marker date="1551365107753" expanded="true" signature="305:425" ph="{...}" />
-            <marker date="1551365107753" expanded="true" signature="465:569" ph="{...}" />
-            <marker date="1551365107753" expanded="true" signature="609:656" ph="{...}" />
-            <marker date="1551365107753" expanded="true" signature="787:918" ph="{...}" />
-            <marker date="1551365107753" expanded="true" signature="967:1032" ph="{...}" />
+            <marker date="1552387380259" expanded="true" signature="0:41" ph="@..." />
+            <marker date="1552387380259" expanded="true" signature="43:567" ph="&lt;div.../&gt;" />
+            <marker date="1552387380259" expanded="true" signature="71:560" ph="&lt;div.../&gt;" />
+            <marker date="1552387380259" expanded="true" signature="97:425" ph="&lt;div.../&gt;" />
+            <marker date="1552387380259" expanded="true" signature="285:410" ph="&lt;textarea.../&gt;" />
+            <marker date="1552387380259" expanded="true" signature="434:549" ph="&lt;div.../&gt;" />
+            <marker date="1552387380259" expanded="true" signature="569:774" ph="@{...}" />
           </folding>
         </state>
       </provider>

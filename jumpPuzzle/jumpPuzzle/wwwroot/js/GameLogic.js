@@ -42,9 +42,9 @@ function Update() {
     context.fillRect(rectangle_x, rectangle_y, rectangle_width, rectangle_height);
 
     if (hasNewTree) {
-        if (currentPlayNode.method == CommandEnum.CODE || currentPlayNode.method == CommandEnum.REPEAT) {
+        if (currentPlayNode.method === CommandEnum.CODE || currentPlayNode.method === CommandEnum.REPEAT) {
             TraverseIntoTree();
-        } else if (currentPlayNode.method == CommandEnum.IF) {
+        } else if (currentPlayNode.method === CommandEnum.IF) {
             const splits = currentPlayNode.data.split('==');
             const variable = splits[0].trim();
             const constant = splits[1];
@@ -54,7 +54,7 @@ function Update() {
                     leftSide = x;
                     break;
             }
-            if (leftSide == Number(constant)) {
+            if (leftSide === Number(constant)) {
                 TraverseIntoTree();
             } else {
                 //Move to sibling or up tree
@@ -128,7 +128,7 @@ function DecodeInput() {
     const text = textArea.value;
     const split = text.split('\n');
     const filtered = split.filter(function (el) {
-        return el != null && el != ' ' && el != "";
+        return el != null && el !== ' ' && el !== "";
     });
     const length = filtered.length;
 
@@ -155,7 +155,7 @@ function DecodeInput() {
         } else if (filtered[i].includes("spring")) {
             currentRoot.children.push(new Node(filtered[i]));
             currentRoot.children.last().parent = currentRoot;
-        } else if (filtered[i] == "}") {
+        } else if (filtered[i] === "}") {
             currentRoot = currentRoot.parent;
         }
     }
@@ -171,13 +171,13 @@ function SelectNextSprite() {
     SelectNextSprite.counter++;
     if (SelectNextSprite.counter > 15) {
         SelectNextSprite.counter = 0;
-        if (img == sprite_0) {
+        if (img === sprite_0) {
             img = sprite_1;
-        } else if (img == sprite_1) {
+        } else if (img === sprite_1) {
             img = sprite_2;
-        } else if (img == sprite_2) {
+        } else if (img === sprite_2) {
             img = sprite_3;
-        } else if (img == sprite_3) {
+        } else if (img === sprite_3) {
             img = sprite_0;
         }
     }
@@ -219,7 +219,7 @@ function TraverseIntoTree() {
 }
 
 function TraverseOutTree() {
-    if (currentPlayNode.parent.method == CommandEnum.REPEAT) {
+    if (currentPlayNode.parent.method === CommandEnum.REPEAT) {
         currentPlayNode = currentPlayNode.parent;
         InTreeLocation = [];
         InTreeLocation.push(0);
