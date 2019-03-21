@@ -80,6 +80,12 @@ uchar *ReadRFID(int ReaderSelect)
 }
 
 
+/*************************************************************
+ * Function：GetReaderResult
+ * Description：read the UID of the given tag 
+ * Input parameter：number of the reader that needs to be read
+ * Return：returns boolean; the result of the placed logic gate
+ *************************************************************/
 bool *GetReaderResult(int ReaderSelect)
 {
   switch(ReaderSelect)
@@ -133,6 +139,13 @@ bool *GetReaderResult(int ReaderSelect)
   return ReaderResult;
 }
 
+/*************************************************************
+ * Function：ApplyResults
+ * Description：turns the ledstrips on and off, depending on
+   the result. 
+ * Input parameter：none
+ * Return：returns none
+ *************************************************************/
 void ApplyResults()
 {
   if (GetReaderResult(0)[0] == true)
@@ -158,7 +171,12 @@ void ApplyResults()
 }
 
 
-
+/*************************************************************
+ * Function：Check_AND 
+ * Description：checks the result, when an and gate is applied
+ * Input parameter：two booleans
+ * Return：returns boolean; true of false
+ *************************************************************/
 bool Check_AND(bool A, bool B)
 {
   if(A == 1 && B == 1)
@@ -171,6 +189,12 @@ bool Check_AND(bool A, bool B)
   }
 }
 
+/*************************************************************
+ * Function：Check_OR 
+ * Description：checks the result, when an or gate is applied
+ * Input parameter：two booleans
+ * Return：returns boolean; true of false
+ *************************************************************/
 bool Check_OR(bool A, bool B)
 {
   if(A == 1 || B == 1)
@@ -183,6 +207,12 @@ bool Check_OR(bool A, bool B)
   }
 }
 
+/*************************************************************
+ * Function：Check_NAND 
+ * Description：checks the result, when an NAND gate is applied
+ * Input parameter：two booleans
+ * Return：returns boolean; true of false
+ *************************************************************/
 bool Check_NAND(bool A, bool B)
 {
   if(A == 1 && B == 1)
@@ -195,6 +225,12 @@ bool Check_NAND(bool A, bool B)
   }
 }
 
+/*************************************************************
+ * Function：Check_NOR
+ * Description：checks the result, when an nor gate is applied
+ * Input parameter：two booleans
+ * Return：returns boolean; true of false
+ *************************************************************/
 bool Check_NOR(bool A, bool B)
 {
   if(A == 1 || B == 1)
@@ -207,6 +243,12 @@ bool Check_NOR(bool A, bool B)
   }
 }
 
+/*************************************************************
+ * Function：Check_XOR 
+ * Description：checks the result, when an xor gate is applied
+ * Input parameter：two booleans
+ * Return：returns boolean; true of false
+ *************************************************************/
 bool Check_XOR(bool A, bool B)
 {
   if(A == 0 && B == 1)
@@ -223,6 +265,14 @@ bool Check_XOR(bool A, bool B)
   }
 }
 
+/*************************************************************
+ * Function：CompareNFC 
+ * Description：Compares a read tag with the a gate tag that
+   has been saved in the EEPROM of the Arduino
+ * Input parameter：unsigned char array with the tagID
+ * Return：returns integer; 0 = UNKOWN; 1 = AND; 2 = OR; 
+   3 = NAND; 4 = NOR; 5 = XOR; 6 = NOT; 7 = WIRE; 
+ *************************************************************/
 int CompareNFC (unsigned char tagID[]) {
   int gate = 0;
 
