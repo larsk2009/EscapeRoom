@@ -1,23 +1,27 @@
-int analogPin = A3; // potentiometer wiper (middle terminal) connected to analog pin 3
+#define LedPin 13
+#define SolenoidPin 12
+
+int HandDetection = 700;
+int AnalogPin = A3; // potentiometer wiper (middle terminal) connected to analog pin 3
                     // outside leads to ground and +5V
-int val = 0;  // variable to store the value read
+int ReadValue = 0;  // variable to store the value read
 
 void setup() {
   Serial.begin(9600); //  setup serial
-  pinMode(13, OUTPUT); //led
-  pinMode(12, OUTPUT); //solenoid
+  pinMode(LedPin, OUTPUT); //led
+  pinMode(SolenoidPin, OUTPUT); //solenoid
 }
 
 void loop() {
-  val = analogRead(analogPin);  // read the input pin
-  Serial.println(val);          // debug value
-  if (val < 700) {
-    digitalWrite(13, HIGH);
-    digitalWrite(12, HIGH);
+  ReadValue = analogRead(AnalogPin);  // read the input pin
+  Serial.println(ReadValue);          // debug value
+  if (ReadValue < HandDetection) { 
+    digitalWrite(LedPin, HIGH);
+    digitalWrite(SolenoidPin, HIGH);
   }
   else
   {
-    digitalWrite(12, LOW);
-    digitalWrite(13, LOW);
+    digitalWrite(LedPin, LOW);
+    digitalWrite(SolenoidPin, LOW);
   }
 }
