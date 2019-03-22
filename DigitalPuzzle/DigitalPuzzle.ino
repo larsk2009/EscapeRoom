@@ -14,19 +14,18 @@
 #include <EEPROM.h>
 #include"rfid1.h"
 
-const int RedPin[2] = {3,4};
-const int GreenPin[2] = {2,5};
+const int RedPins[2] = {3,4};
+const int GreenPins[2] = {2,5};
 
 int count = 0;
 
 
-RFID1 rfid;		 //Create a variable type to read the RFID scanner 
+RFID1 rfid;      //Create a variable type to read the RFID scanner 
 
 bool StartValues[6] = {1,1,1,0,0,0};
 bool ReaderResult[8] = {0,0,0,0,0,0,0,0};
 
-uchar serNum[5]; //Array to store your 
-uchar AND_GATE[4] = {164, 175, 3, 11};
+uchar IDStorage[5]; //Array to store your UID of the tag
 
 
 /*************************************************************
@@ -37,46 +36,46 @@ uchar AND_GATE[4] = {164, 175, 3, 11};
  *************************************************************/
 uchar *ReadRFID(int ReaderSelect)
 {
-	switch (ReaderSelect) //Select one of the eight readers 
-	{                     //Pin Configuration of RFID.begin (IRQ_PIN,SCK_PIN,MOSI_PIN,MISO_PIN,NSS_PIN,RST_PIN)
-	  case 0: 
-		  rfid.begin(9, 11, 10, 7, 12, 8);  
-		  break;
-	  case 1:
-		  rfid.begin(9, 11, 10, 6, 12, 8);  
-		  break;
-	}
-	delay(100);  //delay 100ms
-	rfid.init(); //initialize the RFID
+    switch (ReaderSelect) //Select one of the eight readers 
+    {                     //Pin Configuration of RFID.begin (IRQ_PIN,SCK_PIN,MOSI_PIN,MISO_PIN,NSS_PIN,RST_PIN)
+      case 0: 
+          rfid.begin(9, 11, 10, 7, 12, 8);  
+          break;
+      case 1:
+          rfid.begin(9, 11, 10, 6, 12, 8);  
+          break;
+    }
+    delay(100);  //delay 100ms
+    rfid.init(); //initialize the RFID
 
-	uchar status;
-	uchar str[MAX_LEN];
-	// Search card, return card types
-	status = rfid.request(PICC_REQIDL, str);
-	if (status != MI_OK)
-	{
-		for (int i; i < 5; i++)
-		{
-			serNum[i] = 0; //Set serNum to 0 when no card is detected
-		}
-		return;
-	}
-	//Prevent conflict, return the 4 bytes Serial number of the card
-	status = rfid.anticoll(str);
-	if (status == MI_OK)
-	{
-		memcpy(serNum, str, 5);
-		Serial.print("Reader ");
-		Serial.print(ReaderSelect);
-		Serial.print(": ");
-		rfid.showCardID(serNum);//show the card 
+    uchar status;
+    uchar str[MAX_LEN];
+    // Search card, return card types
+    status = rfid.request(PICC_REQIDL, str);
+    if (status != MI_OK)
+    {
+        for (int i; i < 5; i++)
+        {
+            IDStorage[i] = 0; //Set IDStorage to 0 when no card is detected
+        }
+        return;
+    }
+    //Prevent conflict, return the 4 bytes Serial number of the card
+    status = rfid.anticoll(str);
+    if (status == MI_OK)
+    {
+        memcpy(IDStorage, str, 5);
+        Serial.print("Reader ");
+        Serial.print(ReaderSelect);
+        Serial.print(": ");
+        rfid.showCardID(IDStorage);//show the card 
         Serial.println();
     delay(100);  //delay of 100ms
     rfid.halt(); //command the card into sleep mode 
-	  return serNum;
-	}
-	delay(100);
-	rfid.halt(); //command the card into sleep mode 
+      return IDStorage;
+    }
+    delay(100);
+    rfid.halt(); //command the card into sleep mode 
 }
 
 
@@ -150,23 +149,23 @@ void ApplyResults()
 {
   if (GetReaderResult(0)[0] == true)
   {
-	digitalWrite(GreenPin[0], HIGH);
-	digitalWrite(RedPin[0], LOW);
+    digitalWrite(GreenPins[0], HIGH);
+    digitalWrite(RedPins[0], LOW);
   }
   else
   {
-    digitalWrite(GreenPin[0], LOW);
-	digitalWrite(RedPin[0], HIGH);
+    digitalWrite(GreenPins[0], LOW);
+    digitalWrite(RedPins[0], HIGH);
   }
 
   if (GetReaderResult(1)[1] == true)
   {
-	  digitalWrite(GreenPin[1], HIGH);
-	  digitalWrite(RedPin[1], LOW);
+      digitalWrite(GreenPins[1], HIGH);
+      digitalWrite(RedPins[1], LOW);
   }
   else
-  {	  digitalWrite(GreenPin[1], LOW);
-	  digitalWrite(RedPin[1], HIGH);
+  {   digitalWrite(GreenPins[1], LOW);
+      digitalWrite(RedPins[1], HIGH);
   }
 }
 
@@ -299,17 +298,90 @@ int CompareNFC (unsigned char tagID[]) {
   return gate;
 }
 
+
+/*************************************************************
+ * Function：ReadSerial 
+ * Description：Reads the incoming serial message and process
+   this. 
+ * Input parameter：none
+ * Return：none
+ *************************************************************/
+void ReadSerial()
+{
+    String Q; 
+    String ReadString; 
+
+    while (Serial.available())
+    {
+        delay(10);
+        if (Serial.available() > 0)
+        {
+            char c = Serial.read();
+            if (isControl(c))
+            {
+                break;
+            }
+            ReadString += c;
+        }
+    }
+    Q = ReadString;
+    //-------Checking Serial Read---------
+    if (Q == "CAL") 
+    {
+        CalibrateTags();
+        Serial.println("Calibrating Done!");
+    }
+    else if (Q == "HELP") 
+    {
+        Serial.println("-----------------------------------");
+        Serial.println("---------    Main Menu    ---------");
+        Serial.println("-----------------------------------");
+        Serial.println("CAL             ->   Calibrate Tags");
+        Serial.println("HELP            ->        Main Menu");
+        Serial.println("-----------------------------------");
+    }
+    else 
+    {
+        Serial.println("Unkown input")
+    }
+}
+
+
+/*************************************************************
+ * Function：PutTagInEEPROM
+ * Description：Stores an UID Tag at a given address
+ * Input parameter：tagID in uchar and address where the UID
+   needs to be saved.
+ * Return：none
+ *************************************************************/
 void PutTagInEEPROM(unsigned char tagID[], int address) {
   for (int i = 0; i <= 3; i++){
     EEPROM.put(4*address + i, tagID[i]);
   }
 }
 
+
+/*************************************************************
+ * Function：CalibrateTags()
+ * Description：Performs the PutTagInEEPROM function x amount 
+   of times. This 'x' is the amount of readers
+ * Input parameter：none
+ * Return：none
+ *************************************************************/
 void CalibrateTags(){
   for(int i = 0; i<2; i++){
     PutTagInEEPROM(ReadRFID(i), i);
   }
 }
+
+
+
+
+
+
+
+
+
 
 void setup()
 {
@@ -325,19 +397,19 @@ void setup()
   // EEPROM.put(13,50);
   for(int i; i<2; i++)
   {
-    pinMode(RedPin[i], OUTPUT);
-    pinMode(GreenPin[i], OUTPUT);
+    pinMode(RedPins[i], OUTPUT);
+    pinMode(GreenPins[i], OUTPUT);
   
-    digitalWrite(RedPin[i], LOW);
-    digitalWrite(GreenPin[i], LOW);
+    digitalWrite(RedPins[i], LOW);
+    digitalWrite(GreenPins[i], LOW);
   }
-
   Serial.println("Setup Done!");
 }
 
 void loop()
 {
-	ApplyResults();
-	//CompareNFC(ReadRFID(0));
-	//CompareNFC(ReadRFID(1));
+	ReadSerial();
+    ApplyResults();
+    //CompareNFC(ReadRFID(0));
+    //CompareNFC(ReadRFID(1));
 }
