@@ -6,7 +6,10 @@ namespace PuzzleClient
     {
         static void Main(string[] args)
         {
-            DiscoveryClient client = new DiscoveryClient();
+            Guid guid = Guid.NewGuid();
+            DiscoveryClient.Start(guid);
+            
+            Console.ReadKey(); //Wait for user input to close
         }
     }
 }

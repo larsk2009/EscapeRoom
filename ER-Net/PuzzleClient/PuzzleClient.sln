@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuzzleClient", "PuzzleClient\PuzzleClient.csproj", "{256CF314-34CA-44DB-8A2A-CA2C742F1086}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ER_NET_tests", "..\ER_NET\ER_NET_tests\ER_NET_tests.csproj", "{DB992CEA-3A72-43C2-9199-69DF9C78B8FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ER_NET", "..\ER_NET\ER_NET\ER_NET.csproj", "{6B8789D8-8F4A-42DE-BE68-FCFCE4FC0C90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{256CF314-34CA-44DB-8A2A-CA2C742F1086}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{256CF314-34CA-44DB-8A2A-CA2C742F1086}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{256CF314-34CA-44DB-8A2A-CA2C742F1086}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB992CEA-3A72-43C2-9199-69DF9C78B8FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB992CEA-3A72-43C2-9199-69DF9C78B8FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB992CEA-3A72-43C2-9199-69DF9C78B8FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB992CEA-3A72-43C2-9199-69DF9C78B8FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B8789D8-8F4A-42DE-BE68-FCFCE4FC0C90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B8789D8-8F4A-42DE-BE68-FCFCE4FC0C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B8789D8-8F4A-42DE-BE68-FCFCE4FC0C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B8789D8-8F4A-42DE-BE68-FCFCE4FC0C90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

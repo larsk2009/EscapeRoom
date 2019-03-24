@@ -17,7 +17,7 @@ namespace ControlUnit
             _client = new UdpClient
             {
                 EnableBroadcast = true,
-                MulticastLoopback = true
+                MulticastLoopback = true,
             };
         }
 
