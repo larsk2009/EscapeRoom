@@ -1,6 +1,6 @@
 using System;
+using ER_NET.Shared;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using PuzzleClient;
 using Xunit;
 
 namespace PuzzleClientTests

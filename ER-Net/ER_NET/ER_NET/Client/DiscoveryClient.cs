@@ -1,12 +1,10 @@
 using System;
-using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using ER_NET.Shared;
 
-namespace PuzzleClient
+namespace ER_NET.Client
 {
     public static class DiscoveryClient
     {

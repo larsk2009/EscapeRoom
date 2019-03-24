@@ -1,8 +1,7 @@
 using System;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
-namespace PuzzleClient
+namespace ER_NET.Shared
 {
     public class DiscoveryMessage
     {

@@ -4,7 +4,7 @@ using System.Net.Sockets;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace ControlUnit
+namespace ER_NET.Server
 {
     public class DiscoveryServer
     {
