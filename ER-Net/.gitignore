@@ -20,8 +20,8 @@
 **/.idea/**/contentModel.xml
 **/.idea/**/modules.xml
 
-*.suo
-*.user
+**.suo
+**.user
 .vs/
 [Bb]in/
 [Oo]bj/
