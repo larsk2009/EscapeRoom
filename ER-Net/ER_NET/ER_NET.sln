@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ER_NET", "ER_NET.csproj", "{A38C85BC-E281-4BDD-946D-3C8D57CB8588}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ER_NET_tests", "ER_NET_tests\ER_NET_tests.csproj", "{16754A86-8B5F-40FB-B516-EC53D7B2BC65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A38C85BC-E281-4BDD-946D-3C8D57CB8588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A38C85BC-E281-4BDD-946D-3C8D57CB8588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A38C85BC-E281-4BDD-946D-3C8D57CB8588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A38C85BC-E281-4BDD-946D-3C8D57CB8588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16754A86-8B5F-40FB-B516-EC53D7B2BC65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16754A86-8B5F-40FB-B516-EC53D7B2BC65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16754A86-8B5F-40FB-B516-EC53D7B2BC65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16754A86-8B5F-40FB-B516-EC53D7B2BC65}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
