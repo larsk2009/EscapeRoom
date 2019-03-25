@@ -10,16 +10,18 @@ int CaseState;
 
 
 void setup() {
-  pinMode(0, OUTPUT);
-  pinMode(1, OUTPUT);
-  pinMode(2, OUTPUT);
-  pinMode(3, OUTPUT);
-  pinMode(4, OUTPUT);
-  pinMode(5, OUTPUT);
-  pinMode(6, OUTPUT);
-  pinMode(7, OUTPUT);
+  pinMode(Segment_B, OUTPUT);
+  pinMode(Segment_E, OUTPUT);
+  pinMode(Segment_DP, OUTPUT);
+  pinMode(Segment_A, OUTPUT);
+  pinMode(Segment_F, OUTPUT);
+  pinMode(Segment_G, OUTPUT);
+  pinMode(Segment_D, OUTPUT);
+  pinMode(Segment_C, OUTPUT);
   Serial.begin(9600);
 }
+
+
 
 void loop() {
   for (CaseState = 0; CaseState < 11; CaseState++)
@@ -27,114 +29,114 @@ void loop() {
     KeyBoard();
     switch (CaseState) {
       case 0:
-        digitalWrite(0, HIGH);
-        digitalWrite(1, HIGH);
-        digitalWrite(2, LOW);
-        digitalWrite(3, HIGH);
-        digitalWrite(4, HIGH);
-        digitalWrite(5, LOW);
-        digitalWrite(6, HIGH);
-        digitalWrite(7, HIGH);
+        digitalWrite(Segment_B, HIGH);
+        digitalWrite(Segment_E, HIGH);
+        digitalWrite(Segment_DP, LOW);
+        digitalWrite(Segment_A, HIGH);
+        digitalWrite(Segment_F, HIGH);
+        digitalWrite(Segment_G, LOW);
+        digitalWrite(Segment_D, HIGH);
+        digitalWrite(Segment_7, HIGH);
         break;
       case 1:
-        digitalWrite(0, HIGH);
-        digitalWrite(1, LOW);
-        digitalWrite(2, LOW);
-        digitalWrite(3, LOW);
-        digitalWrite(4, LOW);
-        digitalWrite(5, LOW);
-        digitalWrite(6, LOW);
-        digitalWrite(7, HIGH);
+        digitalWrite(Segment_B, HIGH);
+        digitalWrite(Segment_E, LOW);
+        digitalWrite(Segment_DP, LOW);
+        digitalWrite(Segment_A, LOW);
+        digitalWrite(Segment_F, LOW);
+        digitalWrite(Segment_G, LOW);
+        digitalWrite(Segment_D, LOW);
+        digitalWrite(Segment_7, HIGH);
         break;
       case 2:
-        digitalWrite(0, HIGH);
-        digitalWrite(1, HIGH);
-        digitalWrite(2, LOW);
-        digitalWrite(3, HIGH);
-        digitalWrite(4, LOW);
-        digitalWrite(5, HIGH);
-        digitalWrite(6, HIGH);
-        digitalWrite(7, LOW);
+        digitalWrite(Segment_B, HIGH);
+        digitalWrite(Segment_E, HIGH);
+        digitalWrite(Segment_DP, LOW);
+        digitalWrite(Segment_A, HIGH);
+        digitalWrite(Segment_F, LOW);
+        digitalWrite(Segment_G, HIGH);
+        digitalWrite(Segment_D, HIGH);
+        digitalWrite(Segment_7, LOW);
         break;
       case 3:
-        digitalWrite(0, HIGH);
-        digitalWrite(1, LOW);
-        digitalWrite(2, LOW);
-        digitalWrite(3, HIGH);
-        digitalWrite(4, LOW);
-        digitalWrite(5, HIGH);
-        digitalWrite(6, HIGH);
-        digitalWrite(7, HIGH);
+        digitalWrite(Segment_B, HIGH);
+        digitalWrite(Segment_E, LOW);
+        digitalWrite(Segment_DP, LOW);
+        digitalWrite(Segment_A, HIGH);
+        digitalWrite(Segment_F, LOW);
+        digitalWrite(Segment_G, HIGH);
+        digitalWrite(Segment_D, HIGH);
+        digitalWrite(Segment_7, HIGH);
         break;
       case 4:
-        digitalWrite(0, HIGH);
-        digitalWrite(1, LOW);
-        digitalWrite(2, LOW);
-        digitalWrite(3, LOW);
-        digitalWrite(4, HIGH);
-        digitalWrite(5, HIGH);
-        digitalWrite(6, LOW);
-        digitalWrite(7, HIGH);
+        digitalWrite(Segment_B, HIGH);
+        digitalWrite(Segment_E, LOW);
+        digitalWrite(Segment_DP, LOW);
+        digitalWrite(Segment_A, LOW);
+        digitalWrite(Segment_F, HIGH);
+        digitalWrite(Segment_G, HIGH);
+        digitalWrite(Segment_D, LOW);
+        digitalWrite(Segment_7, HIGH);
         break;
       case 5:
-        digitalWrite(0, LOW);
-        digitalWrite(1, LOW);
-        digitalWrite(2, LOW);
-        digitalWrite(3, HIGH);
-        digitalWrite(4, HIGH);
-        digitalWrite(5, HIGH);
-        digitalWrite(6, HIGH);
-        digitalWrite(7, HIGH);
+        digitalWrite(Segment_B, LOW);
+        digitalWrite(Segment_E, LOW);
+        digitalWrite(Segment_DP, LOW);
+        digitalWrite(Segment_A, HIGH);
+        digitalWrite(Segment_F, HIGH);
+        digitalWrite(Segment_G, HIGH);
+        digitalWrite(Segment_D, HIGH);
+        digitalWrite(Segment_7, HIGH);
         break;
       case 6:
-        digitalWrite(0, LOW);
-        digitalWrite(1, HIGH);
-        digitalWrite(2, LOW);
-        digitalWrite(3, HIGH);
-        digitalWrite(4, HIGH);
-        digitalWrite(5, HIGH);
-        digitalWrite(6, HIGH);
-        digitalWrite(7, HIGH);
+        digitalWrite(Segment_B, LOW);
+        digitalWrite(Segment_E, HIGH);
+        digitalWrite(Segment_DP, LOW);
+        digitalWrite(Segment_A, HIGH);
+        digitalWrite(Segment_F, HIGH);
+        digitalWrite(Segment_G, HIGH);
+        digitalWrite(Segment_D, HIGH);
+        digitalWrite(Segment_7, HIGH);
         break;
       case 7:
-        digitalWrite(0, HIGH);
-        digitalWrite(1, LOW);
-        digitalWrite(2, LOW);
-        digitalWrite(3, HIGH);
-        digitalWrite(4, LOW);
-        digitalWrite(5, LOW);
-        digitalWrite(6, LOW);
-        digitalWrite(7, HIGH);
+        digitalWrite(Segment_B, HIGH);
+        digitalWrite(Segment_E, LOW);
+        digitalWrite(Segment_DP, LOW);
+        digitalWrite(Segment_A, HIGH);
+        digitalWrite(Segment_F, LOW);
+        digitalWrite(Segment_G, LOW);
+        digitalWrite(Segment_D, LOW);
+        digitalWrite(Segment_7, HIGH);
         break;
       case 8:
-        digitalWrite(0, HIGH);
-        digitalWrite(1, HIGH);
-        digitalWrite(2, LOW);
-        digitalWrite(3, HIGH);
-        digitalWrite(4, HIGH);
-        digitalWrite(5, HIGH);
-        digitalWrite(6, HIGH);
-        digitalWrite(7, HIGH);
+        digitalWrite(Segment_B, HIGH);
+        digitalWrite(Segment_E, HIGH);
+        digitalWrite(Segment_DP, LOW);
+        digitalWrite(Segment_A, HIGH);
+        digitalWrite(Segment_F, HIGH);
+        digitalWrite(Segment_G, HIGH);
+        digitalWrite(Segment_D, HIGH);
+        digitalWrite(Segment_7, HIGH);
         break;
       case 9:
-        digitalWrite(0, HIGH);
-        digitalWrite(1, LOW);
-        digitalWrite(2, LOW);
-        digitalWrite(3, HIGH);
-        digitalWrite(4, HIGH);
-        digitalWrite(5, HIGH);
-        digitalWrite(6, HIGH);
-        digitalWrite(7, HIGH);
+        digitalWrite(Segment_B, HIGH);
+        digitalWrite(Segment_E, LOW);
+        digitalWrite(Segment_DP, LOW);
+        digitalWrite(Segment_A, HIGH);
+        digitalWrite(Segment_F, HIGH);
+        digitalWrite(Segment_G, HIGH);
+        digitalWrite(Segment_D, HIGH);
+        digitalWrite(Segment_7, HIGH);
         break;
        case 10:
-        digitalWrite(0, LOW);
-        digitalWrite(1, LOW);
-        digitalWrite(2, HIGH);
-        digitalWrite(3, LOW);
-        digitalWrite(4, LOW);
-        digitalWrite(5, LOW);
-        digitalWrite(6, LOW);
-        digitalWrite(7, LOW);
+        digitalWrite(Segment_B, LOW);
+        digitalWrite(Segment_E, LOW);
+        digitalWrite(Segment_DP, HIGH);
+        digitalWrite(Segment_A, LOW);
+        digitalWrite(Segment_F, LOW);
+        digitalWrite(Segment_G, LOW);
+        digitalWrite(Segment_D, LOW);
+        digitalWrite(Segment_7, LOW);
         break;
     }
     delay(500);
