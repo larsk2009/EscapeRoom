@@ -8,8 +8,8 @@ namespace ER_NET.Client
 {
     public static class DiscoveryClient
     {
-        private const int DiscoveryPort = 49666;
-        private const int ResponsePort = 49669;
+        private const int DiscoveryPort = 46666;
+        private const int ResponsePort = 46667;
 
         private static Guid _guid;
 

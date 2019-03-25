@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Diagnostics.Tracing;
+using System.Threading.Tasks;
 using ER_NET.Server;
+using ER_NET.Shared;
 
 namespace ControlUnit
 {
@@ -7,8 +10,8 @@ namespace ControlUnit
     {
         static void Main(string[] args)
         {
-            DiscoveryServer discoveryServer = new DiscoveryServer();
-            discoveryServer.DoDiscovery();
+            var engine = new ErNetServerEngine();
+            Console.ReadKey(); //Wait for user input before closing
         }
     }
 }

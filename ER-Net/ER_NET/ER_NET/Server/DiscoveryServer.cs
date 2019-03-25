@@ -2,18 +2,22 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace ER_NET.Server
 {
     public class DiscoveryServer
     {
-        private UdpClient _client;
-        private const int DiscoveryPort = 49666;
+        private readonly UdpClient _client;
+        private const int DiscoveryPort = 46666;
+        private const int ResponsePort = 46667;
 
+        private Guid _guid;
 
-        public DiscoveryServer()
+        public DiscoveryServer(Guid guid)
         {
+            _guid = guid;
             _client = new UdpClient
             {
                 EnableBroadcast = true,
@@ -25,10 +29,26 @@ namespace ER_NET.Server
         {
             var data = new
             {
-                Guid = Guid.NewGuid().ToString(),
+                Guid = _guid,
                 MessageType = "Discovery"
             };
             SendUdpData(data);
+        }
+
+        /// <summary>
+        /// Starts a continous discovery pattern. Can't be stopped
+        /// </summary>
+        public void ContinuousDiscovery()
+        {
+            //Run discovery every 3 seconds on a Task
+            Task.Run(async () =>
+            {
+                while (true)
+                {
+                    DoDiscovery();
+                    await Task.Delay(TimeSpan.FromSeconds(3));
+                }
+            });
         }
 
         private void SendUdpData(object data)
@@ -36,7 +56,7 @@ namespace ER_NET.Server
             var json = "ER-NET\n" + JsonConvert.SerializeObject(data);
             var bytes = Encoding.ASCII.GetBytes(json);
 
-            IPEndPoint broadCastEndPoint = new IPEndPoint(IPAddress.Broadcast, DiscoveryPort);
+            var broadCastEndPoint = new IPEndPoint(IPAddress.Broadcast, DiscoveryPort);
 
             _client.Send(bytes, bytes.Length, broadCastEndPoint);
         }

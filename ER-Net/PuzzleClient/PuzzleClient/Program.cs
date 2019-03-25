@@ -10,7 +10,7 @@ namespace PuzzleClient
             Guid guid = Guid.NewGuid();
             DiscoveryClient.Start(guid);
             
-            Console.ReadKey(); //Wait for user input to close
+            Console.ReadKey(); //Wait for user input before closing
         }
     }
 }
