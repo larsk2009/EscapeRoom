@@ -46,14 +46,14 @@ namespace ER_NET.Shared
 
         public void OnMessageReceived(string json, IPAddress address)
         {
-            var message = DiscoveryMessage.FromJson(json);
+            var message = Message.FromJson(json);
             if (message != null)
             {
                 RaiseTcpEvent(message, address);
             }
         }
 
-        protected virtual void RaiseTcpEvent(DiscoveryMessage message, IPAddress address)
+        protected virtual void RaiseTcpEvent(Message message, IPAddress address)
         {
             OnTcpEvent?.Invoke(this, new TcpEventArgs(message, address));
         }
@@ -61,12 +61,12 @@ namespace ER_NET.Shared
 
     public class TcpEventArgs : EventArgs
     {
-        public TcpEventArgs(DiscoveryMessage message, IPAddress remoteIp)
+        public TcpEventArgs(Message message, IPAddress remoteIp)
         {
             Message = message;
             RemoteIp = remoteIp;
         }
-        public DiscoveryMessage Message { get; }
+        public Message Message { get; }
         public IPAddress RemoteIp { get; }
     }
 }

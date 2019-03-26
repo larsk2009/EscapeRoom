@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using ER_NET.Shared;
 using Newtonsoft.Json;
 
 namespace ER_NET.Server
@@ -49,6 +50,30 @@ namespace ER_NET.Server
                     await Task.Delay(TimeSpan.FromSeconds(3));
                 }
             });
+        }
+
+        public void DiscoveryAcknowledgeReceived(Message message, IPAddress ipAddress)
+        {
+            if (message.MessageType == "DiscoveryAcknowledge")
+            {
+                var responseMessage = new Message
+                {
+                    Id = _guid,
+                    MessageType = "Mute"
+                };
+                var data = responseMessage.ToBytes();
+
+                using (var tcpClient = new TcpClient())
+                {
+                    if (tcpClient.ConnectAsync(ipAddress.ToString(), ResponsePort).Wait(1000))
+                    {
+                        using (var stream = tcpClient.GetStream())
+                        {
+                            stream.Write(data, 0, data.Length);
+                        }
+                    }
+                }
+            }
         }
 
         private void SendUdpData(object data)
