@@ -3,8 +3,7 @@ mono: none
 dotnet: 2.1
 
 install:
-- cd jumpPuzzle
-- dotnet restore
+- dotnet restore JumpPuzzle
 
 script:
- - dotnet build
+ - dotnet build JumpPuzzle
