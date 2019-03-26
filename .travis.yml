@@ -4,13 +4,13 @@ dotnet: 2.1
 
 jobs:
   include: 
-    -stage: JumpPuzzle
+    - stage: JumpPuzzle
     install:
       - dotnet restore jumpPuzzle
     script:
       - dotnet build jumpPuzzle
       
-    -stage: ER-Net
+    - stage: ER-Net
     install:
       - dotnet restore ER-NET/ER_NET
     script:
