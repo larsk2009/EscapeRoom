@@ -3,10 +3,10 @@ mono: none
 dotnet: 2.1
 
 jobs:
-	include:
-		- stage: JumpPuzzle
-			install:
-			- dotnet restore jumpPuzzle
+  include:
+    - stage: test
+      install:
+	- dotnet restore jumpPuzzle
 
-			script:
-			- dotnet build jumpPuzzle
+	script:
+	- dotnet build jumpPuzzle
