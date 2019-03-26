@@ -2,8 +2,11 @@ language: csharp
 mono: none
 dotnet: 2.1
 
-install:
-- dotnet restore jumpPuzzle
+jobs:
+  include: 
+    -stage: JumpPuzzle
+    install:
+      - dotnet restore jumpPuzzle
 
-script:
-- dotnet build jumpPuzzle
+    script:
+      - dotnet build jumpPuzzle
