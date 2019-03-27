@@ -13,6 +13,6 @@ jobs:
     - stage: ER-Net
       install:
         - ls
-        - dotnet restore ER-NET/ER_NET
+        - dotnet restore ER-Net\ER_NET
       script:
-        - dotnet build ER-NET/ER_NET
+        - dotnet build ER-Net\ER_NET
