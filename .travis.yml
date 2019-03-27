@@ -18,8 +18,9 @@ jobs:
         
     - stage: ER-Net tests
       install:
-        - dotnet restore ER-Net/ER_NET
-        - dotnet add xunit.runners -Version 1.9.2 -OutputDirectory testrunner
+        - cd ER-Net/ER_NET
+        - dotnet restore 
+        - dotnet add package xunit.runners -v 1.9.2 --package-directory testrunner
       script:
-        - msbuild /p:Configuration=Release ER-Net/ER_NET/ER_NET.sl
-        - dotnet .ER-Net/ER_NET/testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe .ER-Net/ER_NET/ER_NET_tests/bin/Release/netcoreapp2.1/ER_NET_tests.dll
+        - msbuild /p:Configuration=Release ER_NET.sl
+        - dotnet ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./ER_NET_tests/bin/Release/netcoreapp2.1/ER_NET_tests.dll
