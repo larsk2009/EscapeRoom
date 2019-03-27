@@ -16,10 +16,10 @@ jobs:
       script:
         - dotnet build ER-Net/ER_NET
         
-      - stage: ER-Net tests
-        install:
-          - dotnet restore ER-Net/ER_NET
-          - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
-        script:
-          - msbuild /p:Configuration=Release ER-Net/ER_NET/ER_NET.sln
-          - dotnet .ER-Net/ER_NET/testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe .ER-Net/ER_NET/ER_NET_tests/bin/Release/netcoreapp2.1/ER_NET_tests.dll
+    - stage: ER-Net tests
+      install:
+        - dotnet restore ER-Net/ER_NET
+        - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
+      script:
+        - msbuild /p:Configuration=Release ER-Net/ER_NET/ER_NET.sl
+        - dotnet .ER-Net/ER_NET/testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe .ER-Net/ER_NET/ER_NET_tests/bin/Release/netcoreapp2.1/ER_NET_tests.dll
