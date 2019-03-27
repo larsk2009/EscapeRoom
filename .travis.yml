@@ -28,5 +28,5 @@ jobs:
         - cd ../
         - ls
       script:
-        - msbuild /p:Configuration=Release ER_NET.sln
-        - dotnet ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./ER_NET_tests/bin/Release/netcoreapp2.1/ER_NET_tests.dll
+        - dotnet build --configuration Release
+        - dotnet ./ER_NET_tests/testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./ER_NET_tests/bin/Release/netcoreapp2.1/ER_NET_tests.dll
