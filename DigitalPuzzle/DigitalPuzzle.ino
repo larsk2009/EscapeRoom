@@ -103,19 +103,28 @@ bool *GetReaderResult(int ReaderSelect)
         case 1:   //AND GATE
           ReaderResult[0] = Check_AND(StartValues[0], StartValues[1]);
           break;
-        case 2:   //OR GATE
+        case 2:   //AND GATE
+          ReaderResult[0] = Check_AND(StartValues[0], StartValues[1]);
+          break;
+        case 3:   //OR GATE
           ReaderResult[0] = Check_OR(StartValues[0], StartValues[1]);
           break;
-        case 3:   //NAND GATE
+        case 4:   //NAND GATE
           ReaderResult[0] = Check_NAND(StartValues[0], StartValues[1]);
           break;
-        case 4:   //NOR GATE
+        case 5:   //NOR GATE
           ReaderResult[0] = Check_NOR(StartValues[0], StartValues[1]);
           break;
-        case 5:   //XOR GATE
+        case 6:   //XOR GATE
           ReaderResult[0] = Check_XOR(StartValues[0], StartValues[1]);
           break;
-        default:  //
+/*         case 7:   //NOT GATE                                       //NOT and WIRE are only for when you have one input
+          ReaderResult[0] = Check_NOT(StartValues[0]);
+          break;
+        case 8:   //WIRE
+          ReaderResult[0] = Check_WIRE(StartValues[0]);
+          break; */
+        default:  
           ReaderResult[0] = 0; 
           break;
       }
@@ -125,24 +134,32 @@ bool *GetReaderResult(int ReaderSelect)
         case 1:   //AND GATE
           ReaderResult[1] = Check_AND(StartValues[2], StartValues[3]);
           break;
-        case 2:   //OR GATE
+        case 2:   //AND GATE
+          ReaderResult[1] = Check_AND(StartValues[2], StartValues[3]);
+          break;
+        case 3:   //OR GATE
           ReaderResult[1] = Check_OR(StartValues[2], StartValues[3]);
           break;
-        case 3:   //NAND GATE
+        case 4:   //NAND GATE
           ReaderResult[1] = Check_NAND(StartValues[2], StartValues[3]);
           break;
-        case 4:   //NOR GATE
+        case 5:   //NOR GATE
           ReaderResult[1] = Check_NOR(StartValues[2], StartValues[3]);
           break;
-        case 5:   //XOR GATE
+        case 6:   //XOR GATE
           ReaderResult[1] = Check_XOR(StartValues[2], StartValues[3]);
           break;
-        default:  //
-          ReaderResult[1] = 0; 
+/*         case 7:   //NOT GATE                                       //NOT and WIRE are only for when you have one input
+          ReaderResult[1] = Check_NOT(StartValues[2]);
+          break;
+        case 8:   //WIRE
+          ReaderResult[1] = Check_WIRE(StartValues[2]);
+          break; */
+        default:  
+          ReaderResult[0] = 0; 
           break;
       }
   }
-
   return ReaderResult;
 }
 
@@ -272,6 +289,30 @@ bool Check_XOR(bool A, bool B)
   }
 }
 
+bool Check_NOT(bool A)
+{
+  if(A == 0)
+  {
+    return 1;
+  }
+  else
+  {
+    return 0;
+  }
+}
+  
+bool Check_WIRE(bool A)
+{
+  if(A == 1)
+  {
+    return 1;
+  }
+  else
+  {
+    return 0;
+  }
+} 
+
 /*************************************************************
  * Function：CompareNFC 
  * Description：Compares a read tag with the a gate tag that
@@ -297,8 +338,68 @@ int CompareNFC (unsigned char tagID[]) {
     if (tagID[1] == EEPROM.read(5)){
       if (tagID[2] == EEPROM.read(6)){
         if (tagID[3] == EEPROM.read(7)){
-          gate = 2; // or gate
+          gate = 2; // and gate
+          Serial.println("AND GATE");
+        }
+      }
+    }
+  }
+  if (tagID[0] == EEPROM.read(8)){
+    if (tagID[1] == EEPROM.read(9)){
+      if (tagID[2] == EEPROM.read(10)){
+        if (tagID[3] == EEPROM.read(11)){
+          gate = 3; //or gate
           Serial.println("OR GATE");
+        }
+      }
+    }
+  }
+  if (tagID[0] == EEPROM.read(12)){
+    if (tagID[1] == EEPROM.read(13)){
+      if (tagID[2] == EEPROM.read(14)){
+        if (tagID[3] == EEPROM.read(15)){
+          gate = 4; // nand gate
+          Serial.println("NAND GATE");
+        }
+      }
+    }
+  }
+  if (tagID[0] == EEPROM.read(16)){
+    if (tagID[1] == EEPROM.read(17)){
+      if (tagID[2] == EEPROM.read(18)){
+        if (tagID[3] == EEPROM.read(19)){
+          gate = 5; //nor gate
+          Serial.println("NOR GATE");
+        }
+      }
+    }
+  }
+  if (tagID[0] == EEPROM.read(20)){
+    if (tagID[1] == EEPROM.read(21)){
+      if (tagID[2] == EEPROM.read(22)){
+        if (tagID[3] == EEPROM.read(23)){
+          gate = 6; //xor gate
+          Serial.println("XOR GATE");
+        }
+      }
+    }
+  }
+  if (tagID[0] == EEPROM.read(24)){
+    if (tagID[1] == EEPROM.read(25)){
+      if (tagID[2] == EEPROM.read(26)){
+        if (tagID[3] == EEPROM.read(27)){
+          gate = 7; //not gate
+          Serial.println("NOT GATE");
+        }
+      }
+    }
+  }
+  if (tagID[0] == EEPROM.read(28)){
+    if (tagID[1] == EEPROM.read(29)){
+      if (tagID[2] == EEPROM.read(30)){
+        if (tagID[3] == EEPROM.read(31)){
+          gate = 8; //wire
+          Serial.println("WIRE");
         }
       }
     }
@@ -373,7 +474,7 @@ void PutTagInEEPROM(unsigned char tagID[], int address) {
  * Return：none
  *************************************************************/
 void CalibrateTags(){
-  for(int i = 0; i<2; i++){
+  for(int i = 0; i<8; i++){
     PutTagInEEPROM(ReadRFID(i), i);
   }
 }
