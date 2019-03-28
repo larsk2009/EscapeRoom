@@ -289,8 +289,68 @@ int CompareNFC (unsigned char tagID[]) {
     if (tagID[1] == EEPROM.read(5)){
       if (tagID[2] == EEPROM.read(6)){
         if (tagID[3] == EEPROM.read(7)){
-          gate = 2; // or gate
+          gate = 2; // and gate
+          Serial.println("AND GATE");
+        }
+      }
+    }
+  }
+  if (tagID[0] == EEPROM.read(8)){
+    if (tagID[1] == EEPROM.read(9)){
+      if (tagID[2] == EEPROM.read(10)){
+        if (tagID[3] == EEPROM.read(11)){
+          gate = 3; //or gate
           Serial.println("OR GATE");
+        }
+      }
+    }
+  }
+  if (tagID[0] == EEPROM.read(12)){
+    if (tagID[1] == EEPROM.read(13)){
+      if (tagID[2] == EEPROM.read(14)){
+        if (tagID[3] == EEPROM.read(15)){
+          gate = 4; // nand gate
+          Serial.println("NAND GATE");
+        }
+      }
+    }
+  }
+  if (tagID[0] == EEPROM.read(16)){
+    if (tagID[1] == EEPROM.read(17)){
+      if (tagID[2] == EEPROM.read(18)){
+        if (tagID[3] == EEPROM.read(19)){
+          gate = 5; //nor gate
+          Serial.println("NOR GATE");
+        }
+      }
+    }
+  }
+  if (tagID[0] == EEPROM.read(20)){
+    if (tagID[1] == EEPROM.read(21)){
+      if (tagID[2] == EEPROM.read(22)){
+        if (tagID[3] == EEPROM.read(23)){
+          gate = 6; //xor gate
+          Serial.println("XOR GATE");
+        }
+      }
+    }
+  }
+  if (tagID[0] == EEPROM.read(24)){
+    if (tagID[1] == EEPROM.read(25)){
+      if (tagID[2] == EEPROM.read(26)){
+        if (tagID[3] == EEPROM.read(27)){
+          gate = 7; //not gate
+          Serial.println("NOT GATE");
+        }
+      }
+    }
+  }
+  if (tagID[0] == EEPROM.read(28)){
+    if (tagID[1] == EEPROM.read(29)){
+      if (tagID[2] == EEPROM.read(30)){
+        if (tagID[3] == EEPROM.read(31)){
+          gate = 8; //wire
+          Serial.println("WIRE");
         }
       }
     }
@@ -369,7 +429,7 @@ void PutTagInEEPROM(unsigned char tagID[], int address) {
  * Return：none
  *************************************************************/
 void CalibrateTags(){
-  for(int i = 0; i<2; i++){
+  for(int i = 0; i<8; i++){
     PutTagInEEPROM(ReadRFID(i), i);
   }
 }
