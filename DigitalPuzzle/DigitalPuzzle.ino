@@ -95,19 +95,28 @@ bool *GetReaderResult(int ReaderSelect)
         case 1:   //AND GATE
           ReaderResult[0] = Check_AND(StartValues[0], StartValues[1]);
           break;
-        case 2:   //OR GATE
+        case 2:   //AND GATE
+          ReaderResult[0] = Check_AND(StartValues[0], StartValues[1]);
+          break;
+        case 3:   //OR GATE
           ReaderResult[0] = Check_OR(StartValues[0], StartValues[1]);
           break;
-        case 3:   //NAND GATE
+        case 4:   //NAND GATE
           ReaderResult[0] = Check_NAND(StartValues[0], StartValues[1]);
           break;
-        case 4:   //NOR GATE
+        case 5:   //NOR GATE
           ReaderResult[0] = Check_NOR(StartValues[0], StartValues[1]);
           break;
-        case 5:   //XOR GATE
+        case 6:   //XOR GATE
           ReaderResult[0] = Check_XOR(StartValues[0], StartValues[1]);
           break;
-        default:  //
+/*         case 7:   //NOT GATE                                       //NOT and WIRE are only for when you have one input
+          ReaderResult[0] = Check_NOT(StartValues[0]);
+          break;
+        case 8:   //WIRE
+          ReaderResult[0] = Check_WIRE(StartValues[0]);
+          break; */
+        default:  
           ReaderResult[0] = 0; 
           break;
       }
@@ -117,24 +126,32 @@ bool *GetReaderResult(int ReaderSelect)
         case 1:   //AND GATE
           ReaderResult[1] = Check_AND(StartValues[2], StartValues[3]);
           break;
-        case 2:   //OR GATE
+        case 2:   //AND GATE
+          ReaderResult[1] = Check_AND(StartValues[2], StartValues[3]);
+          break;
+        case 3:   //OR GATE
           ReaderResult[1] = Check_OR(StartValues[2], StartValues[3]);
           break;
-        case 3:   //NAND GATE
+        case 4:   //NAND GATE
           ReaderResult[1] = Check_NAND(StartValues[2], StartValues[3]);
           break;
-        case 4:   //NOR GATE
+        case 5:   //NOR GATE
           ReaderResult[1] = Check_NOR(StartValues[2], StartValues[3]);
           break;
-        case 5:   //XOR GATE
+        case 6:   //XOR GATE
           ReaderResult[1] = Check_XOR(StartValues[2], StartValues[3]);
           break;
-        default:  //
-          ReaderResult[1] = 0; 
+/*         case 7:   //NOT GATE                                       //NOT and WIRE are only for when you have one input
+          ReaderResult[1] = Check_NOT(StartValues[2]);
+          break;
+        case 8:   //WIRE
+          ReaderResult[1] = Check_WIRE(StartValues[2]);
+          break; */
+        default:  
+          ReaderResult[0] = 0; 
           break;
       }
   }
-
   return ReaderResult;
 }
 
@@ -263,6 +280,30 @@ bool Check_XOR(bool A, bool B)
     return 0;
   }
 }
+
+bool Check_NOT(bool A)
+{
+  if(A == 0)
+  {
+    return 1;
+  }
+  else
+  {
+    return 0;
+  }
+}
+  
+bool Check_WIRE(bool A)
+{
+  if(A == 1)
+  {
+    return 1;
+  }
+  else
+  {
+    return 0;
+  }
+} 
 
 /*************************************************************
  * Function：CompareNFC 
