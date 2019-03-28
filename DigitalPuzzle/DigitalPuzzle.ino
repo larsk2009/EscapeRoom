@@ -16,6 +16,7 @@
 
 const int RedPins[2] = {3,4};
 const int GreenPins[2] = {2,5};
+const int StartValuePins[6] = {0,0,0,0,0,0};
 
 int count = 0;
 
@@ -44,6 +45,15 @@ uchar *ReadRFID(int ReaderSelect)
       case 1:
           rfid.begin(9, 11, 10, 6, 12, 8);  
           break;
+	  case 2:
+		  rfid.begin(9, 11, 10, 5, 12, 8);
+		  break;
+	  case 3:
+		  rfid.begin(9, 11, 10, 4, 12, 8);
+		  break;
+	  case 4:
+		  rfid.begin(9, 11, 10, 3, 12, 8);
+		  break;
     }
     delay(100);  //delay 100ms
     rfid.init(); //initialize the RFID
@@ -74,8 +84,6 @@ uchar *ReadRFID(int ReaderSelect)
     rfid.halt(); //command the card into sleep mode 
       return IDStorage;
     }
-    delay(100);
-    rfid.halt(); //command the card into sleep mode 
 }
 
 
@@ -340,10 +348,6 @@ void ReadSerial()
         Serial.println("HELP            ->        Main Menu");
         Serial.println("-----------------------------------");
     }
-    else 
-    {
-        Serial.println("Unkown input")
-    }
 }
 
 
@@ -375,8 +379,26 @@ void CalibrateTags(){
 }
 
 
+/*************************************************************
+ * Function：RandomizeStartValues()
+ * Description：Generates random startvalues. This way, the
+   puzzle will be different everytime. 64 options. 
+ * Input parameter：none
+ * Return：none
+ *************************************************************/
+void RandomizeStartValues()
+{
+    for(int i; i<6; i++)
+    {
+        StartValues[i] = random(0,1);
+        Serial.print("The startvalue of position ");
+        Serial.print(i);
+        Serial.print(" is ");
+        Serial.println(StartValues[i]);
+		digitalWrite(StartValuePins[i], StartValues[i]);
+    }
 
-
+}
 
 
 
