@@ -2,7 +2,7 @@
 #include "rfid1.h"
 
 const int RedPins[2] = {3,4};
-const int GreenPins[2] = {2,5};
+const int GreenPins[8] = {2,5,0,0,0,0,0,0};
 const int StartValuePins[6] = {0,0,0,0,0,0};
 
 int count = 0;
@@ -30,6 +30,7 @@ uchar *ReadRFID(int ReaderSelect)
         rfid.begin(9, 11, 10, 22, 12, 8);  
         break;
       case 1:
+<<<<<<< HEAD
         rfid.begin(9, 11, 10, 24, 12, 8);  
         break;
       case 2:
@@ -50,6 +51,19 @@ uchar *ReadRFID(int ReaderSelect)
       case 7:
         rfid.begin(9, 11, 10, 36, 12, 8);
         break;
+=======
+          rfid.begin(9, 11, 10, 6, 12, 8);  
+          break;
+      case 2:
+          rfid.begin(9, 11, 10, 5, 12, 8);
+          break;
+      case 3:
+          rfid.begin(9, 11, 10, 4, 12, 8);
+          break;
+      case 4:
+          rfid.begin(9, 11, 10, 3, 12, 8);
+          break;
+>>>>>>> 3f3072a59fbb9487829f3ed087cc5408df8eb7b8
     }
     delay(100);  //delay 100ms
     rfid.init(); //initialize the RFID
@@ -114,12 +128,6 @@ bool *GetReaderResult(int ReaderSelect)
         case 6:   //XOR GATE
           ReaderResult[0] = Check_XOR(StartValues[0], StartValues[1]);
           break;
-/*         case 7:   //NOT GATE                                       //NOT and WIRE are only for when you have one input
-          ReaderResult[0] = Check_NOT(StartValues[0]);
-          break;
-        case 8:   //WIRE
-          ReaderResult[0] = Check_WIRE(StartValues[0]);
-          break; */
         default:  
           ReaderResult[0] = 0; 
           break;
@@ -145,14 +153,134 @@ bool *GetReaderResult(int ReaderSelect)
         case 6:   //XOR GATE
           ReaderResult[1] = Check_XOR(StartValues[2], StartValues[3]);
           break;
-/*         case 7:   //NOT GATE                                       //NOT and WIRE are only for when you have one input
-          ReaderResult[1] = Check_NOT(StartValues[2]);
+        default:  
+          ReaderResult[1] = 0; 
+          break;
+      }
+    case 2:
+      switch(CompareNFC(ReadRFID(2)))
+      {
+        case 7:   //NOT GATE                                       //NOT and WIRE are only for when you have one input
+          ReaderResult[2] = Check_NOT(StartValues[5]);
           break;
         case 8:   //WIRE
-          ReaderResult[1] = Check_WIRE(StartValues[2]);
-          break; */
+          ReaderResult[2] = Check_WIRE(StartValues[5]);
+          break;
         default:  
-          ReaderResult[0] = 0; 
+          ReaderResult[2] = 0; 
+          break;
+      }
+    case 3:
+      switch(CompareNFC(ReadRFID(3)))
+      {
+        case 7:   //NOT GATE                                       //NOT and WIRE are only for when you have one input
+          ReaderResult[3] = Check_NOT(ReaderResult[0]);
+          break;
+        case 8:   //WIRE
+          ReaderResult[3] = Check_WIRE(ReaderResult[0]);
+          break;
+        default:  
+          ReaderResult[3] = 0; 
+          break;
+      }
+    case 4:
+      switch(CompareNFC(ReadRFID(4)))
+      {
+        case 1:   //AND GATE
+          ReaderResult[4] = Check_AND(ReaderResult[1], StartValues[4]);
+          break;
+        case 2:   //AND GATE
+          ReaderResult[4] = Check_AND(ReaderResult[1], StartValues[4]);
+          break;
+        case 3:   //OR GATE
+          ReaderResult[4] = Check_OR(ReaderResult[1], StartValues[4]);
+          break;
+        case 4:   //NAND GATE
+          ReaderResult[4] = Check_NAND(ReaderResult[1], StartValues[4]);
+          break;
+        case 5:   //NOR GATE
+          ReaderResult[4] = Check_NOR(ReaderResult[1], StartValues[4]);
+          break;
+        case 6:   //XOR GATE
+          ReaderResult[4] = Check_XOR(ReaderResult[1], StartValues[4]);
+          break;
+        default:  
+          ReaderResult[4] = 0; 
+          break;
+      }
+    case 5:
+      switch(CompareNFC(ReadRFID(5)))
+      {
+        case 1:   //AND GATE
+          ReaderResult[5] = Check_AND(ReaderResult[3], ReaderResult[1]);
+          break;
+        case 2:   //AND GATE
+          ReaderResult[5] = Check_AND(ReaderResult[3], ReaderResult[1]);
+          break;
+        case 3:   //OR GATE
+          ReaderResult[5] = Check_OR(ReaderResult[3], ReaderResult[1]);
+          break;
+        case 4:   //NAND GATE
+          ReaderResult[5] = Check_NAND(ReaderResult[3], ReaderResult[1]);
+          break;
+        case 5:   //NOR GATE
+          ReaderResult[5] = Check_NOR(ReaderResult[3], ReaderResult[1]);
+          break;
+        case 6:   //XOR GATE
+          ReaderResult[5] = Check_XOR(ReaderResult[3], ReaderResult[1]);
+          break;
+        default:  
+          ReaderResult[5] = 0; 
+          break;
+      }
+    case 6:
+      switch(CompareNFC(ReadRFID(6)))
+      {
+        case 1:   //AND GATE
+          ReaderResult[6] = Check_AND(ReaderResult[4], ReaderResult[2]);
+          break;
+        case 2:   //AND GATE
+          ReaderResult[6] = Check_AND(ReaderResult[4], ReaderResult[2]);
+          break;
+        case 3:   //OR GATE
+          ReaderResult[6] = Check_OR(ReaderResult[4], ReaderResult[2]);
+          break;
+        case 4:   //NAND GATE
+          ReaderResult[6] = Check_NAND(ReaderResult[4], ReaderResult[2]);
+          break;
+        case 5:   //NOR GATE
+          ReaderResult[6] = Check_NOR(ReaderResult[4], ReaderResult[2]);
+          break;
+        case 6:   //XOR GATE
+          ReaderResult[6] = Check_XOR(ReaderResult[4], ReaderResult[2]);
+          break;
+        default:  
+          ReaderResult[6] = 0; 
+          break;
+      }
+    case 7:
+      switch(CompareNFC(ReadRFID(7)))
+      {
+        case 1:   //AND GATE
+          ReaderResult[7] = Check_AND(ReaderResult[5], ReaderResult[6]);
+          break;
+        case 2:   //AND GATE
+          ReaderResult[7] = Check_AND(ReaderResult[5], ReaderResult[6]);
+          break;
+        case 3:   //OR GATE
+          ReaderResult[7] = Check_OR(ReaderResult[5], ReaderResult[6]);
+          break;
+        case 4:   //NAND GATE
+          ReaderResult[7] = Check_NAND(ReaderResult[5], ReaderResult[6]);
+          break;
+        case 5:   //NOR GATE
+          ReaderResult[7] = Check_NOR(ReaderResult[5], ReaderResult[6]);
+          break;
+        case 6:   //XOR GATE
+          ReaderResult[7] = Check_XOR(ReaderResult[5], ReaderResult[6]);
+          break;
+        default:  
+          ReaderResult[7] = 0; 
           break;
       }
   }
@@ -171,22 +299,74 @@ void ApplyResults()
   if (GetReaderResult(0)[0] == true)
   {
     digitalWrite(GreenPins[0], HIGH);
-    digitalWrite(RedPins[0], LOW);
   }
   else
   {
     digitalWrite(GreenPins[0], LOW);
-    digitalWrite(RedPins[0], HIGH);
   }
 
   if (GetReaderResult(1)[1] == true)
   {
-      digitalWrite(GreenPins[1], HIGH);
-      digitalWrite(RedPins[1], LOW);
+    digitalWrite(GreenPins[1], HIGH);
   }
   else
-  {   digitalWrite(GreenPins[1], LOW);
-      digitalWrite(RedPins[1], HIGH);
+  {
+    digitalWrite(GreenPins[1], LOW);
+  }
+
+  if (GetReaderResult(2)[2] == true)
+  {
+    digitalWrite(GreenPins[2], HIGH);
+  }
+  else
+  {
+    digitalWrite(GreenPins[2], LOW);
+  }
+
+  if (GetReaderResult(3)[3] == true)
+  {
+    digitalWrite(GreenPins[3], HIGH);
+  }
+  else
+  {
+    digitalWrite(GreenPins[3], LOW);
+  }
+
+  if (GetReaderResult(4)[4] == true)
+  {
+    digitalWrite(GreenPins[4], HIGH);
+  }
+  else
+  {
+    digitalWrite(GreenPins[4], LOW);
+  }
+
+  if (GetReaderResult(5)[5] == true)
+  {
+    digitalWrite(GreenPins[5], HIGH);
+  }
+  else
+  {
+    digitalWrite(GreenPins[5], LOW);
+  }
+
+  if (GetReaderResult(6)[6] == true)
+  {
+    digitalWrite(GreenPins[6], HIGH);
+  }
+  else
+  {
+    digitalWrite(GreenPins[6], LOW);
+  }
+
+  if (GetReaderResult(7)[7] == true)
+  {
+    digitalWrite(GreenPins[7], HIGH);
+    Serial.println("Winner Winner Chicken Dinner");
+  }
+  else
+  {
+    digitalWrite(GreenPins[7], LOW);
   }
 }
 
@@ -529,6 +709,7 @@ void setup()
 
 void loop()
 {
+<<<<<<< HEAD
 	//ReadRFID(0);
 	//ReadRFID(1);
 	//ReadRFID(2);
@@ -547,4 +728,10 @@ void loop()
   CompareNFC(ReadRFID(5));
   CompareNFC(ReadRFID(6));
   CompareNFC(ReadRFID(7));
+=======
+    ReadSerial();
+    ApplyResults();
+    //CompareNFC(ReadRFID(0));
+    //CompareNFC(ReadRFID(1));
+>>>>>>> 3f3072a59fbb9487829f3ed087cc5408df8eb7b8
 }
