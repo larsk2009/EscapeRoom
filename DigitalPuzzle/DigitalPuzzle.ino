@@ -1,18 +1,5 @@
-﻿/*******************************************
-* function:get the id of RFID key
-* RFID   Uno r3ú
-* VCC    3.3V
-* RST    2
-* GND    GND
-* MISO   3
-* MOSI   4
-* SCK    5
-* NSS    6
-* IRQ    7
-****************************************/
-
-#include <EEPROM.h>
-#include"rfid1.h"
+﻿#include "EEPROM.h"
+#include "rfid1.h"
 
 const int RedPins[2] = {3,4};
 const int GreenPins[2] = {2,5};
@@ -38,22 +25,31 @@ uchar IDStorage[5]; //Array to store your UID of the tag
 uchar *ReadRFID(int ReaderSelect)
 {
     switch (ReaderSelect) //Select one of the eight readers 
-    {                     //Pin Configuration of RFID.begin (IRQ_PIN,SCK_PIN,MOSI_PIN,MISO_PIN,NSS_PIN,RST_PIN)
+    {                     //Pin Configuration of RFID.begin (IRQ_PIN,SCK_PIN,MOSI_PIN,MISO_PIN,SDA_PIN,RST_PIN)
       case 0: 
-          rfid.begin(9, 11, 10, 7, 12, 8);  
-          break;
+        rfid.begin(9, 11, 10, 22, 12, 8);  
+        break;
       case 1:
-          rfid.begin(9, 11, 10, 6, 12, 8);  
-          break;
-	  case 2:
-		  rfid.begin(9, 11, 10, 5, 12, 8);
-		  break;
-	  case 3:
-		  rfid.begin(9, 11, 10, 4, 12, 8);
-		  break;
-	  case 4:
-		  rfid.begin(9, 11, 10, 3, 12, 8);
-		  break;
+        rfid.begin(9, 11, 10, 24, 12, 8);  
+        break;
+      case 2:
+        rfid.begin(9, 11, 10, 26, 12, 8);
+        break;
+      case 3:
+        rfid.begin(9, 11, 10, 28, 12, 8);
+        break;
+      case 4:
+        rfid.begin(9, 11, 10, 30, 12, 8);
+        break;
+      case 5:
+        rfid.begin(9, 11, 10, 32, 12, 8);
+        break;
+      case 6:
+        rfid.begin(9, 11, 10, 34, 12, 8);
+        break;
+      case 7:
+        rfid.begin(9, 11, 10, 36, 12, 8);
+        break;
     }
     delay(100);  //delay 100ms
     rfid.init(); //initialize the RFID
@@ -496,7 +492,7 @@ void RandomizeStartValues()
         Serial.print(i);
         Serial.print(" is ");
         Serial.println(StartValues[i]);
-		digitalWrite(StartValuePins[i], StartValues[i]);
+    digitalWrite(StartValuePins[i], StartValues[i]);
     }
 
 }
@@ -518,6 +514,7 @@ void setup()
   // EEPROM.put(12,4); 
   // EEPROM.put(12,4); 
   // EEPROM.put(13,50);
+
   for(int i; i<2; i++)
   {
     pinMode(RedPins[i], OUTPUT);
@@ -526,13 +523,28 @@ void setup()
     digitalWrite(RedPins[i], LOW);
     digitalWrite(GreenPins[i], LOW);
   }
+  //CalibrateTags();
   Serial.println("Setup Done!");
 }
 
 void loop()
 {
-	ReadSerial();
-    ApplyResults();
-    //CompareNFC(ReadRFID(0));
-    //CompareNFC(ReadRFID(1));
+	//ReadRFID(0);
+	//ReadRFID(1);
+	//ReadRFID(2);
+	//ReadRFID(3);
+	//ReadRFID(4);
+	//ReadRFID(5);
+	//ReadRFID(6);
+	//ReadRFID(7);
+  //ReadSerial();
+  //ApplyResults();
+  CompareNFC(ReadRFID(0));
+  CompareNFC(ReadRFID(1));
+  CompareNFC(ReadRFID(2));
+  CompareNFC(ReadRFID(3));
+  CompareNFC(ReadRFID(4));
+  CompareNFC(ReadRFID(5));
+  CompareNFC(ReadRFID(6));
+  CompareNFC(ReadRFID(7));
 }
