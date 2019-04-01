@@ -30,7 +30,6 @@ uchar *ReadRFID(int ReaderSelect)
         rfid.begin(9, 11, 10, 22, 12, 8);  
         break;
       case 1:
-<<<<<<< HEAD
         rfid.begin(9, 11, 10, 24, 12, 8);  
         break;
       case 2:
@@ -51,19 +50,6 @@ uchar *ReadRFID(int ReaderSelect)
       case 7:
         rfid.begin(9, 11, 10, 36, 12, 8);
         break;
-=======
-          rfid.begin(9, 11, 10, 6, 12, 8);  
-          break;
-      case 2:
-          rfid.begin(9, 11, 10, 5, 12, 8);
-          break;
-      case 3:
-          rfid.begin(9, 11, 10, 4, 12, 8);
-          break;
-      case 4:
-          rfid.begin(9, 11, 10, 3, 12, 8);
-          break;
->>>>>>> 3f3072a59fbb9487829f3ed087cc5408df8eb7b8
     }
     delay(100);  //delay 100ms
     rfid.init(); //initialize the RFID
@@ -685,15 +671,6 @@ void RandomizeStartValues()
 void setup()
 {
   Serial.begin(9600); 
-  // EEPROM.put(0,164);
-  // EEPROM.put(1,175); 
-  // EEPROM.put(2,3); 
-  // EEPROM.put(3,11); 
-  // EEPROM.put(10,213); 
-  // EEPROM.put(11,61); 
-  // EEPROM.put(12,4); 
-  // EEPROM.put(12,4); 
-  // EEPROM.put(13,50);
 
   for(int i; i<2; i++)
   {
@@ -709,29 +686,8 @@ void setup()
 
 void loop()
 {
-<<<<<<< HEAD
-	//ReadRFID(0);
-	//ReadRFID(1);
-	//ReadRFID(2);
-	//ReadRFID(3);
-	//ReadRFID(4);
-	//ReadRFID(5);
-	//ReadRFID(6);
-	//ReadRFID(7);
-  //ReadSerial();
-  //ApplyResults();
-  CompareNFC(ReadRFID(0));
-  CompareNFC(ReadRFID(1));
-  CompareNFC(ReadRFID(2));
-  CompareNFC(ReadRFID(3));
-  CompareNFC(ReadRFID(4));
-  CompareNFC(ReadRFID(5));
-  CompareNFC(ReadRFID(6));
-  CompareNFC(ReadRFID(7));
-=======
     ReadSerial();
     ApplyResults();
     //CompareNFC(ReadRFID(0));
     //CompareNFC(ReadRFID(1));
->>>>>>> 3f3072a59fbb9487829f3ed087cc5408df8eb7b8
 }

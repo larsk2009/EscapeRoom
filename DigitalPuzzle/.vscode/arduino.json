@@ -1,5 +1,0 @@
-{
-    "board": "arduino:avr:uno",
-    "programmer": "AVR ISP",
-    "sketch": "DigitalPuzzle.ino"
-}
