@@ -5,7 +5,40 @@
 #define Clear 13
 #define Digit_1 A0
 #define Digit_2 A1
+#define Digit_3 A2
+#define Digit_4 A3
+#define Digit_5 A4
 #include <Keypad.h>
+
+char NumberOnDisplay[5] = {48, 48, 48, 48, 48};
+int SegmentSelect = 0;
+int i = 0;
+bool Enter = LOW;
+
+char TheAwnser[5] = {'2', '2', '2', '2', '2'};
+
+
+boolean array_cmp(char *a, char *b, int len_a, int len_b) {
+  int n;
+
+  // if their lengths are different, return false
+  if (len_a != len_b) {
+    return false;
+  }
+  for (n = 0; n < len_a; n++) {
+    if (a[n] != b[n]) {
+      return false;
+    }
+  }
+  for (n = 0; n < len_a; n++) {
+    if (a[n] == b[n]) {
+      return true;
+    }
+  }
+}
+
+
+
 
 const byte ROWS = 4;
 const byte COLS = 3;
@@ -28,126 +61,220 @@ void setup() {
   pinMode(A_Input, OUTPUT);
   pinMode(Clear, OUTPUT);
   pinMode(Digit_1, OUTPUT);
-  digitalWrite(Digit_1, LOW);
   pinMode(Digit_2, OUTPUT);
-  digitalWrite(Digit_2, HIGH);
+  pinMode(Digit_3, OUTPUT);
+  pinMode(Digit_4, OUTPUT);
   Serial.begin(9600);
 }
 
 
-int KeyBoard()
+char KeyBoard()
 {
-  int input;
   char customKey = customKeypad.getKey();
-
-  if (customKey) {
-    Serial.println(customKey);
-    input = customKey;
-  }
-  return input;
+  return customKey;
 }
 
-void ChangeNumb(int Number)
+
+void NumbMem()
+{
+  char key = KeyBoard();
+  if (key != NO_KEY) {
+    if (key == '#') {
+      for (int i = 0; i < 5; i++) {
+        NumberOnDisplay[i] = '#';
+      }
+      SegmentSelect = 0;
+
+    }
+    else if (key == '*') {
+      Enter = HIGH;
+      SegmentSelect = 0;
+
+    }
+    else
+    {
+      NumberOnDisplay[SegmentSelect] = key;
+      SegmentSelect++;
+
+      if (SegmentSelect == 5)
+      {
+        SegmentSelect = 0;
+      }
+    }
+  }
+}
+
+void Compare() {
+  if (array_cmp(NumberOnDisplay, TheAwnser, 5, 5) == true) {
+    // do this if they are equal
+    //Victory
+    Serial.println ("Victory");
+    
+    for (int i = 0; i < 5; i++) {
+      NumberOnDisplay[i] = TheAwnser[i];
+
+    }
+    SegmentSelect = 0;
+    Enter = LOW;
+  }
+  else {
+    // do this if they are different
+    Serial.println ("Failure");
+    for (int i = 0; i < 5; i++) {
+      NumberOnDisplay[i] = '0';
+    }
+    SegmentSelect = 0;
+    Enter = LOW;
+  }
+}
+
+
+void ChangeNumb(char Number)
 {
   switch (Number) {
-    case 35:
+    case '#':
       digitalWrite(Clear, HIGH);
+      digitalWrite(A_Input, HIGH);
+      digitalWrite(B_Input, HIGH);
+      digitalWrite(C_Input, HIGH);
+      digitalWrite(D_Input, HIGH);
       break;
-    case 48:
+    case '0':
       digitalWrite(Clear, LOW);
       digitalWrite(A_Input, LOW);
       digitalWrite(B_Input, LOW);
       digitalWrite(C_Input, LOW);
       digitalWrite(D_Input, LOW);
       break;
-    case 49:
+    case '1':
       digitalWrite(Clear, LOW);
       digitalWrite(A_Input, HIGH);
       digitalWrite(B_Input, LOW);
       digitalWrite(C_Input, LOW);
       digitalWrite(D_Input, LOW);
       break;
-    case 50:
+    case '2':
       digitalWrite(Clear, LOW);
       digitalWrite(A_Input, LOW);
       digitalWrite(B_Input, HIGH);
       digitalWrite(C_Input, LOW);
       digitalWrite(D_Input, LOW);
       break;
-    case 51:
+    case '3':
       digitalWrite(Clear, LOW);
       digitalWrite(A_Input, HIGH);
       digitalWrite(B_Input, HIGH);
       digitalWrite(C_Input, LOW);
       digitalWrite(D_Input, LOW);
       break;
-    case 52:
+    case '4':
       digitalWrite(Clear, LOW);
       digitalWrite(A_Input, LOW);
       digitalWrite(B_Input, LOW);
       digitalWrite(C_Input, HIGH);
       digitalWrite(D_Input, LOW);
       break;
-    case 53:
+    case '5':
       digitalWrite(Clear, LOW);
       digitalWrite(A_Input, HIGH);
       digitalWrite(B_Input, LOW);
       digitalWrite(C_Input, HIGH);
       digitalWrite(D_Input, LOW);
       break;
-    case 54:
+    case '6':
       digitalWrite(Clear, LOW);
       digitalWrite(A_Input, LOW);
       digitalWrite(B_Input, HIGH);
       digitalWrite(C_Input, HIGH);
       digitalWrite(D_Input, LOW);
       break;
-    case 55:
+    case '7':
       digitalWrite(Clear, LOW);
       digitalWrite(A_Input, HIGH);
       digitalWrite(B_Input, HIGH);
       digitalWrite(C_Input, HIGH);
       digitalWrite(D_Input, LOW);
       break;
-    case 56:
+    case '8':
       digitalWrite(Clear, LOW);
       digitalWrite(A_Input, LOW);
       digitalWrite(B_Input, LOW);
       digitalWrite(C_Input, LOW);
       digitalWrite(D_Input, HIGH);
       break;
-    case 57:
+    case '9':
       digitalWrite(Clear, LOW);
       digitalWrite(A_Input, HIGH);
       digitalWrite(B_Input, LOW);
       digitalWrite(C_Input, LOW);
       digitalWrite(D_Input, HIGH);
+      break;
+    default:
+      digitalWrite(Clear, LOW);
+      digitalWrite(A_Input, LOW);
+      digitalWrite(B_Input, LOW);
+      digitalWrite(C_Input, LOW);
+      digitalWrite(D_Input, LOW);
       break;
 
   }
 }
 
-void ControlDisplays(int Display) 
+void ControlDisplays(int Display)
 {
   switch (Display) {
-    case 1:
+    case 0:
       digitalWrite(Digit_1, HIGH);
       digitalWrite(Digit_2, LOW);
+      digitalWrite(Digit_3, LOW);
+      digitalWrite(Digit_4, LOW);
+      digitalWrite(Digit_5, LOW);
+      break;
+    case 1:
+      digitalWrite(Digit_1, LOW);
+      digitalWrite(Digit_2, HIGH);
+      digitalWrite(Digit_3, LOW);
+      digitalWrite(Digit_4, LOW);
+      digitalWrite(Digit_5, LOW);
       break;
     case 2:
       digitalWrite(Digit_1, LOW);
-      digitalWrite(Digit_2, HIGH);
+      digitalWrite(Digit_2, LOW);
+      digitalWrite(Digit_3, HIGH);
+      digitalWrite(Digit_4, LOW);
+      digitalWrite(Digit_5, LOW);
       break;
+    case 3:
+      digitalWrite(Digit_1, LOW);
+      digitalWrite(Digit_2, LOW);
+      digitalWrite(Digit_3, LOW);
+      digitalWrite(Digit_4, HIGH);
+      digitalWrite(Digit_5, LOW);
+      break;
+    case 4:
+      digitalWrite(Digit_1, LOW);
+      digitalWrite(Digit_2, LOW);
+      digitalWrite(Digit_3, LOW);
+      digitalWrite(Digit_4, LOW);
+      digitalWrite(Digit_5, HIGH);
+      break;
+
   }
-  }
+}
 
 
 void loop()
 {
-  ChangeNumb(KeyBoard());
-  ControlDisplays(2);
+  NumbMem();
   delay(1);
-  ChangeNumb(51);
-  ControlDisplays(1);
-  delay(1);
+  ChangeNumb(NumberOnDisplay[i]);
+  ControlDisplays(i);
+  i++;
+  if (Enter == HIGH) {
+    Compare();
+  }
+  if (i > 4) {
+    i = 0;
+  }
+
 }
