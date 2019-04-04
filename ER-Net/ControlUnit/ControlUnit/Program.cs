@@ -10,7 +10,8 @@ namespace ControlUnit
     {
         static void Main(string[] args)
         {
-            var engine = new ErNetServerEngine();
+            var parser = new TcpParser();
+            var engine = new ErNetServerEngine(parser);
             Console.ReadKey(); //Wait for user input before closing
         }
     }

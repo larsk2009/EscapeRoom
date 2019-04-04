@@ -1,6 +1,7 @@
 {
-    "port": "COM6",
-    "board": "arduino:avr:uno",
+    "port": "COM7",
+    "board": "arduino:avr:mega",
     "sketch": "er_net_arduino.ino",
-    "output": "../build"
+    "output": "../build",
+    "configuration": "cpu=atmega2560"
 }

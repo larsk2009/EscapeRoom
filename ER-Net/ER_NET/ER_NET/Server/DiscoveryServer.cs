@@ -52,7 +52,7 @@ namespace ER_NET.Server
             });
         }
 
-        public void DiscoveryAcknowledgeReceived(Message message, IPAddress ipAddress)
+        public async void DiscoveryAcknowledgeReceived(Message message, IPAddress ipAddress)
         {
             if (message.MessageType == "DiscoveryAcknowledge")
             {
@@ -63,16 +63,26 @@ namespace ER_NET.Server
                 };
                 var data = responseMessage.ToBytes();
 
-                using (var tcpClient = new TcpClient())
+                await Task.Run(() =>
                 {
-                    if (tcpClient.ConnectAsync(ipAddress.ToString(), ResponsePort).Wait(1000))
+                    using (var tcpClient = new TcpClient())
                     {
-                        using (var stream = tcpClient.GetStream())
+                        try
                         {
-                            stream.Write(data, 0, data.Length);
+                            if (tcpClient.ConnectAsync(ipAddress.ToString(), ResponsePort).Wait(1000))
+                            {
+                                using (var stream = tcpClient.GetStream())
+                                {
+                                    stream.Write(data, 0, data.Length);
+                                }
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
                         }
                     }
-                }
+                });
             }
         }
 

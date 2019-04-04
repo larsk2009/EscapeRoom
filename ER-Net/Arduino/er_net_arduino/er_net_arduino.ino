@@ -9,7 +9,6 @@ ErNet erNet;
 
 void setup(){
   Serial.begin(115200);
-  Serial.println(F("\n[backSoon]"));
 
   erNet.Setup();
 }
