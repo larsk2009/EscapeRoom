@@ -20,7 +20,8 @@ void loop() {
 void HandPuzzle() {
   int HandsValue = analogRead(HandsPin);  // read the input pin
   //Serial.println(ReadValue); // debug value
-  if (HandsValue < HandDetection) { //Hand detected
+  if (HandsValue < HandDetection) { 
+      //Hand detected
     digitalWrite(LedPin, HIGH);
     digitalWrite(SolenoidPin, HIGH);
   }
