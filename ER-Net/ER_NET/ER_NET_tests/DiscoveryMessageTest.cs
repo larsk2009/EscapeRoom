@@ -33,7 +33,7 @@ namespace PuzzleClientTests
                 MessageType = "DiscoveryAcknowledge"
             };
             var json = message.ToJsonString();
-            Assert.True(json == "ER-NET\n{\"Guid\":\"e6ad6f00-82f2-40eb-855b-54133ba29b75\",\"MessageType\":\"DiscoveryAcknowledge\"}");
+            Assert.True(json == "ER-NET\n{\"Guid\":\"e6ad6f00-82f2-40eb-855b-54133ba29b75\",\"MessageType\":\"DiscoveryAcknowledge\",\"Value\":null}");
         }
     }
 }

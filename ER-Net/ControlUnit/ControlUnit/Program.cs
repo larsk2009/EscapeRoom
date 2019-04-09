@@ -11,7 +11,9 @@ namespace ControlUnit
         static void Main(string[] args)
         {
             var parser = new TcpParser();
-            var engine = new ErNetServerEngine(parser);
+            var server = new DiscoveryServer();
+            var tcpSender = new TcpSender();
+            var engine = new ErNetServerEngine(parser, server, tcpSender);
             Console.ReadKey(); //Wait for user input before closing
         }
     }

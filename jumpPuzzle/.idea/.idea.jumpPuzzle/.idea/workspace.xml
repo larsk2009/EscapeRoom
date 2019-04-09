@@ -24,50 +24,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb5e7f71-64db-4229-97eb-d0ce1de4f23e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/bin/Debug/netcoreapp2.1/ControlUnit.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/bin/Debug/netcoreapp2.1/ControlUnit.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/bin/Debug/netcoreapp2.1/ControlUnit.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/bin/Debug/netcoreapp2.1/ControlUnit.runtimeconfig.dev.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/bin/Debug/netcoreapp2.1/ControlUnit.runtimeconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/obj/ControlUnit.csproj.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/obj/ControlUnit.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/obj/ControlUnit.csproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/obj/Debug/netcoreapp2.1/ControlUnit.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/obj/Debug/netcoreapp2.1/ControlUnit.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/obj/Debug/netcoreapp2.1/ControlUnit.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/obj/Debug/netcoreapp2.1/ControlUnit.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/obj/Debug/netcoreapp2.1/ControlUnit.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/obj/Debug/netcoreapp2.1/ControlUnit.csprojAssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/obj/Debug/netcoreapp2.1/ControlUnit.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/obj/Debug/netcoreapp2.1/ControlUnit.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Shared/TcpParser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET_tests/TcpParserTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/bin/Debug/netcoreapp2.1/PuzzleClient.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/bin/Debug/netcoreapp2.1/PuzzleClient.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/bin/Debug/netcoreapp2.1/PuzzleClient.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/bin/Debug/netcoreapp2.1/PuzzleClient.runtimeconfig.dev.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/bin/Debug/netcoreapp2.1/PuzzleClient.runtimeconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/obj/Debug/netcoreapp2.1/PuzzleClient.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/obj/Debug/netcoreapp2.1/PuzzleClient.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/obj/Debug/netcoreapp2.1/PuzzleClient.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/obj/Debug/netcoreapp2.1/PuzzleClient.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/obj/Debug/netcoreapp2.1/PuzzleClient.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/obj/Debug/netcoreapp2.1/PuzzleClient.csprojAssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/obj/Debug/netcoreapp2.1/PuzzleClient.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/obj/Debug/netcoreapp2.1/PuzzleClient.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/obj/PuzzleClient.csproj.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/obj/PuzzleClient.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/obj/PuzzleClient.csproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/obj/project.packagespec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Server/IDiscoveryServer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Server/ITcpSender.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Shared/CommunicationPorts.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Shared/TcpSender.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET_tests/Mocks/MockDiscoveryServer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET_tests/Mocks/MockTcpSender.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET_tests/VariableRequestTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/ER_NET.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/ER_NET.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/ER_NET.h" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/ER_NET.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/er_net_arduino.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/er_net_arduino.ino" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/ControlUnit/ControlUnit/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Client/DiscoveryClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Client/DiscoveryClient.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Server/DiscoveryServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Server/DiscoveryServer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET_tests/ER_NET_tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET_tests/ER_NET_tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/PuzzleClient/PuzzleClient/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Server/ErNetServerEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Server/ErNetServerEngine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Shared/Device.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Shared/Device.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Shared/Message.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Shared/Message.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET_tests/DiscoveryMessageTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET_tests/DiscoveryMessageTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET_tests/ServerEngineTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET_tests/ServerEngineTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.jumpPuzzle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.jumpPuzzle/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/bin/Debug/netcoreapp2.1/jumpPuzzle.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Home/Index.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Home/Index.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_Layout.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_Layout.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/obj/Debug/netcoreapp2.1/jumpPuzzle.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,8 +67,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+            <state relative-caret-position="105">
+              <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+              <folding>
+                <marker date="1554451035197" expanded="true" signature="0:41" ph="@..." />
+                <marker date="1554451035197" expanded="true" signature="43:560" ph="&lt;div.../&gt;" />
+                <marker date="1554451035197" expanded="true" signature="71:553" ph="&lt;div.../&gt;" />
+                <marker date="1554451035197" expanded="true" signature="97:418" ph="&lt;div.../&gt;" />
+                <marker date="1554451035197" expanded="true" signature="278:403" ph="&lt;textarea.../&gt;" />
+                <marker date="1554451035197" expanded="true" signature="427:542" ph="&lt;div.../&gt;" />
+                <marker date="1554451035197" expanded="true" signature="562:767" ph="@{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,8 +85,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="306">
+              <caret line="196" column="49" selection-start-line="196" selection-start-column="49" selection-end-line="196" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -208,11 +201,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AssemblyExplorer" />
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
       </pane>
       <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,6 +266,8 @@
       <workItem from="1551256711142" duration="13238000" />
       <workItem from="1551343158903" duration="2886000" />
       <workItem from="1553515857077" duration="11000" />
+      <workItem from="1554450883147" duration="1351000" />
+      <workItem from="1554809432101" duration="1878000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1551176302004</created>
@@ -313,7 +308,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34440000" />
+    <option name="totallyTimeSpent" value="37669000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -328,15 +323,15 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.2671141" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.2751678" />
       <window_info id="Structure" order="1" sideWeight="0.5021097" side_tool="true" weight="0.25637585" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" sideWeight="0.5021097" side_tool="true" weight="0.25637585" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.40084985" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.40084985" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -508,8 +503,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+        <state relative-caret-position="105">
+          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+          <folding>
+            <marker date="1554451035197" expanded="true" signature="0:41" ph="@..." />
+            <marker date="1554451035197" expanded="true" signature="43:560" ph="&lt;div.../&gt;" />
+            <marker date="1554451035197" expanded="true" signature="71:553" ph="&lt;div.../&gt;" />
+            <marker date="1554451035197" expanded="true" signature="97:418" ph="&lt;div.../&gt;" />
+            <marker date="1554451035197" expanded="true" signature="278:403" ph="&lt;textarea.../&gt;" />
+            <marker date="1554451035197" expanded="true" signature="427:542" ph="&lt;div.../&gt;" />
+            <marker date="1554451035197" expanded="true" signature="562:767" ph="@{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -555,8 +559,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="306">
+          <caret line="196" column="49" selection-start-line="196" selection-start-column="49" selection-end-line="196" selection-end-column="49" />
         </state>
       </provider>
     </entry>

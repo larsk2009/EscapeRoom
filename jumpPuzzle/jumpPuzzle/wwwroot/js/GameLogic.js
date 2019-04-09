@@ -193,7 +193,9 @@ function CheckWinCondition() {
  * @return {boolean}
  */
 function CheckLoseCondition() {
-    return x + sprite_1.width >= rectangle_x && y + sprite_1.height + 100 >= rectangle_y;
+    let checkIsInBox = x + sprite_1.width >= rectangle_x && y + sprite_1.height + 100 >= rectangle_y;
+    let HasHitHead = y <= 0;
+    return checkIsInBox || HasHitHead;
 
 }
 

@@ -9,6 +9,7 @@ namespace ER_NET.Shared
         public IPAddress IpAddress { get; set; }
         public DeviceType Type { get; set; }
         public DateTime LastConnected { get; set; }
+        public int DisplayNumber { get; set; }
 
         public Device(Guid id, IPAddress ipAddress, DeviceType type = DeviceType.Unknown)
         {
@@ -16,6 +17,7 @@ namespace ER_NET.Shared
             IpAddress = ipAddress;
             Type = type;
             LastConnected = DateTime.UtcNow;
+            DisplayNumber = new Random().Next(1, 9);
         }
     }
 }

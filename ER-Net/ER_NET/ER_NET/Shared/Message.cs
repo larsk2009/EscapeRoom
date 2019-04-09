@@ -10,6 +10,7 @@ namespace ER_NET.Shared
         [JsonProperty("Guid")]
         public Guid Id { get; set; }
         public string MessageType { get; set; }
+        public string Value { get; set; }
         
         /// <summary>
         /// Returns the Message extracted from the json string.

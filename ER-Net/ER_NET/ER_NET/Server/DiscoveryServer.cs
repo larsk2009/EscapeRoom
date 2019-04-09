@@ -8,17 +8,19 @@ using Newtonsoft.Json;
 
 namespace ER_NET.Server
 {
-    public class DiscoveryServer
+    public class DiscoveryServer : IDiscoveryServer
     {
         private readonly UdpClient _client;
-        private const int DiscoveryPort = 46666;
-        private const int ResponsePort = 46667;
 
+        public Guid guid
+        {
+            get => _guid;
+            set => _guid = value;
+        }
         private Guid _guid;
 
-        public DiscoveryServer(Guid guid)
+        public DiscoveryServer()
         {
-            _guid = guid;
             _client = new UdpClient
             {
                 EnableBroadcast = true,
@@ -28,10 +30,10 @@ namespace ER_NET.Server
 
         public void DoDiscovery()
         {
-            var data = new
+            var data = new Message
             {
-                Guid = _guid,
-                MessageType = "Discovery"
+                Id = _guid,
+                MessageType =  "Discovery"
             };
             SendUdpData(data);
         }
@@ -69,7 +71,7 @@ namespace ER_NET.Server
                     {
                         try
                         {
-                            if (tcpClient.ConnectAsync(ipAddress.ToString(), ResponsePort).Wait(1000))
+                            if (tcpClient.ConnectAsync(ipAddress.ToString(), (int)CommunicationPorts.ResponsePort).Wait(1000))
                             {
                                 using (var stream = tcpClient.GetStream())
                                 {
@@ -91,7 +93,7 @@ namespace ER_NET.Server
             var json = "ER-NET\n" + JsonConvert.SerializeObject(data);
             var bytes = Encoding.ASCII.GetBytes(json);
 
-            var broadCastEndPoint = new IPEndPoint(IPAddress.Broadcast, DiscoveryPort);
+            var broadCastEndPoint = new IPEndPoint(IPAddress.Broadcast, (int)CommunicationPorts.DiscoveryPort);
 
             _client.Send(bytes, bytes.Length, broadCastEndPoint);
         }

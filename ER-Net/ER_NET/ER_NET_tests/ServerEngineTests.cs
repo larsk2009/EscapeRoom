@@ -16,7 +16,9 @@ namespace ER_NET_tests
         void DeviceRegisteredTest()
         {
             var parser = new MockTcpParser();
-            var engine = new ErNetServerEngine(parser);
+            var server = new MockDiscoveryServer();
+            var tcpSender = new MockTcpSender();
+            var engine = new ErNetServerEngine(parser, server, tcpSender);
 
             Guid guid = Guid.Parse("e57d5d61-4e98-42b3-a096-81fd249b2cef");
             var testJson = $"ER-NET\n{{\"Guid\":\"{guid}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
@@ -32,7 +34,9 @@ namespace ER_NET_tests
         void DeviceTimeOutTest()
         {
             var parser = new MockTcpParser();
-            var engine = new ErNetServerEngine(parser);
+            var server = new MockDiscoveryServer();
+            var tcpSender = new MockTcpSender();
+            var engine = new ErNetServerEngine(parser, server, tcpSender);
 
             Guid guid = Guid.Parse("e57d5d61-4e98-42b3-a096-81fd249b2cef");
             var testJson = $"ER-NET\n{{\"Guid\":\"{guid}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
@@ -48,7 +52,9 @@ namespace ER_NET_tests
         void NullMessageTest()
         {
             var parser = new MockTcpParser();
-            var engine = new ErNetServerEngine(parser);
+            var server = new MockDiscoveryServer();
+            var tcpSender = new MockTcpSender();
+            var engine = new ErNetServerEngine(parser, server, tcpSender);
 
             var guid = Guid.NewGuid();
             var eventArgs = new TcpEventArgs(null, IPAddress.Parse("192.168.2.10"));
@@ -61,8 +67,10 @@ namespace ER_NET_tests
         void UpdateTimeTest()
         {
             var parser = new MockTcpParser();
-            var engine = new ErNetServerEngine(parser);
-
+            var server = new MockDiscoveryServer();
+            var tcpSender = new MockTcpSender();
+            var engine = new ErNetServerEngine(parser, server, tcpSender);
+            
             Guid guid = Guid.Parse("e57d5d61-4e98-42b3-a096-81fd249b2cef");
             var testJson = $"ER-NET\n{{\"Guid\":\"{guid}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
             var eventArgs = new TcpEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
@@ -75,6 +83,22 @@ namespace ER_NET_tests
             }
             
             Assert.True(engine.IsDeviceConnected(guid));
+        }
+
+        [Fact]
+        void DiscoveryAcknowledgeTest()
+        {
+            var parser = new MockTcpParser();
+            var server = new MockDiscoveryServer();
+            var tcpSender = new MockTcpSender();
+            var engine = new ErNetServerEngine(parser, server, tcpSender);
+            
+            Guid guid = Guid.Parse("e57d5d61-4e98-42b3-a096-81fd249b2cef");
+            var testJson = $"ER-NET\n{{\"Guid\":\"{guid}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
+            var eventArgs = new TcpEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
+            parser.RaiseTcpEvent(eventArgs);
+
+            Assert.True(server.IsDiscoveryAck);
         }
     }
 }
