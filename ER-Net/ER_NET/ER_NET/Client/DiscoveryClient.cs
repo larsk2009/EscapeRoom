@@ -30,13 +30,13 @@ namespace ER_NET.Client
                         var receivedResults = await udpClient.ReceiveAsync();
                         var jsonString = Encoding.ASCII.GetString(receivedResults.Buffer);
                         Console.WriteLine(jsonString);
-                        var message = DiscoveryMessage.FromJson(jsonString);
+                        var message = Message.FromJson(jsonString);
                         if (message.MessageType == "Discovery" && !IsMuted)
                         {
                             //Return message
                             Console.WriteLine("respond");
                             var address = receivedResults.RemoteEndPoint.Address;
-                            var responseMessage = new DiscoveryMessage
+                            var responseMessage = new Message
                             {
                                 Id = guid,
                                 MessageType = "DiscoveryAcknowledge"

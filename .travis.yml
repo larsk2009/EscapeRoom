@@ -2,9 +2,26 @@ language: csharp
 mono: none
 dotnet: 2.1
 
-install:
-- cd jumpPuzzle
-- dotnet restore
-
-script:
- - dotnet build
+jobs:
+  include: 
+    - stage: JumpPuzzle
+      install:
+        - cd jumpPuzzle
+        - dotnet restore
+      script:
+        - dotnet build
+      
+    - stage: ER-Net
+      install:
+        - cd ER-Net/ER_NET
+        - dotnet restore
+      script:
+        - dotnet build
+        
+    - stage: ER-Net tests
+      install:
+        - cd ER-Net/ER_NET
+        - dotnet restore 
+      script:
+        - dotnet build
+        - dotnet test ER_NET_tests/ER_NET_tests.csproj
