@@ -14,7 +14,18 @@ namespace ControlUnit
             var server = new DiscoveryServer();
             var tcpSender = new TcpSender();
             var engine = new ErNetServerEngine(parser, server, tcpSender);
-            Console.ReadKey(); //Wait for user input before closing
+
+            string input;
+            do
+            {
+                input = Console.ReadLine();
+                switch (input)
+                {
+                    case "reset":
+                        engine.ResetDevices();
+                        break;
+                }
+            } while (input != "quit");
         }
     }
 }

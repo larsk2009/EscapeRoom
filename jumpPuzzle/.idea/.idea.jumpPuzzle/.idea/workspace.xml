@@ -24,8 +24,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb5e7f71-64db-4229-97eb-d0ce1de4f23e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/.vscode/arduino.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/.vscode/arduino.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/ER_NET.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/ER_NET.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/ER_NET.h" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/ER_NET.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/er_net_arduino.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/Arduino/er_net_arduino/er_net_arduino.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Server/ErNetServerEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Server/ErNetServerEngine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Shared/Device.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ER-Net/ER_NET/ER_NET/Shared/Device.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.jumpPuzzle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.jumpPuzzle/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js" beforeDir="false" afterPath="$PROJECT_DIR$/jumpPuzzle/wwwroot/js/GameLogic.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -178,8 +183,8 @@
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
       </pane>
-      <pane id="FileSystemExplorer" />
       <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -241,7 +246,8 @@
       <workItem from="1551343158903" duration="2886000" />
       <workItem from="1553515857077" duration="11000" />
       <workItem from="1554450883147" duration="1351000" />
-      <workItem from="1554809432101" duration="5334000" />
+      <workItem from="1554809432101" duration="5437000" />
+      <workItem from="1555054448976" duration="684000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1551176302004</created>
@@ -285,11 +291,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554811935505</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="- Added jumping animation instead of instant jump">
+      <created>1554816509043</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1554816509043</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41125000" />
+    <option name="totallyTimeSpent" value="41912000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -302,16 +315,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.2751678" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.27919462" />
       <window_info id="Structure" order="1" sideWeight="0.5021097" side_tool="true" weight="0.25637585" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" sideWeight="0.5021097" side_tool="true" weight="0.25637585" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40084985" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -351,7 +363,8 @@
     <MESSAGE value="Moved Javascript to seperate file.&#10;Contains code to properly decode the default code that is present in the puzzle." />
     <MESSAGE value="Added #7 simple version of gravity, needs some testing to see if it is correct." />
     <MESSAGE value="- Add hitting head on ceiling as lose condition" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Add hitting head on ceiling as lose condition" />
+    <MESSAGE value="- Added jumping animation instead of instant jump" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added jumping animation instead of instant jump" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -483,6 +496,29 @@
     <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/images/avery walking-a.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="561" column="29" lean-forward="true" selection-start-line="561" selection-start-column="29" selection-end-line="561" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
+          <folding>
+            <marker date="1554451035197" expanded="true" signature="0:41" ph="@..." />
+            <marker date="1554451035197" expanded="true" signature="43:560" ph="&lt;div.../&gt;" />
+            <marker date="1554451035197" expanded="true" signature="71:553" ph="&lt;div.../&gt;" />
+            <marker date="1554451035197" expanded="true" signature="97:418" ph="&lt;div.../&gt;" />
+            <marker date="1554451035197" expanded="true" signature="278:403" ph="&lt;textarea.../&gt;" />
+            <marker date="1554451035197" expanded="true" signature="427:542" ph="&lt;div.../&gt;" />
+            <marker date="1554451035197" expanded="true" signature="562:767" ph="@{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jumpPuzzle/wwwroot/js/CommandDecode.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -520,29 +556,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="561" column="29" lean-forward="true" selection-start-line="561" selection-start-column="29" selection-end-line="561" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jumpPuzzle/Views/Home/Index.cshtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
-          <folding>
-            <marker date="1554451035197" expanded="true" signature="0:41" ph="@..." />
-            <marker date="1554451035197" expanded="true" signature="43:560" ph="&lt;div.../&gt;" />
-            <marker date="1554451035197" expanded="true" signature="71:553" ph="&lt;div.../&gt;" />
-            <marker date="1554451035197" expanded="true" signature="97:418" ph="&lt;div.../&gt;" />
-            <marker date="1554451035197" expanded="true" signature="278:403" ph="&lt;textarea.../&gt;" />
-            <marker date="1554451035197" expanded="true" signature="427:542" ph="&lt;div.../&gt;" />
-            <marker date="1554451035197" expanded="true" signature="562:767" ph="@{...}" />
-          </folding>
         </state>
       </provider>
     </entry>

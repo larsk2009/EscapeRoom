@@ -17,7 +17,12 @@ namespace ER_NET.Shared
             IpAddress = ipAddress;
             Type = type;
             LastConnected = DateTime.UtcNow;
-            DisplayNumber = new Random().Next(1, 9);
+            DisplayNumber = new Random().Next(1, 10);
+        }
+
+        public void Reset()
+        {
+            DisplayNumber = new Random().Next(1, 10);
         }
     }
 }

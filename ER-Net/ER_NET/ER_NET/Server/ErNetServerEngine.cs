@@ -40,8 +40,7 @@ namespace ER_NET.Server
                 {
                     return;
                 }
-                Console.WriteLine(
-                    $"Received MessageType {message.MessageType} from GUID {message.Id} with IP {eventArgs.RemoteIp}");
+                //Console.WriteLine($"Received MessageType {message.MessageType} from GUID {message.Id} with IP {eventArgs.RemoteIp}");
                 if (message.MessageType == "DiscoveryAcknowledge")
                 {
                     if (!_connectedDevices.ContainsKey(message.Id))
@@ -70,6 +69,20 @@ namespace ER_NET.Server
                     }
                 }
             };
+        }
+
+        public void ResetDevices()
+        {
+            foreach (var device in _connectedDevices.Values)
+            {
+                device.Reset();
+                var message = new Message
+                {
+                    Id = device.Id,
+                    MessageType = "Reset"
+                };
+                _tcpSender.SendMessage(message.ToBytes(), device.IpAddress, CommunicationPorts.ResponsePort);
+            }
         }
 
         public bool IsDeviceConnected(Guid guid)

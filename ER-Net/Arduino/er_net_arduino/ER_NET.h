@@ -15,12 +15,19 @@ class ErNet {
         void                SetSolved(bool isSolved);
         bool                GetDisplayNumber(int *number);
 
+        void                SetResetCallback(void (*callback)(void));
+
     private:
         static void         udpSerialReceived(IPAddress ip, char *data, uint16_t len);
         static void         onDiscovery(IPAddress ip);
-        static void         ParseTcpMessage(char *message, uint16_t len);
+        void                ParseTcpMessage(char *message, uint16_t len);
         
         bool                IsSetup = false;
+        bool                receivedDisplayNumber = false;
+        int                 displayNumber;
+
+        void                (*ResetCallback)(void);
+        bool                IsResetCallbackSet = false;
         
         const static int    discoveryPort = 46666;
         const static int    responsePort = 46667;

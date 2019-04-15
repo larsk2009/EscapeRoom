@@ -14,6 +14,10 @@ void ErNet::Setup() {
     Ethernet.begin(mac);
     tcpReceiver.begin();
     int success = udp.begin(discoveryPort);
+    if(Ethernet.localIP()[0] == 0) {
+        Serial.println("ERROR, no ethernet");
+        return;
+    }
     Serial.print("initialize: ");
     Serial.println(success ? "success" : "failed");
     Serial.println(Ethernet.localIP());
@@ -54,6 +58,7 @@ void ErNet::Loop() {
         while((size = client.available()) > 0) {
             char *msg = (char*)malloc(size);
             size = client.read(msg, size);
+            msg[size] = 0; //0 terminate the string
             //Serial.println("Received tcp message:");
             //Serial.write(msg, size);
             //Serial.println("");
@@ -114,8 +119,26 @@ void ErNet::onDiscovery(IPAddress ip) {
 }
 
 void ErNet::ParseTcpMessage(char *message, uint16_t len) {
-    Serial.print("Received TCP: ");
-    Serial.write(message, len);
+    //Serial.print("Received TCP: ");
+    //Serial.write(message, len);
+    //Serial.println("");
+
+    StaticJsonDocument<100> doc;
+    DeserializationError err = deserializeJson(doc, message + 7);
+    if (err) {
+        Serial.print("deserializeJson() failed with code ");
+        Serial.println(err.c_str());
+    } else {
+        const char* type = doc["MessageType"];        
+        if(strcmp(type, "DisplayNumber") == 0) {
+            displayNumber = (int) doc["Value"];
+            receivedDisplayNumber = true;
+        } else if(strcmp(type, "Reset") == 0) {
+            if(IsResetCallbackSet) {
+                ResetCallback();
+            }
+        }
+    }
 }
 
 bool ErNet::GetDisplayNumber(int *number) {
@@ -124,7 +147,7 @@ bool ErNet::GetDisplayNumber(int *number) {
     const short timeoutValue = 3000;
 
     if(controlUnitIP[0] == 0) {
-        return;
+        return false;
     }
 
     if(!didRequest) {
@@ -147,8 +170,21 @@ bool ErNet::GetDisplayNumber(int *number) {
         }
     } else {
         //See if we have received back the DisplayNumber yet
+        if(receivedDisplayNumber) {
+            *number = displayNumber;
+            receivedDisplayNumber = false;
+            didRequest = false;
+            return true;
+        }
         if(lastMillies - millis() > timeoutValue) {
             didRequest = false;
         }
     }
+
+    return false;
+}
+
+void ErNet::SetResetCallback(void (*callback)(void)) {
+    ResetCallback = callback;
+    IsResetCallbackSet = true;
 }
