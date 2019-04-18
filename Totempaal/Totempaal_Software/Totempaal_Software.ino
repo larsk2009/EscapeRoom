@@ -8,14 +8,21 @@
 #define Digit_3 A2
 #define Digit_4 A3
 #define Digit_5 A4
+#define Big_Red_Button A5
+#define Magnet_Switch 1
 #include <Keypad.h>
 
-char NumberOnDisplay[5] = {48, 48, 48, 48, 48};
+char NumberOnDisplay[5] = {'0', '0', '0', '0', '0'};
 int SegmentSelect = 0;
 int i = 0;
 bool Enter = LOW;
+char ten_thousands = '8';
+char thousands = '2';
+char hundredths = '2';
+char tenths = '5';
+char ones = '2';
 
-char TheAwnser[5] = {'2', '2', '2', '2', '2'};
+char TheAwnser[5] = {ten_thousands, thousands, hundredths, tenths, ones};
 
 
 boolean array_cmp(char *a, char *b, int len_a, int len_b) {
@@ -64,6 +71,10 @@ void setup() {
   pinMode(Digit_2, OUTPUT);
   pinMode(Digit_3, OUTPUT);
   pinMode(Digit_4, OUTPUT);
+  pinMode(Digit_5, OUTPUT);
+  pinMode(Big_Red_Button, INPUT);
+  pinMode(Magnet_Switch,OUTPUT);
+  digitalWrite(Magnet_Switch, HIGH);
   Serial.begin(9600);
 }
 
@@ -81,7 +92,7 @@ void NumbMem()
   if (key != NO_KEY) {
     if (key == '#') {
       for (int i = 0; i < 5; i++) {
-        NumberOnDisplay[i] = '#';
+        NumberOnDisplay[i] = '0';
       }
       SegmentSelect = 0;
 
@@ -111,12 +122,16 @@ void Compare() {
     Serial.println ("Victory");
     
     for (int i = 0; i < 5; i++) {
-      NumberOnDisplay[i] = TheAwnser[i];
-
+      NumberOnDisplay[i] ='#';
     }
     SegmentSelect = 0;
     Enter = LOW;
-  }
+    Release();
+
+    }
+    
+    
+  
   else {
     // do this if they are different
     Serial.println ("Failure");
@@ -127,17 +142,16 @@ void Compare() {
     Enter = LOW;
   }
 }
-
+void Release(){
+digitalWrite(Magnet_Switch, LOW);
+Serial.println("hello");
+}
 
 void ChangeNumb(char Number)
 {
   switch (Number) {
     case '#':
       digitalWrite(Clear, HIGH);
-      digitalWrite(A_Input, HIGH);
-      digitalWrite(B_Input, HIGH);
-      digitalWrite(C_Input, HIGH);
-      digitalWrite(D_Input, HIGH);
       break;
     case '0':
       digitalWrite(Clear, LOW);
@@ -273,6 +287,10 @@ void loop()
   if (Enter == HIGH) {
     Compare();
   }
+  if(digitalRead(Big_Red_Button) == HIGH){
+      //Finished();
+      Serial.println("Finished");
+    }
   if (i > 4) {
     i = 0;
   }
