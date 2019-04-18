@@ -73,7 +73,7 @@ void setup() {
   pinMode(Digit_4, OUTPUT);
   pinMode(Digit_5, OUTPUT);
   pinMode(Big_Red_Button, INPUT);
-  pinMode(Magnet_Switch,OUTPUT);
+  pinMode(Magnet_Switch, OUTPUT);
   digitalWrite(Magnet_Switch, HIGH);
   Serial.begin(9600);
 }
@@ -107,31 +107,42 @@ void NumbMem()
       NumberOnDisplay[SegmentSelect] = key;
       SegmentSelect++;
 
-      if (SegmentSelect == 5)
-      {
+      if (SegmentSelect == 5) {
+
         SegmentSelect = 0;
+
       }
     }
   }
 }
 
 void Compare() {
+  bool Button = digitalRead(Big_Red_Button);
   if (array_cmp(NumberOnDisplay, TheAwnser, 5, 5) == true) {
     // do this if they are equal
     //Victory
     Serial.println ("Victory");
-    
+
     for (int i = 0; i < 5; i++) {
-      NumberOnDisplay[i] ='#';
+      NumberOnDisplay[i] = '#';
+    }
+    Release();
+
+    while (Button == false) {
+      digitalWrite(Digit_1, LOW);
+      digitalWrite(Digit_2, LOW);
+      digitalWrite(Digit_3, LOW);
+      digitalWrite(Digit_4, LOW);
+      digitalWrite(Digit_5, LOW);
+      Button = digitalRead(Big_Red_Button);
+      Serial.println("hello");
     }
     SegmentSelect = 0;
     Enter = LOW;
-    Release();
+  }
 
-    }
-    
-    
-  
+
+
   else {
     // do this if they are different
     Serial.println ("Failure");
@@ -142,9 +153,9 @@ void Compare() {
     Enter = LOW;
   }
 }
-void Release(){
-digitalWrite(Magnet_Switch, LOW);
-Serial.println("hello");
+void Release() {
+  digitalWrite(Magnet_Switch, LOW);
+
 }
 
 void ChangeNumb(char Number)
@@ -284,15 +295,17 @@ void loop()
   ChangeNumb(NumberOnDisplay[i]);
   ControlDisplays(i);
   i++;
+  if (i > 4) {
+
+    i = 0;
+  }
   if (Enter == HIGH) {
     Compare();
   }
-  if(digitalRead(Big_Red_Button) == HIGH){
-      //Finished();
-      Serial.println("Finished");
-    }
-  if (i > 4) {
-    i = 0;
+  if (digitalRead(Big_Red_Button) == HIGH) {
+    //Finished();
+    Serial.println("Finished");
   }
+
 
 }
