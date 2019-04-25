@@ -2,12 +2,11 @@
 #define SolenoidPin 12
 #define SegmentC 6
 
-<<<<<<< HEAD
 int HandDetection = 600;
 int CoilDetection = 85; //deze waarde hangt heel erg sterk af van de voedingsspanning en moet dus nog even naar gekeken worden
 int HandsPin = A3;
 int CoilPin = A0;
-=======
+
 #include "ER_NET.h"
 
 #define BCD_A 32
@@ -25,19 +24,14 @@ bool NeedNewNumber = true;
 int DisplayNumber = 0;
 
 ErNet erNet;
->>>>>>> 37e4268881e7ea91462a25f32e011482cdc4edcc
+
 
 void setup() {
   Serial.begin(115200); //  setup serial
   pinMode(LedPin, OUTPUT); //led
   pinMode(SolenoidPin, OUTPUT); //solenoid
-<<<<<<< HEAD
-  pinMode(SegmentC, OUTPUT);
-=======
-
   erNet.Setup();
   SetupDisplay();
->>>>>>> 37e4268881e7ea91462a25f32e011482cdc4edcc
 }
 
 void loop() {
@@ -72,16 +66,7 @@ void CoilPuzzle() {
 
   if (CoilValue > CoilDetection) { //Coil detected
     Serial.println(CoilValue);
-<<<<<<< HEAD
-    //digitalWrite(SegmentC, HIGH); //zet het 7 segment display aan
-  }
-  else
-  {
-    //digitalWrite(SegmentC, LOW);
-=======
-    //zet het 7 segment display aan
     ShowNumber(DisplayNumber);
->>>>>>> 37e4268881e7ea91462a25f32e011482cdc4edcc
   }
 }
 
