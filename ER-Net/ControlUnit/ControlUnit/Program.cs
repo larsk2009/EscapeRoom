@@ -10,8 +10,22 @@ namespace ControlUnit
     {
         static void Main(string[] args)
         {
-            var engine = new ErNetServerEngine();
-            Console.ReadKey(); //Wait for user input before closing
+            var parser = new TcpParser();
+            var server = new DiscoveryServer();
+            var tcpSender = new TcpSender();
+            var engine = new ErNetServerEngine(parser, server, tcpSender);
+
+            string input;
+            do
+            {
+                input = Console.ReadLine();
+                switch (input)
+                {
+                    case "reset":
+                        engine.ResetDevices();
+                        break;
+                }
+            } while (input != "quit");
         }
     }
 }

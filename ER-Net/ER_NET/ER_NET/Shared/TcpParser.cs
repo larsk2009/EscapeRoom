@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ER_NET.Shared
 {
-    public class TcpParser
+    public class TcpParser : ITcpParser
     {
         private TcpListener _server;
         private const int DiscoveryPort = 46666;
@@ -46,27 +46,16 @@ namespace ER_NET.Shared
 
         public void OnMessageReceived(string json, IPAddress address)
         {
-            var message = DiscoveryMessage.FromJson(json);
+            var message = Message.FromJson(json);
             if (message != null)
             {
                 RaiseTcpEvent(message, address);
             }
         }
 
-        protected virtual void RaiseTcpEvent(DiscoveryMessage message, IPAddress address)
+        protected virtual void RaiseTcpEvent(Message message, IPAddress address)
         {
             OnTcpEvent?.Invoke(this, new TcpEventArgs(message, address));
         }
-    }
-
-    public class TcpEventArgs : EventArgs
-    {
-        public TcpEventArgs(DiscoveryMessage message, IPAddress remoteIp)
-        {
-            Message = message;
-            RemoteIp = remoteIp;
-        }
-        public DiscoveryMessage Message { get; }
-        public IPAddress RemoteIp { get; }
     }
 }
