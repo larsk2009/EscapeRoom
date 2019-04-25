@@ -1,15 +1,17 @@
 #define LedPin 13
 #define SolenoidPin 12
+#define SegmentC 6
 
-int HandDetection = 700;
-int CoilDetection = 90; //deze waarde hangt heel erg sterk af van de voedingsspanning en moet dus nog even naar gekeken worden
+int HandDetection = 600;
+int CoilDetection = 85; //deze waarde hangt heel erg sterk af van de voedingsspanning en moet dus nog even naar gekeken worden
 int HandsPin = A3;
-int CoilPin = A5;
+int CoilPin = A0;
 
 void setup() {
   Serial.begin(9600); //  setup serial
   pinMode(LedPin, OUTPUT); //led
   pinMode(SolenoidPin, OUTPUT); //solenoid
+  pinMode(SegmentC, OUTPUT);
 }
 
 void loop() {
@@ -19,9 +21,9 @@ void loop() {
 
 void HandPuzzle() {
   int HandsValue = analogRead(HandsPin);  // read the input pin
-  //Serial.println(ReadValue); // debug value
-  if (HandsValue < HandDetection) { 
-      //Hand detected
+  //Serial.println(HandsValue); // debug value
+  if (HandsValue < HandDetection) {
+    //Hand detected
     digitalWrite(LedPin, HIGH);
     digitalWrite(SolenoidPin, HIGH);
   }
@@ -34,9 +36,14 @@ void HandPuzzle() {
 
 void CoilPuzzle() {
   int CoilValue = analogRead(CoilPin);
-  if (CoilValue > CoilDetection) { //Coil detected 
+
+  if (CoilValue > CoilDetection) { //Coil detected
     Serial.println(CoilValue);
-    //zet het 7 segment display aan
+    //digitalWrite(SegmentC, HIGH); //zet het 7 segment display aan
+  }
+  else
+  {
+    //digitalWrite(SegmentC, LOW);
   }
 }
 
