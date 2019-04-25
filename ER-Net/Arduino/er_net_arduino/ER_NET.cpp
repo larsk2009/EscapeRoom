@@ -9,7 +9,7 @@ EthernetClient tcpSender;
 EthernetServer tcpReceiver(46667);
 
 void ErNet::Setup() {
-    Serial.begin(115200);
+    //Serial.begin(115200);
 
     Ethernet.begin(mac);
     tcpReceiver.begin();
