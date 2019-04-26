@@ -2,11 +2,11 @@
 
 ErNet erNet;
 
-#define BCD_A 11
-#define BCD_B 9
-#define BCD_C 8
-#define BCD_D 10
-#define BCD_CLEAR 12
+#define BCD_A 32
+#define BCD_B 28
+#define BCD_C 26
+#define BCD_D 30
+#define BCD_CLEAR 34
 
 void setup(){
   Serial.begin(115200);
