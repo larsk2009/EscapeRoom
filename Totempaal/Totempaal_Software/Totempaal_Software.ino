@@ -8,8 +8,8 @@
 #define Digit_3 A2
 #define Digit_4 A3
 #define Digit_5 A4
-#define Big_Red_Button A5
-#define Magnet_Switch 1
+#define Big_Red_Button 10
+#define Magnet_Switch 8
 #include <Keypad.h>
 
 char NumberOnDisplay[5] = {'0', '0', '0', '0', '0'};
@@ -56,8 +56,8 @@ char hexaKeys[ROWS][COLS] = {
   {'*', '0', '#'}
 };
 
-byte rowPins[ROWS] = {12, 11, 10, 9}; // Grey, Yellow, Purple, Green
-byte colPins[COLS] = {8, 7, 6}; //Green, Blue, Yellow
+byte rowPins[ROWS] = {25, 26, 27, 28}; // Grey, Yellow, Purple, Green
+byte colPins[COLS] = {22, 23, 24}; //Green, Blue, Yellow
 
 Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
 
@@ -95,29 +95,24 @@ void NumbMem()
         NumberOnDisplay[i] = '0';
       }
       SegmentSelect = 0;
-
     }
     else if (key == '*') {
       Enter = HIGH;
       SegmentSelect = 0;
-
     }
     else
     {
       NumberOnDisplay[SegmentSelect] = key;
       SegmentSelect++;
-
-      if (SegmentSelect == 5) {
-
+      if (SegmentSelect == 5)
+      {
         SegmentSelect = 0;
-
       }
     }
   }
 }
 
 void Compare() {
-  bool Button = digitalRead(Big_Red_Button);
   if (array_cmp(NumberOnDisplay, TheAwnser, 5, 5) == true) {
     // do this if they are equal
     //Victory
@@ -126,23 +121,10 @@ void Compare() {
     for (int i = 0; i < 5; i++) {
       NumberOnDisplay[i] = '#';
     }
-    Release();
-
-    while (Button == false) {
-      digitalWrite(Digit_1, LOW);
-      digitalWrite(Digit_2, LOW);
-      digitalWrite(Digit_3, LOW);
-      digitalWrite(Digit_4, LOW);
-      digitalWrite(Digit_5, LOW);
-      Button = digitalRead(Big_Red_Button);
-      Serial.println("hello");
-    }
     SegmentSelect = 0;
     Enter = LOW;
+    Release();
   }
-
-
-
   else {
     // do this if they are different
     Serial.println ("Failure");
@@ -155,6 +137,10 @@ void Compare() {
 }
 void Release() {
   digitalWrite(Magnet_Switch, LOW);
+  Serial.println("hello");
+}
+
+void Finished() {
 
 }
 
@@ -295,17 +281,15 @@ void loop()
   ChangeNumb(NumberOnDisplay[i]);
   ControlDisplays(i);
   i++;
-  if (i > 4) {
-
-    i = 0;
-  }
   if (Enter == HIGH) {
     Compare();
   }
   if (digitalRead(Big_Red_Button) == HIGH) {
-    //Finished();
+    Finished();
     Serial.println("Finished");
   }
-
+  if (i > 4) {
+    i = 0;
+  }
 
 }
