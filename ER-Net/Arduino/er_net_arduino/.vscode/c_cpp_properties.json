@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:\\Users\\larsk\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.6.21\\**",
+                "C:\\\\Users\\\\larsk\\\\AppData\\\\Local\\\\Arduino15\\\\packages\\\\arduino\\\\tools\\\\**",
+                "C:\\\\Users\\\\larsk\\\\AppData\\\\Local\\\\Arduino15\\\\packages\\\\arduino\\\\hardware\\\\avr\\\\1.6.23\\\\**",
+                "${workspaceRoot}"
+            ],
+            "forcedInclude": [
+                "C:\\Users\\larsk\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.6.21\\cores\\arduino\\Arduino.h"
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": false,
+                "path": [
+                    "D:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\avr\\include",
+                    "D:\\Users\\larsk\\Documents\\Arduino\\libraries",
+                    "C:\\\\Users\\\\larsk\\\\AppData\\\\Local\\\\Arduino15\\\\packages\\\\arduino\\\\hardware\\\\avr\\\\1.6.23\\\\**",
+                    "${workspaceRoot}"
+                ]
+            },
+            "intelliSenseMode": "msvc-x64"
+        }
+    ],
+    "version": 4
+}
