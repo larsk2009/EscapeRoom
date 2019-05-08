@@ -1,5 +1,5 @@
 #include <ER_NET.h>
-
+#include <Keypad.h>
 ErNet erNet;
 
 #define C_Input 2
@@ -14,7 +14,7 @@ ErNet erNet;
 #define Digit_5 A4
 #define Big_Red_Button 10
 #define Magnet_Switch 8
-#include <Keypad.h>
+
 
 char NumberOnDisplay[5] = {'0', '0', '0', '0', '0'};
 int SegmentSelect = 0;
@@ -80,25 +80,25 @@ void setup() {
   pinMode(Magnet_Switch, OUTPUT);
   digitalWrite(Magnet_Switch, HIGH);
   Serial.begin(9600);
+  erNet.Setup();
+  cli();//stop interrupts
 
-  /*cli();//stop interrupts
-
-  //set timer0 interrupt at 2kHz
-  TCCR0A = 0;// set entire TCCR0A register to 0
-  TCCR0B = 0;// same for TCCR0B
-  TCNT0  = 0;//initialize counter value to 0
-  // set compare match register for 2khz increments
-  OCR0A = 124;// = (16*10^6) / (2000*64) - 1 (must be <256)
+//set timer1 interrupt at 70Hz
+  TCCR1A = 0;// set entire TCCR1A register to 0
+  TCCR1B = 0;// same for TCCR1B
+  TCNT1  = 0;//initialize counter value to 0
+  // set compare match register for 1hz increments
+  OCR1A = 28270;// = (16*10^6) / (70*8) - 1 (must be <65536)
   // turn on CTC mode
-  TCCR0A |= (1 << WGM01);
-  // Set CS01 and CS00 bits for 64 prescaler
-  TCCR0B |= (1 << CS01) | (1 << CS00);
+  TCCR1B |= (1 << WGM12);
+  // Set CS10 and CS12 bits for 8 prescaler
+  TCCR1B |= (1 << CS11);  
   // enable timer compare interrupt
-  TIMSK0 |= (1 << OCIE0A);
+  TIMSK1 |= (1 << OCIE1A);
 
   sei();//allow interrupts*/
 
-  erNet.Setup();
+
 }
 
 
@@ -160,7 +160,7 @@ void Compare() {
 }
 void Release() {
   digitalWrite(Magnet_Switch, LOW);
-  Serial.println("hello");
+  
 }
 
 void Finished() {
@@ -296,28 +296,27 @@ void ControlDisplays(int Display)
   }
 }
 
-ISR(TIMER0_COMPA_vect){  //change the 0 to 1 for timer1 and 2 for timer2
-  
+ISR(TIMER1_COMPA_vect) { //change the 0 to 1 for timer1 and 2 for timer2
+erNet.Loop();
 
 }
+void loop()
+{
+  
+  NumbMem();
+ delay(1);
+  ChangeNumb(NumberOnDisplay[i]);
+  ControlDisplays(i);
+  i++;  
+  if (i > 4) {
+    i = 0;
+  }
 
-  void loop()
-  {
-    erNet.Loop();
-    NumbMem();
-    delay(1);
-      ChangeNumb(NumberOnDisplay[i]);
-    ControlDisplays(i);
-    i++;
-    if (i > 4) {
-      i = 0;
-    }
-    if (Enter == HIGH) {
-      Compare();
-    }
+  if (Enter == HIGH) {
+    Compare();
+  }
   if (digitalRead(Big_Red_Button) == HIGH) {
     Finished();
     Serial.println("Finished");
   }
-
 }
