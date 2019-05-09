@@ -14,7 +14,7 @@ class ErNet {
 
         void                SetSolved(bool isSolved);
         bool                GetDisplayNumber(int *number);
-        bool                GetSolution(int *solution);
+        bool                GetSolution(unsigned long *solution);
 
         void                SetResetCallback(void (*callback)(void));
         static byte         mac[];
@@ -28,7 +28,7 @@ class ErNet {
         bool                receivedDisplayNumber = false;
         bool                receivedSolution = false;
         unsigned int        displayNumber;
-        unsigned int        solution;
+        unsigned long       solution;
 
         void                (*ResetCallback)(void);
         bool                IsResetCallbackSet = false;

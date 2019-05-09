@@ -98,7 +98,7 @@ void ErNet::ParseUdpMessage(IPAddress ip, char *data, uint16_t len){
             displayNumber = (unsigned int) doc["Value"];
             receivedDisplayNumber = true;
         } else if(strcmp(type, "Solution") == 0) {
-            solution = atoi(doc["Value"]);
+            solution = atol(doc["Value"]);
             receivedSolution = true;
         } else if(strcmp(type, "Reset") == 0) {
             if(IsResetCallbackSet) {
@@ -175,7 +175,7 @@ void ErNet::ParseTcpMessage(char *message, uint16_t len) {
     }
 }*/
 
-bool ErNet::GetSolution(int *solutionPointer) {
+bool ErNet::GetSolution(unsigned long *solutionPointer) {
     static bool didRequest = false;
     static unsigned long lastMillies = millis();
     const short timeoutValue = 6000;
