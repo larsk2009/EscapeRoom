@@ -11,7 +11,7 @@ ErNet erNet;
 void setup(){
   Serial.begin(115200);
 
-  erNet.Setup();
+  erNet.Setup("Totempaal", 0x70, 0x69, 0x69, 0x2D, 0x30, 0x31);
 
   SetupDisplay();
 }
@@ -20,10 +20,13 @@ void loop(){
   //this must be called for ethercard functions to work.
   erNet.Loop();
   erNet.SetResetCallback(&OnReset);
-  int test;
+  int test;/*
   if(erNet.GetDisplayNumber(&test)) {
     Serial.println(test);
     ShowNumber(test);
+  }*/
+  if(erNet.GetSolution(&test)) {
+    Serial.println((unsigned) test);
   }
 }
 
