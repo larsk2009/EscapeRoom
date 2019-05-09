@@ -20,13 +20,13 @@ void loop(){
   //this must be called for ethercard functions to work.
   erNet.Loop();
   erNet.SetResetCallback(&OnReset);
-  int test;/*
+  unsigned long test;/*
   if(erNet.GetDisplayNumber(&test)) {
     Serial.println(test);
     ShowNumber(test);
   }*/
   if(erNet.GetSolution(&test)) {
-    Serial.println((unsigned) test);
+    Serial.println((unsigned long) test);
   }
 }
 
