@@ -11,13 +11,13 @@ namespace ER_NET.Client
         private const int DiscoveryPort = 46666;
         private const int ResponsePort = 46667;
 
-        private static Guid _guid;
+        private static string _name;
 
         public static bool IsMuted { get; set; } = false;
 
-        public static void Start(Guid guid)
+        public static void Start(string name)
         {
-            _guid = guid;
+            _name = name;
             Console.Write("Listening on port ");
             Console.WriteLine(DiscoveryPort);
 
@@ -38,7 +38,7 @@ namespace ER_NET.Client
                             var address = receivedResults.RemoteEndPoint.Address;
                             var responseMessage = new Message
                             {
-                                Id = guid,
+                                Name = _name,
                                 MessageType = "DiscoveryAcknowledge"
                             };
                             var data = Encoding.ASCII.GetBytes(responseMessage.ToJsonString());

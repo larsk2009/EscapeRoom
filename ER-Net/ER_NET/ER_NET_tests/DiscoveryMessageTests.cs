@@ -5,15 +5,16 @@ using Xunit;
 
 namespace PuzzleClientTests
 {
-    public class DiscoveryMessageTest
+    public class DiscoveryMessageTests
     {
         [Fact]
         public void FromJsonCorrect()
         {
-            var json = "ER-NET\n{\"Guid\":\"e6ad6f00-82f2-40eb-855a-54133ba29b70\",\"MessageType\":\"Discovery\"}";
+            string name = "testPuzzle";
+            var json = $"ER-NET\n{{\"Name\":\"{name}\",\"MessageType\":\"Discovery\"}}";
             var message = Message.FromJson(json);
             Assert.True(message.MessageType == "Discovery");
-            Assert.True(message.Id == Guid.Parse("e6ad6f00-82f2-40eb-855a-54133ba29b70"));
+            Assert.True(message.Name == name);
         }
 
         [Fact]
@@ -29,11 +30,11 @@ namespace PuzzleClientTests
         {
             var message = new Message
             {
-                Id = Guid.Parse("e6ad6f00-82f2-40eb-855b-54133ba29b75"),
+                Name = "testPuzzle",
                 MessageType = "DiscoveryAcknowledge"
             };
             var json = message.ToJsonString();
-            Assert.True(json == "ER-NET\n{\"Guid\":\"e6ad6f00-82f2-40eb-855b-54133ba29b75\",\"MessageType\":\"DiscoveryAcknowledge\",\"Value\":null}");
+            Assert.True(json == $"ER-NET\n{{\"Name\":\"{message.Name}\",\"MessageType\":\"DiscoveryAcknowledge\",\"Value\":null}}");
         }
     }
 }

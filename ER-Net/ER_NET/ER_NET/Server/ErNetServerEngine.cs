@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using ER_NET.Shared;
 
@@ -9,18 +11,55 @@ namespace ER_NET.Server
 {
     public class ErNetServerEngine
     {
-        private Dictionary<Guid, Device> _connectedDevices = new Dictionary<Guid, Device>();
-        private ITcpParser _parser;
-        private IDiscoveryServer _discoveryServer;
-        private ITcpSender _tcpSender;
+        public static ErNetServerEngine Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    var parser = new UdpParser();
+                    var server = new DiscoveryServer(UdpSender.Instance);
+                    var udpSender = UdpSender.Instance;
+                    _instance = new ErNetServerEngine(parser, server, udpSender);
+                }
 
-        public ErNetServerEngine(ITcpParser parser, IDiscoveryServer discoveryServer, ITcpSender tcpSender)
+                return _instance;
+            }
+        }
+
+        public List<string> Devices => _connectedDevices.Keys.ToList();
+
+        public int Solution => _solution;
+
+        #region Events
+
+        public event EventHandler<EventArgs> OnDevicesListChanged;
+        public event EventHandler<EventArgs> OnReset;
+
+        #endregion
+        
+        private static ErNetServerEngine _instance = null;
+
+        private Dictionary<String, Device> _connectedDevices = new Dictionary<String, Device>();
+        private ICommunicationParser _parser;
+        private IDiscoveryServer _discoveryServer;
+        private ICommunicationSender _communicationSender;
+
+        private const int NumOfPuzzles = 4;
+        private List<string> _puzzleNames;
+
+        private Random _randomGenerator = new Random();
+        private int _solution;
+        private List<int> _digits = new List<int>();
+
+        public ErNetServerEngine(ICommunicationParser parser, IDiscoveryServer discoveryServer,
+            ICommunicationSender communicationSender)
         {
             _parser = parser;
             _discoveryServer = discoveryServer;
-            _tcpSender = tcpSender;
+            _communicationSender = communicationSender;
             var guid = Guid.NewGuid();
-            _discoveryServer.guid = guid;
+            _discoveryServer.Name = "ControlUnit";
             _discoveryServer.ContinuousDiscovery();
 
             Task.Run(async () =>
@@ -32,68 +71,164 @@ namespace ER_NET.Server
                 }
             });
 
+            GenerateNewSolution();
             _parser.Start();
-            _parser.OnTcpEvent += (sender, eventArgs) =>
+            _parser.OnCommunicationEvent += OnParserOnOnCommunicationEvent;
+        }
+        
+        protected virtual void RaiseDeviceListChangedEvent()
+        {
+            OnDevicesListChanged?.Invoke(this, new EventArgs());
+        }
+        protected virtual void RaiseResetEvent()
+        {
+            OnReset?.Invoke(this, new EventArgs());
+        }
+
+        public bool SetPuzzles(List<string> puzzles)
+        {
+            if (puzzles.Count == NumOfPuzzles)
             {
-                var message = eventArgs.Message;
-                if (message == null)
+                _puzzleNames = puzzles;
+            }
+
+            return false;
+        }
+
+        public int GenerateNewSolution()
+        {
+            int numbersForPuzzles = 0;
+            for (int i = 0; i < NumOfPuzzles; i++)
+            {
+                var number = _randomGenerator.Next(1, 10);
+                numbersForPuzzles = (numbersForPuzzles * 10) + number;
+            }
+            var digitsForPuzzles = GetDigits(numbersForPuzzles);
+            _digits = digitsForPuzzles;
+
+            //set the numbers for the correct puzzles
+            var analogDigit = digitsForPuzzles[0];
+            var digitalDigit = digitsForPuzzles[1];
+            var softwareDigit = digitsForPuzzles[2];
+            var fecDigit = digitsForPuzzles[3];
+
+            //Calculate the final solution
+            var finalSolution = CalculateSolution(analogDigit, digitalDigit, softwareDigit, fecDigit);
+            _solution = finalSolution;
+            return finalSolution;
+        }
+
+        public int GetDisplayNumberByName(string name)
+        {
+            switch (name)
+            {
+                case "AnalogPuzzle":
+                    return _digits[0];
+                    break;
+                case "DigitalPuzzle":
+                    return _digits[1];
+                    break;
+                case "SoftwarePuzzle":
+                    return _digits[2];
+                    break;
+                case "FecPuzzle":
+                    return _digits[3];
+                    break;
+                default:
+                    return -1;
+                    break;
+            }
+        }
+
+        public int CalculateSolution(int analogDigit, int digitalDigit, int softwareDigit, int fecDigit)
+        {
+            return analogDigit * digitalDigit + ((3500 * softwareDigit + 18000 * fecDigit) / 2) - digitalDigit;
+        }
+
+        private async void OnParserOnOnCommunicationEvent(object sender, CommunicationEventArgs eventArgs)
+        {
+            var addressList = Dns.GetHostEntry(Dns.GetHostName()).AddressList;
+            foreach (var ipAddress in addressList)
+            {
+                if (eventArgs.RemoteIp.Equals(ipAddress))
                 {
                     return;
                 }
-                //Console.WriteLine($"Received MessageType {message.MessageType} from GUID {message.Id} with IP {eventArgs.RemoteIp}");
-                if (message.MessageType == "DiscoveryAcknowledge")
-                {
-                    if (!_connectedDevices.ContainsKey(message.Id))
-                    {
-                        _connectedDevices.Add(message.Id, new Device(message.Id, eventArgs.RemoteIp));
-                    }
-                    else
-                    {
-                        _connectedDevices[message.Id].LastConnected = DateTime.UtcNow;
-                    }
+            }
 
-                    _discoveryServer.DiscoveryAcknowledgeReceived(message, eventArgs.RemoteIp);
-                } else if (message.MessageType == "GetDisplayNumber")
+            var message = eventArgs.Message;
+            if (message == null)
+            {
+                return;
+            }
+
+            //Console.WriteLine($"Received MessageType {message.MessageType} from GUID {message.Id} with IP {eventArgs.RemoteIp}");
+            if (message.MessageType == "DiscoveryAcknowledge")
+            {
+                if (!_connectedDevices.ContainsKey(message.Name))
                 {
-                    if (_connectedDevices.ContainsKey(message.Id))
-                    {
-                        var displayNumber = _connectedDevices[message.Id].DisplayNumber;
-                        
-                        var response = new Message
-                        {
-                            Id = guid,
-                            MessageType = "DisplayNumber",
-                            Value = displayNumber.ToString()
-                        };
-                        _tcpSender.SendMessage(response.ToBytes(), eventArgs.RemoteIp, CommunicationPorts.ResponsePort);
-                    }
+                    _connectedDevices.Add(message.Name, new Device(message.Name, eventArgs.RemoteIp));
+                    //Device added, so raise event
+                    RaiseDeviceListChangedEvent();
                 }
-            };
+                else
+                {
+                    _connectedDevices[message.Name].LastConnected = DateTime.UtcNow;
+                }
+
+                _discoveryServer.DiscoveryAcknowledgeReceived(message, eventArgs.RemoteIp);
+            }
+            else if (message.MessageType == "GetDisplayNumber")
+            {
+                if (_connectedDevices.ContainsKey(message.Name))
+                {
+                    var displayNumber = GetDisplayNumberByName(message.Name);
+
+                    var response = new Message
+                        {Name = _discoveryServer.Name, MessageType = "DisplayNumber", Value = displayNumber.ToString()};
+                    await _communicationSender.SendMessageAsync(response.ToBytes(), eventArgs.RemoteIp,
+                        CommunicationPorts.CommunicationPort);
+                }
+            }
+            else if (message.MessageType == "GetSolution")
+            {
+                var response = new Message
+                {
+                    Name = _discoveryServer.Name,
+                    MessageType = "Solution",
+                    Value = _solution.ToString()
+                };
+                await _communicationSender.SendMessageAsync(response.ToBytes(), eventArgs.RemoteIp,
+                    CommunicationPorts.CommunicationPort);
+            }
         }
 
-        public void ResetDevices()
+        public async void ResetDevices()
         {
+            GenerateNewSolution();
             foreach (var device in _connectedDevices.Values)
             {
                 device.Reset();
                 var message = new Message
                 {
-                    Id = device.Id,
+                    Name = _discoveryServer.Name,
                     MessageType = "Reset"
                 };
-                _tcpSender.SendMessage(message.ToBytes(), device.IpAddress, CommunicationPorts.ResponsePort);
+                await _communicationSender.SendMessageAsync(message.ToBytes(), device.IpAddress,
+                    CommunicationPorts.CommunicationPort);
             }
+            RaiseResetEvent();
         }
 
-        public bool IsDeviceConnected(Guid guid)
+        public bool IsDeviceConnected(string name)
         {
-            return _connectedDevices.ContainsKey(guid);
+            return _connectedDevices.ContainsKey(name);
         }
-        
+
         private void CheckConnectedDevices()
         {
             var now = DateTime.UtcNow;
-            var removeList = new List<Guid>();
+            var removeList = new List<string>();
             foreach (var device in _connectedDevices)
             {
                 var time = device.Value.LastConnected;
@@ -108,10 +243,33 @@ namespace ER_NET.Server
             }
 
             //After enumerating over the whole list, remove the devices
-            foreach (var guid in removeList)
+            foreach (var name in removeList)
             {
-                _connectedDevices.Remove(guid);
+                _connectedDevices.Remove(name);
             }
+
+            //One or more items where removed so we raise the vent
+            if (removeList.Count >= 1)
+            {
+                RaiseDeviceListChangedEvent();
+            }
+        }
+
+        private static List<int> GetDigits(int source)
+        {
+            var digits = new List<int>();
+            int individualFactor = 0;
+            int tennerFactor = Convert.ToInt32(Math.Pow(10, source.ToString().Length));
+            do
+            {
+                source -= tennerFactor * individualFactor;
+                tennerFactor /= 10;
+                individualFactor = source / tennerFactor;
+
+                digits.Add(individualFactor);
+            } while (tennerFactor > 1);
+
+            return digits;
         }
     }
 }

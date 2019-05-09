@@ -7,11 +7,12 @@ namespace ER_NET.Shared
 {
     public class Message
     {
-        [JsonProperty("Guid")]
-        public Guid Id { get; set; }
+        //[JsonProperty("Guid")]
+        //public Guid Id { get; set; }
+        public string Name { get; set; }
         public string MessageType { get; set; }
         public string Value { get; set; }
-        
+
         /// <summary>
         /// Returns the Message extracted from the json string.
         /// </summary>

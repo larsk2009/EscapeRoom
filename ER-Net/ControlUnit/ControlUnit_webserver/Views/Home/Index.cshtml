@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Connected Devices</h2>
+        <ol id="devicesList">
+            <li>DigitalPuzzle</li>
+            <li>SoftwarePuzzle</li>
+            <li>FedPuzzle</li>
+        </ol>
+    </div>
+    <div class="col-md-2">
+        <h2>Solution</h2>
+        <p id="solution">1122</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Controls</h2>
+        <button id="resetBtn" class="btn btn-primary">Reset</button>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/connectedDevices.js"></script>
+}

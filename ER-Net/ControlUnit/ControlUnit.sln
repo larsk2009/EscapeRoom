@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ER_NET", "..\ER_NET\ER_NET\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ER_NET_tests", "..\ER_NET\ER_NET_tests\ER_NET_tests.csproj", "{DD6B9C1F-B1F6-4985-AED9-36D81AE87D02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlUnit_webserver", "ControlUnit_webserver\ControlUnit_webserver.csproj", "{2504CE85-52A3-4D92-B717-9CD43AB7E1F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{DD6B9C1F-B1F6-4985-AED9-36D81AE87D02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD6B9C1F-B1F6-4985-AED9-36D81AE87D02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD6B9C1F-B1F6-4985-AED9-36D81AE87D02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2504CE85-52A3-4D92-B717-9CD43AB7E1F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2504CE85-52A3-4D92-B717-9CD43AB7E1F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2504CE85-52A3-4D92-B717-9CD43AB7E1F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2504CE85-52A3-4D92-B717-9CD43AB7E1F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

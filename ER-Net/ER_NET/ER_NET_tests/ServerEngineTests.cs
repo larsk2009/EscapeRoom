@@ -15,65 +15,65 @@ namespace ER_NET_tests
         [Fact]
         void DeviceRegisteredTest()
         {
-            var parser = new MockTcpParser();
+            var parser = new MockCommunicationParser();
             var server = new MockDiscoveryServer();
-            var tcpSender = new MockTcpSender();
+            var tcpSender = new MockCommunicationSender();
             var engine = new ErNetServerEngine(parser, server, tcpSender);
 
-            Guid guid = Guid.Parse("e57d5d61-4e98-42b3-a096-81fd249b2cef");
-            var testJson = $"ER-NET\n{{\"Guid\":\"{guid}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
-            var eventArgs = new TcpEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
+            string name = "testPuzzle";
+            var testJson = $"ER-NET\n{{\"Name\":\"{name}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
+            var eventArgs = new CommunicationEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
             parser.RaiseTcpEvent(eventArgs);
 
             Thread.Sleep(TimeSpan.FromSeconds(5));
             
-            Assert.True(engine.IsDeviceConnected(guid));
+            Assert.True(engine.IsDeviceConnected(name));
         }
         
         [Fact]
         void DeviceTimeOutTest()
         {
-            var parser = new MockTcpParser();
+            var parser = new MockCommunicationParser();
             var server = new MockDiscoveryServer();
-            var tcpSender = new MockTcpSender();
+            var tcpSender = new MockCommunicationSender();
             var engine = new ErNetServerEngine(parser, server, tcpSender);
 
-            Guid guid = Guid.Parse("e57d5d61-4e98-42b3-a096-81fd249b2cef");
-            var testJson = $"ER-NET\n{{\"Guid\":\"{guid}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
-            var eventArgs = new TcpEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
+            string name = "testPuzzle";
+            var testJson = $"ER-NET\n{{\"Name\":\"{name}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
+            var eventArgs = new CommunicationEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
             parser.RaiseTcpEvent(eventArgs);
 
             Thread.Sleep(TimeSpan.FromSeconds(12));
 
-            Assert.False(engine.IsDeviceConnected(guid));
+            Assert.False(engine.IsDeviceConnected(name));
         }
 
         [Fact]
         void NullMessageTest()
         {
-            var parser = new MockTcpParser();
+            var parser = new MockCommunicationParser();
             var server = new MockDiscoveryServer();
-            var tcpSender = new MockTcpSender();
+            var tcpSender = new MockCommunicationSender();
             var engine = new ErNetServerEngine(parser, server, tcpSender);
 
-            var guid = Guid.NewGuid();
-            var eventArgs = new TcpEventArgs(null, IPAddress.Parse("192.168.2.10"));
+            string name = "testPuzzle";
+            var eventArgs = new CommunicationEventArgs(null, IPAddress.Parse("192.168.2.10"));
             parser.RaiseTcpEvent(eventArgs);
             Thread.Sleep(TimeSpan.FromSeconds(5));
-            Assert.False(engine.IsDeviceConnected(guid));
+            Assert.False(engine.IsDeviceConnected(name));
         }
 
         [Fact]
         void UpdateTimeTest()
         {
-            var parser = new MockTcpParser();
+            var parser = new MockCommunicationParser();
             var server = new MockDiscoveryServer();
-            var tcpSender = new MockTcpSender();
+            var tcpSender = new MockCommunicationSender();
             var engine = new ErNetServerEngine(parser, server, tcpSender);
-            
-            Guid guid = Guid.Parse("e57d5d61-4e98-42b3-a096-81fd249b2cef");
-            var testJson = $"ER-NET\n{{\"Guid\":\"{guid}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
-            var eventArgs = new TcpEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
+
+            string name = "testPuzzle";
+            var testJson = $"ER-NET\n{{\"Name\":\"{name}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
+            var eventArgs = new CommunicationEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
 
             //Run 3 times to see if the time gets updated
             for (int i = 0; i < 3; i++)
@@ -82,23 +82,37 @@ namespace ER_NET_tests
                 Thread.Sleep(TimeSpan.FromSeconds(3));
             }
             
-            Assert.True(engine.IsDeviceConnected(guid));
+            Assert.True(engine.IsDeviceConnected(name));
         }
 
         [Fact]
         void DiscoveryAcknowledgeTest()
         {
-            var parser = new MockTcpParser();
+            var parser = new MockCommunicationParser();
             var server = new MockDiscoveryServer();
-            var tcpSender = new MockTcpSender();
+            var tcpSender = new MockCommunicationSender();
             var engine = new ErNetServerEngine(parser, server, tcpSender);
-            
-            Guid guid = Guid.Parse("e57d5d61-4e98-42b3-a096-81fd249b2cef");
-            var testJson = $"ER-NET\n{{\"Guid\":\"{guid}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
-            var eventArgs = new TcpEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
+
+            string name = "testPuzzle";
+            var testJson = $"ER-NET\n{{\"Name\":\"{name}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
+            var eventArgs = new CommunicationEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
             parser.RaiseTcpEvent(eventArgs);
 
             Assert.True(server.IsDiscoveryAck);
+        }
+
+        [Fact]
+        void GenerateSolutionTest()
+        {
+            var parser = new MockCommunicationParser();
+            var server = new MockDiscoveryServer();
+            var tcpSender = new MockCommunicationSender();
+            var engine = new ErNetServerEngine(parser, server, tcpSender);
+
+            var solution = engine.CalculateSolution(9, 9, 9, 9);
+            Assert.True(solution == 96822);
+            solution = engine.CalculateSolution(1, 1, 1, 1);
+            Assert.True(solution == 10750);
         }
     }
 }

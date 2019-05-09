@@ -3,9 +3,9 @@ using System.Net;
 
 namespace ER_NET.Shared
 {
-    public class TcpEventArgs : EventArgs
+    public class CommunicationEventArgs : EventArgs
     {
-        public TcpEventArgs(Message message, IPAddress remoteIp)
+        public CommunicationEventArgs(Message message, IPAddress remoteIp)
         {
             Message = message;
             RemoteIp = remoteIp;

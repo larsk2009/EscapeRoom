@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace ER_NET.Shared
 {
-    public class TcpParser : ITcpParser
+    public class TcpParser : ICommunicationParser
     {
         private TcpListener _server;
         private const int DiscoveryPort = 46666;
         private const int ResponsePort = 46667;
         
         //TCP received event variables
-        //public delegate void TcpEventHandler(object sender, TcpEventArgs e);
+        //public delegate void TcpEventHandler(object sender, CommunicationEventArgs e);
 
-        public event EventHandler<TcpEventArgs> OnTcpEvent;
+        public event EventHandler<CommunicationEventArgs> OnCommunicationEvent;
         
         public TcpParser()
         {
@@ -31,7 +31,7 @@ namespace ER_NET.Shared
             {
                 while (true)
                 {
-                    var client = await _server.AcceptTcpClientAsync();
+                    var client = await _server.AcceptTcpClientAsync().ConfigureAwait(false);
                     NetworkStream stream = client.GetStream();
                     using (var streamReader = new StreamReader(stream))
                     {
@@ -55,7 +55,7 @@ namespace ER_NET.Shared
 
         protected virtual void RaiseTcpEvent(Message message, IPAddress address)
         {
-            OnTcpEvent?.Invoke(this, new TcpEventArgs(message, address));
+            OnCommunicationEvent?.Invoke(this, new CommunicationEventArgs(message, address));
         }
     }
 }

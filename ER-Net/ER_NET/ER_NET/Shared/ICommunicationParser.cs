@@ -4,9 +4,9 @@ using System.Threading;
 
 namespace ER_NET.Shared
 {
-    public interface ITcpParser
+    public interface ICommunicationParser
     {
         void Start();
-        event EventHandler<TcpEventArgs> OnTcpEvent;
+        event EventHandler<CommunicationEventArgs> OnCommunicationEvent;
     }
 }

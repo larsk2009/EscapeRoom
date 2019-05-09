@@ -10,32 +10,31 @@ namespace ER_NET.Server
 {
     public class DiscoveryServer : IDiscoveryServer
     {
-        private readonly UdpClient _client;
+        private readonly ICommunicationSender _sender;
 
-        public Guid guid
+        public String Name { get; set; }
+
+        /*public Guid guid
         {
             get => _guid;
             set => _guid = value;
         }
-        private Guid _guid;
+        private Guid _guid;*/
 
-        public DiscoveryServer()
+        public DiscoveryServer(ICommunicationSender sender)
         {
-            _client = new UdpClient
-            {
-                EnableBroadcast = true,
-                MulticastLoopback = true,
-            };
+            _sender = sender;
         }
 
-        public void DoDiscovery()
+        public async void DoDiscovery()
         {
             var data = new Message
             {
-                Id = _guid,
+                //Id = _guid,
+                Name = "ControlUnit",
                 MessageType =  "Discovery"
             };
-            SendUdpData(data);
+            await _sender.SendMessageAsync(data.ToBytes(), IPAddress.Broadcast, CommunicationPorts.CommunicationPort);
         }
 
         /// <summary>
@@ -60,42 +59,14 @@ namespace ER_NET.Server
             {
                 var responseMessage = new Message
                 {
-                    Id = _guid,
+                    //Id = _guid,
+                    Name = "ControlUnit",
                     MessageType = "Mute"
                 };
                 var data = responseMessage.ToBytes();
 
-                await Task.Run(() =>
-                {
-                    using (var tcpClient = new TcpClient())
-                    {
-                        try
-                        {
-                            if (tcpClient.ConnectAsync(ipAddress.ToString(), (int)CommunicationPorts.ResponsePort).Wait(1000))
-                            {
-                                using (var stream = tcpClient.GetStream())
-                                {
-                                    stream.Write(data, 0, data.Length);
-                                }
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                        }
-                    }
-                });
+                //await _sender.SendMessageAsync(data, ipAddress, CommunicationPorts.CommunicationPort);
             }
-        }
-
-        private void SendUdpData(object data)
-        {
-            var json = "ER-NET\n" + JsonConvert.SerializeObject(data);
-            var bytes = Encoding.ASCII.GetBytes(json);
-
-            var broadCastEndPoint = new IPEndPoint(IPAddress.Broadcast, (int)CommunicationPorts.DiscoveryPort);
-
-            _client.Send(bytes, bytes.Length, broadCastEndPoint);
         }
     }
 }
