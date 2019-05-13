@@ -4,8 +4,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using ER_NET.Shared;
+
+using Timer = System.Timers.Timer;
 
 namespace ER_NET.Server
 {
@@ -27,7 +31,19 @@ namespace ER_NET.Server
             }
         }
 
-        public List<string> Devices => _connectedDevices.Keys.ToList();
+        public List<string> Devices
+        {
+            get
+            {
+                var devices = new List<string>();
+                foreach (var key in _connectedDevices.Keys)
+                {
+                    devices.Add(key + "\t Nummer: " + GetDisplayNumberByName(key));
+                }
+
+                return devices;
+            }
+        }
 
         public int Solution => _solution;
 
@@ -35,9 +51,10 @@ namespace ER_NET.Server
 
         public event EventHandler<EventArgs> OnDevicesListChanged;
         public event EventHandler<EventArgs> OnReset;
+        public event EventHandler<EventArgs> OnTimerTick;
 
         #endregion
-        
+
         private static ErNetServerEngine _instance = null;
 
         private Dictionary<String, Device> _connectedDevices = new Dictionary<String, Device>();
@@ -52,6 +69,10 @@ namespace ER_NET.Server
         private int _solution;
         private List<int> _digits = new List<int>();
 
+        private System.Timers.Timer _timer;
+        private TimeSpan _timeLeft;
+        public string TimeLeft => _timeLeft.ToString(@"mm\:ss");
+
         public ErNetServerEngine(ICommunicationParser parser, IDiscoveryServer discoveryServer,
             ICommunicationSender communicationSender)
         {
@@ -61,6 +82,16 @@ namespace ER_NET.Server
             var guid = Guid.NewGuid();
             _discoveryServer.Name = "ControlUnit";
             _discoveryServer.ContinuousDiscovery();
+
+            _timer = new Timer(1000);
+            _timer.AutoReset = true;
+            _timer.Elapsed += (sender, args) =>
+            {
+                _timeLeft = _timeLeft.Subtract(TimeSpan.FromSeconds(1));
+                RaiseTimerTickEvent();
+            };
+            _timer.Enabled = false;
+            _timeLeft = TimeSpan.FromMinutes(10);
 
             Task.Run(async () =>
             {
@@ -75,16 +106,37 @@ namespace ER_NET.Server
             _parser.Start();
             _parser.OnCommunicationEvent += OnParserOnOnCommunicationEvent;
         }
-        
+
+        #region RaiseEvents
+
         protected virtual void RaiseDeviceListChangedEvent()
         {
             OnDevicesListChanged?.Invoke(this, new EventArgs());
         }
+
         protected virtual void RaiseResetEvent()
         {
             OnReset?.Invoke(this, new EventArgs());
         }
 
+        protected virtual void RaiseTimerTickEvent()
+        {
+            OnTimerTick?.Invoke(this, new EventArgs());
+        }
+
+        #endregion
+
+        public void StartTimer()
+        {
+            ResetDevices();
+            _timeLeft = TimeSpan.FromMinutes(10);
+            _timer.Start();
+        }
+
+        public void StopTimer()
+        {
+            _timer.Stop();
+        }
         public bool SetPuzzles(List<string> puzzles)
         {
             if (puzzles.Count == NumOfPuzzles)
@@ -103,6 +155,7 @@ namespace ER_NET.Server
                 var number = _randomGenerator.Next(1, 10);
                 numbersForPuzzles = (numbersForPuzzles * 10) + number;
             }
+
             var digitsForPuzzles = GetDigits(numbersForPuzzles);
             _digits = digitsForPuzzles;
 
@@ -124,19 +177,14 @@ namespace ER_NET.Server
             {
                 case "AnalogPuzzle":
                     return _digits[0];
-                    break;
                 case "DigitalPuzzle":
                     return _digits[1];
-                    break;
                 case "SoftwarePuzzle":
                     return _digits[2];
-                    break;
                 case "FecPuzzle":
                     return _digits[3];
-                    break;
                 default:
                     return -1;
-                    break;
             }
         }
 
@@ -217,6 +265,11 @@ namespace ER_NET.Server
                 await _communicationSender.SendMessageAsync(message.ToBytes(), device.IpAddress,
                     CommunicationPorts.CommunicationPort);
             }
+
+            _timer.Stop();
+            _timeLeft = TimeSpan.FromMinutes(10);
+            
+            RaiseTimerTickEvent();
             RaiseResetEvent();
         }
 

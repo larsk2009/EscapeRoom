@@ -16,5 +16,15 @@ namespace ControlUnit_webserver.Hubs
         {
             ErNetServerEngine.Instance.ResetDevices();
         }
+
+        public void StartTimer()
+        {
+            ErNetServerEngine.Instance.StartTimer();
+        }
+
+        public void StopTimer()
+        {
+            ErNetServerEngine.Instance.StopTimer();
+        }
     }
 }

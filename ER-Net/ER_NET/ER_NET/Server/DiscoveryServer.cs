@@ -53,7 +53,7 @@ namespace ER_NET.Server
             });
         }
 
-        public async void DiscoveryAcknowledgeReceived(Message message, IPAddress ipAddress)
+        public void DiscoveryAcknowledgeReceived(Message message, IPAddress ipAddress)
         {
             if (message.MessageType == "DiscoveryAcknowledge")
             {

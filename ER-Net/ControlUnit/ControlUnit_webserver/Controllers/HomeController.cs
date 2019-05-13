@@ -29,11 +29,23 @@ namespace ControlUnit_webserver.Controllers
                 _hubContext.Clients.All.SendAsync("SolutionChanged", ErNetServerEngine.Instance.Solution);
                 _hubContext.Clients.All.SendAsync("AddDevice", ErNetServerEngine.Instance.Devices);
             };
+
+            ErNetServerEngine.Instance.OnTimerTick += (sender, args) =>
+            {
+                _hubContext.Clients.All.SendAsync("TimerUpdate", ErNetServerEngine.Instance.TimeLeft);
+            };
         }
         
         public IActionResult Index()
         {
-            return View();
+            var viewModel = new ControlPageViewModel
+            {
+                Status = "Success",
+                PlayTime = ErNetServerEngine.Instance.TimeLeft,
+                Devices = ErNetServerEngine.Instance.Devices,
+                Solution = ErNetServerEngine.Instance.Solution
+            };
+            return View(viewModel);
         }
 
         public IActionResult About()
