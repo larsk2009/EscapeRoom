@@ -1,9 +1,7 @@
-using System;
 using ER_NET.Shared;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Xunit;
 
-namespace PuzzleClientTests
+namespace ER_NET_tests
 {
     public class DiscoveryMessageTests
     {
@@ -35,6 +33,19 @@ namespace PuzzleClientTests
             };
             var json = message.ToJsonString();
             Assert.True(json == $"ER-NET\n{{\"Name\":\"{message.Name}\",\"MessageType\":\"DiscoveryAcknowledge\",\"Value\":null}}");
+        }
+
+        [Fact]
+        public void ToStringTest()
+        {
+            var message = new Message
+            {
+                Name="testPuzzle",
+                MessageType = "DiscoveryAcknowledge",
+                Value = "testValue"
+            };
+            var text = message.ToString();
+            Assert.True(text == $"ER-NET\n{{\"Name\":\"{message.Name}\",\"MessageType\":\"DiscoveryAcknowledge\",\"Value\":\"testValue\"}}");
         }
     }
 }

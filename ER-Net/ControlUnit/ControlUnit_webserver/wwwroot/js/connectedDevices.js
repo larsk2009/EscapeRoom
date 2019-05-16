@@ -6,8 +6,21 @@ connection.on("AddDevice", function (devices) {
     var list = document.getElementById("devicesList");
     list.innerHTML = "";
     for(var i = 0; i < devices.length; i++) {
+        var device = devices[i];
+        
         var li = document.createElement("li");
-        li.textContent = devices[i];
+        var NameParagraph = document.createElement("p");
+        var NumberParagraph = document.createElement("p");
+        
+        NameParagraph.className = "deviceName";
+        NumberParagraph.className = "displayNumber"
+        
+        var splits = device.split("\t");
+        NameParagraph.textContent = splits[0];
+        NumberParagraph.textContent = splits[1];
+        
+        li.appendChild(NameParagraph);
+        li.appendChild(NumberParagraph);
         list.appendChild(li);
     }
 });

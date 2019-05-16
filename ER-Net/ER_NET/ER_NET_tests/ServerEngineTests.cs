@@ -26,10 +26,10 @@ namespace ER_NET_tests
             parser.RaiseTcpEvent(eventArgs);
 
             Thread.Sleep(TimeSpan.FromSeconds(5));
-            
+
             Assert.True(engine.IsDeviceConnected(name));
         }
-        
+
         [Fact]
         void DeviceTimeOutTest()
         {
@@ -81,7 +81,7 @@ namespace ER_NET_tests
                 parser.RaiseTcpEvent(eventArgs);
                 Thread.Sleep(TimeSpan.FromSeconds(3));
             }
-            
+
             Assert.True(engine.IsDeviceConnected(name));
         }
 
@@ -102,7 +102,7 @@ namespace ER_NET_tests
         }
 
         [Fact]
-        void GenerateSolutionTest()
+        void CalculateSolutionTest()
         {
             var parser = new MockCommunicationParser();
             var server = new MockDiscoveryServer();
@@ -113,6 +113,36 @@ namespace ER_NET_tests
             Assert.True(solution == 96822);
             solution = engine.CalculateSolution(1, 1, 1, 1);
             Assert.True(solution == 10750);
+        }
+
+        [Fact]
+        void GetDisplayNumberByNameTest()
+        {
+            var parser = new MockCommunicationParser();
+            var server = new MockDiscoveryServer();
+            var tcpSender = new MockCommunicationSender();
+            var engine = new ErNetServerEngine(parser, server, tcpSender);
+
+            var solution = engine.GenerateNewSolution();
+            var analogPuzzle = engine.GetDisplayNumberByName("AnalogPuzzle");
+            var digigtalPuzzle = engine.GetDisplayNumberByName("DigitalPuzzle");
+            var softwarePuzzle = engine.GetDisplayNumberByName("SoftwarePuzzle");
+            var fecPuzzle = engine.GetDisplayNumberByName("FecPuzzle");
+
+            var calculatedSolution = engine.CalculateSolution(analogPuzzle, digigtalPuzzle, softwarePuzzle, fecPuzzle);
+
+            Assert.True(solution == calculatedSolution);
+        }
+
+        [Fact]
+        void GetDisplayNumberInvalidInputTest()
+        {
+            var parser = new MockCommunicationParser();
+            var server = new MockDiscoveryServer();
+            var tcpSender = new MockCommunicationSender();
+            var engine = new ErNetServerEngine(parser, server, tcpSender);
+
+            Assert.True(engine.GetDisplayNumberByName("test") == -1);
         }
     }
 }

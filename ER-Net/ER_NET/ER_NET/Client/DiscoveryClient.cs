@@ -8,9 +8,6 @@ namespace ER_NET.Client
 {
     public static class DiscoveryClient
     {
-        private const int DiscoveryPort = 46666;
-        private const int ResponsePort = 46667;
-
         private static string _name;
 
         public static bool IsMuted { get; set; } = false;
@@ -19,11 +16,11 @@ namespace ER_NET.Client
         {
             _name = name;
             Console.Write("Listening on port ");
-            Console.WriteLine(DiscoveryPort);
+            Console.WriteLine(CommunicationPorts.CommunicationPort);
 
             Task.Run(async () =>
             {
-                using (var udpClient = new UdpClient(DiscoveryPort))
+                using (var udpClient = new UdpClient((int) CommunicationPorts.CommunicationPort))
                 {
                     while (true)
                     {
@@ -45,7 +42,7 @@ namespace ER_NET.Client
                             using (var tcpClient = new TcpClient())
                             {
                                 //Try to connect to the control unit. 
-                                if (tcpClient.ConnectAsync(address.ToString(), ResponsePort).Wait(1000))
+                                if (tcpClient.ConnectAsync(address.ToString(), (int)CommunicationPorts.CommunicationPort).Wait(1000))
                                 {
                                     //This only happens when the connection was established with the control unit
                                     using (var stream = tcpClient.GetStream())

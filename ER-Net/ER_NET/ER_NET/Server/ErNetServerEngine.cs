@@ -128,8 +128,6 @@ namespace ER_NET.Server
 
         public void StartTimer()
         {
-            ResetDevices();
-            _timeLeft = TimeSpan.FromMinutes(10);
             _timer.Start();
         }
 
@@ -147,6 +145,10 @@ namespace ER_NET.Server
             return false;
         }
 
+        /// <summary>
+        /// Generate a new solution for the Escape Room
+        /// </summary>
+        /// <returns>The solution</returns>
         public int GenerateNewSolution()
         {
             int numbersForPuzzles = 0;
