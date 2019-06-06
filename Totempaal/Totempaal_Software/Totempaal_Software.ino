@@ -60,8 +60,8 @@ char hexaKeys[ROWS][COLS] = {
   {'*', '0', '#'}
 };
 
-byte rowPins[ROWS] = {25, 26, 27, 28}; // Grey, Yellow, Purple, Green
-byte colPins[COLS] = {22, 23, 24}; //Green, Blue, Yellow
+byte rowPins[ROWS] = {23, 25, 27, 29}; // Blue, Yellow, Orange, White
+byte colPins[COLS] = {22, 24, 26}; //Orange, Blue, White
 
 Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
 
@@ -80,15 +80,15 @@ void setup() {
   pinMode(Magnet_Switch, OUTPUT);
   digitalWrite(Magnet_Switch, HIGH);
   Serial.begin(9600);
-  erNet.Setup();
+  //erNet.Setup();
   cli();//stop interrupts
 
-//set timer1 interrupt at 70Hz
+//set timer1 interrupt at 285Hz
   TCCR1A = 0;// set entire TCCR1A register to 0
   TCCR1B = 0;// same for TCCR1B
   TCNT1  = 0;//initialize counter value to 0
   // set compare match register for 1hz increments
-  OCR1A = 28270;// = (16*10^6) / (70*8) - 1 (must be <65536)
+  OCR1A = 7000;// = (16*10^6) / (285*8) - 1 (must be <65536)
   // turn on CTC mode
   TCCR1B |= (1 << WGM12);
   // Set CS10 and CS12 bits for 8 prescaler
@@ -297,12 +297,6 @@ void ControlDisplays(int Display)
 }
 
 ISR(TIMER1_COMPA_vect) { //change the 0 to 1 for timer1 and 2 for timer2
-erNet.Loop();
-
-}
-void loop()
-{
-  
   NumbMem();
  delay(1);
   ChangeNumb(NumberOnDisplay[i]);
@@ -312,6 +306,12 @@ void loop()
     i = 0;
   }
 
+}
+void loop()
+{
+  
+
+erNet.Loop();
   if (Enter == HIGH) {
     Compare();
   }
