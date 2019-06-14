@@ -1,6 +1,4 @@
 using System;
-using System.Reflection.PortableExecutable;
-using System.Threading;
 
 namespace ER_NET.Shared
 {

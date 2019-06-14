@@ -8,6 +8,21 @@ namespace ER_NET.Shared
 {
     public class UdpParser : ICommunicationParser
     {
+        public static UdpParser Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new UdpParser();
+                }
+
+                return _instance;
+            }
+        }
+
+        private static UdpParser _instance = null;
+
         public void Start()
         {
             Task.Run(async () =>

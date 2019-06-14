@@ -17,7 +17,10 @@ namespace ER_NET.Client
         
         public event EventHandler OnReset;
 
-        public ErNetVariables Variables;
+        private ErNetVariables Variables;
+
+        private ErNetClientEngine _instance = null;
+        public ErNetClientEngine Instance => _instance;
 
         /// <summary>
         /// Preferably use the public Instance for the client. The public constructor is used in tests
@@ -31,6 +34,8 @@ namespace ER_NET.Client
             parser.Start();
             
             Variables = new ErNetVariables(_sender);
+
+            _instance = this;
         }
 
         #region GetVariables
