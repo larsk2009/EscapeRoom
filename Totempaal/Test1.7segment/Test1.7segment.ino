@@ -36,7 +36,7 @@ void loop() {
         digitalWrite(Segment_F, HIGH);
         digitalWrite(Segment_G, LOW);
         digitalWrite(Segment_D, HIGH);
-        digitalWrite(Segment_7, HIGH);
+        digitalWrite(Segment_C, HIGH);
         break;
       case 1:
         digitalWrite(Segment_B, HIGH);
@@ -46,7 +46,7 @@ void loop() {
         digitalWrite(Segment_F, LOW);
         digitalWrite(Segment_G, LOW);
         digitalWrite(Segment_D, LOW);
-        digitalWrite(Segment_7, HIGH);
+        digitalWrite(Segment_C, HIGH);
         break;
       case 2:
         digitalWrite(Segment_B, HIGH);
@@ -56,7 +56,7 @@ void loop() {
         digitalWrite(Segment_F, LOW);
         digitalWrite(Segment_G, HIGH);
         digitalWrite(Segment_D, HIGH);
-        digitalWrite(Segment_7, LOW);
+        digitalWrite(Segment_C, LOW);
         break;
       case 3:
         digitalWrite(Segment_B, HIGH);
@@ -66,7 +66,7 @@ void loop() {
         digitalWrite(Segment_F, LOW);
         digitalWrite(Segment_G, HIGH);
         digitalWrite(Segment_D, HIGH);
-        digitalWrite(Segment_7, HIGH);
+        digitalWrite(Segment_C, HIGH);
         break;
       case 4:
         digitalWrite(Segment_B, HIGH);
@@ -76,7 +76,7 @@ void loop() {
         digitalWrite(Segment_F, HIGH);
         digitalWrite(Segment_G, HIGH);
         digitalWrite(Segment_D, LOW);
-        digitalWrite(Segment_7, HIGH);
+        digitalWrite(Segment_C, HIGH);
         break;
       case 5:
         digitalWrite(Segment_B, LOW);
@@ -86,7 +86,7 @@ void loop() {
         digitalWrite(Segment_F, HIGH);
         digitalWrite(Segment_G, HIGH);
         digitalWrite(Segment_D, HIGH);
-        digitalWrite(Segment_7, HIGH);
+        digitalWrite(Segment_C, HIGH);
         break;
       case 6:
         digitalWrite(Segment_B, LOW);
@@ -96,7 +96,7 @@ void loop() {
         digitalWrite(Segment_F, HIGH);
         digitalWrite(Segment_G, HIGH);
         digitalWrite(Segment_D, HIGH);
-        digitalWrite(Segment_7, HIGH);
+        digitalWrite(Segment_C, HIGH);
         break;
       case 7:
         digitalWrite(Segment_B, HIGH);
@@ -106,7 +106,7 @@ void loop() {
         digitalWrite(Segment_F, LOW);
         digitalWrite(Segment_G, LOW);
         digitalWrite(Segment_D, LOW);
-        digitalWrite(Segment_7, HIGH);
+        digitalWrite(Segment_C, HIGH);
         break;
       case 8:
         digitalWrite(Segment_B, HIGH);
@@ -116,7 +116,7 @@ void loop() {
         digitalWrite(Segment_F, HIGH);
         digitalWrite(Segment_G, HIGH);
         digitalWrite(Segment_D, HIGH);
-        digitalWrite(Segment_7, HIGH);
+        digitalWrite(Segment_C, HIGH);
         break;
       case 9:
         digitalWrite(Segment_B, HIGH);
@@ -126,7 +126,7 @@ void loop() {
         digitalWrite(Segment_F, HIGH);
         digitalWrite(Segment_G, HIGH);
         digitalWrite(Segment_D, HIGH);
-        digitalWrite(Segment_7, HIGH);
+        digitalWrite(Segment_C, HIGH);
         break;
        case 10:
         digitalWrite(Segment_B, LOW);
@@ -136,7 +136,7 @@ void loop() {
         digitalWrite(Segment_F, LOW);
         digitalWrite(Segment_G, LOW);
         digitalWrite(Segment_D, LOW);
-        digitalWrite(Segment_7, LOW);
+        digitalWrite(Segment_C, LOW);
         break;
     }
     delay(500);
