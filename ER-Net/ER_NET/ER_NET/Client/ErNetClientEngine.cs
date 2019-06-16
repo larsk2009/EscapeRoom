@@ -40,8 +40,8 @@ namespace ER_NET.Client
 
         #region GetVariables
         
-        public async Task<int> GetDisplayNumber() => await Variables.GetDisplayNumber(_puzzleName, _controlunitIP);
-        public async Task<int> GetSolution() => await Variables.GetSolution(_puzzleName, _controlunitIP);
+        public async Task<int> GetDisplayNumberAsync() => await Variables.GetDisplayNumberAsync(_puzzleName, _controlunitIP);
+        public async Task<int> GetSolutionAsync() => await Variables.GetSolutionAsync(_puzzleName, _controlunitIP);
         
         #endregion
 

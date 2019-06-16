@@ -10,7 +10,7 @@
         <Description>Package to use ER-Net with dotnet core</Description>
         <PackageId>ER_NET</PackageId>
         <PackageReleaseNotes>Small bug fix</PackageReleaseNotes>
-        <Version>1.0.7106.21407</Version>
+        <Version>1.2.0.1</Version>
     </PropertyGroup>
 
     <ItemGroup>

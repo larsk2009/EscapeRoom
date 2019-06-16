@@ -5,7 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ER_NET" Version="1.0.7104.41968" />
+        <PackageReference Include="ER_NET" Version="1.2.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
 

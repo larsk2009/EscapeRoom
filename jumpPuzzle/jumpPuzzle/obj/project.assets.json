@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "ER_NET/1.0.7104.41968": {
+      "ER_NET/1.2.0.1": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "12.0.1"
@@ -4349,14 +4349,14 @@
     }
   },
   "libraries": {
-    "ER_NET/1.0.7104.41968": {
-      "sha512": "QPjlABQH4Ql4k/P808k7ObnhpXuP6o32Dnp1kh08SkiV83G6UGoastNHjjHzK8+OLYI4Nu+pquZtfVqd0UOWpA==",
+    "ER_NET/1.2.0.1": {
+      "sha512": "Vl53KOdkY7turaivJQ8wqSUY9nZwMdtLGwJocC77T5UKQl//9FV6KgQFGmEQ9bcq0V+G6PKXOySeG5LFCCRzcw==",
       "type": "package",
-      "path": "er_net/1.0.7104.41968",
+      "path": "er_net/1.2.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "er_net.1.0.7104.41968.nupkg.sha512",
+        "er_net.1.2.0.1.nupkg.sha512",
         "er_net.nuspec",
         "lib/netcoreapp2.1/ER_NET.dll"
       ]
@@ -11822,7 +11822,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "ER_NET >= 1.0.7104.41968",
+      "ER_NET >= 1.2.0.1",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.NETCore.App >= 2.1.0"
     ]
@@ -11873,7 +11873,7 @@
         "dependencies": {
           "ER_NET": {
             "target": "Package",
-            "version": "[1.0.7104.41968, )"
+            "version": "[1.2.0.1, )"
           },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",

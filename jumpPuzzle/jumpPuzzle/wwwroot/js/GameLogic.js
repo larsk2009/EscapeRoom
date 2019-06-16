@@ -27,7 +27,7 @@ const rectangle_width = 500;
 const rectangle_height = 400;
 
 var tree = new Tree(CommandEnum.CODE);
-var currentPlayNode = tree._root; //Note that the game is currently at
+var currentPlayNode = tree._root; //Node that the game is currently at
 var hasNewTree = false; //When the three has been (re)build
 
 var treeDepth = 0; //How deep into the tree we are

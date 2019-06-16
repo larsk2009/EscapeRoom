@@ -44,7 +44,7 @@ namespace ER_NET.Client
             return true;
         }
 
-        public async Task<int> GetDisplayNumber(string puzzleName, IPAddress controlunitIP)
+        public async Task<int> GetDisplayNumberAsync(string puzzleName, IPAddress controlunitIP)
         {
             var message = new Message
             {
@@ -54,7 +54,7 @@ namespace ER_NET.Client
 
             await _sender.SendMessageAsync(message.ToBytes(), controlunitIP, CommunicationPorts.CommunicationPort);
 
-            if (await CheckQueue("DisplayNumber"))
+            if (await CheckQueueAsync("DisplayNumber"))
             {
                 var receivedMessage = _receivedMessages.Dequeue();
                 int displayNumber;
@@ -66,7 +66,7 @@ namespace ER_NET.Client
             return -1;
         }
 
-        public async Task<int> GetSolution(string puzzleName, IPAddress controlunitIP)
+        public async Task<int> GetSolutionAsync(string puzzleName, IPAddress controlunitIP)
         {
             var message = new Message
             {
@@ -76,7 +76,7 @@ namespace ER_NET.Client
 
             await _sender.SendMessageAsync(message.ToBytes(), controlunitIP, CommunicationPorts.CommunicationPort);
 
-            if (await CheckQueue("Solution"))
+            if (await CheckQueueAsync("Solution"))
             {
                 var receivedMessage = _receivedMessages.Dequeue();
                 int solution;
@@ -89,7 +89,7 @@ namespace ER_NET.Client
             return -1;
         }
 
-        private async Task<bool> CheckQueue(string messageType)
+        private async Task<bool> CheckQueueAsync(string messageType)
         {
             const int timeout = 3000;
             var tokenSource = new CancellationTokenSource();

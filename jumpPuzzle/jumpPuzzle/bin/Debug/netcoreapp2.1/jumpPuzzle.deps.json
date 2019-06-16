@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "0b7b1547de28984c8ecd2e7d6ed6052b8e77d2bc"
+    "signature": "5624398f4f21111ef5ef8568ddc96a161bf444e8"
   },
   "compilationOptions": {
     "defines": [
@@ -24,7 +24,7 @@
     ".NETCoreApp,Version=v2.1": {
       "jumpPuzzle/1.0.0": {
         "dependencies": {
-          "ER_NET": "1.0.7104.41968",
+          "ER_NET": "1.2.0.1",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0"
         },
@@ -35,14 +35,14 @@
           "jumpPuzzle.dll": {}
         }
       },
-      "ER_NET/1.0.7104.41968": {
+      "ER_NET/1.2.0.1": {
         "dependencies": {
           "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
           "lib/netcoreapp2.1/ER_NET.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+            "assemblyVersion": "1.0.7106.21407",
+            "fileVersion": "1.0.7106.21407"
           }
         },
         "compile": {
@@ -3186,12 +3186,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ER_NET/1.0.7104.41968": {
+    "ER_NET/1.2.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-QPjlABQH4Ql4k/P808k7ObnhpXuP6o32Dnp1kh08SkiV83G6UGoastNHjjHzK8+OLYI4Nu+pquZtfVqd0UOWpA==",
-      "path": "er_net/1.0.7104.41968",
-      "hashPath": "er_net.1.0.7104.41968.nupkg.sha512"
+      "sha512": "sha512-Vl53KOdkY7turaivJQ8wqSUY9nZwMdtLGwJocC77T5UKQl//9FV6KgQFGmEQ9bcq0V+G6PKXOySeG5LFCCRzcw==",
+      "path": "er_net/1.2.0.1",
+      "hashPath": "er_net.1.2.0.1.nupkg.sha512"
     },
     "Newtonsoft.Json/12.0.1": {
       "type": "package",
