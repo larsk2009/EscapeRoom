@@ -19,8 +19,8 @@ namespace ER_NET.Client
 
         private ErNetVariables Variables;
 
-        private ErNetClientEngine _instance = null;
-        public ErNetClientEngine Instance => _instance;
+        private static ErNetClientEngine _instance = null;
+        public static ErNetClientEngine Instance => _instance;
 
         /// <summary>
         /// Preferably use the public Instance for the client. The public constructor is used in tests
