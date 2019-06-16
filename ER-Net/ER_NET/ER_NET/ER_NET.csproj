@@ -9,8 +9,8 @@
         <Product>ER_NET</Product>
         <Description>Package to use ER-Net with dotnet core</Description>
         <PackageId>ER_NET</PackageId>
-        <PackageReleaseNotes>Added Instance field to ErnetClient and to UdpParser</PackageReleaseNotes>
-        <Version>1.0.7104.41968</Version>
+        <PackageReleaseNotes>Small bug fix</PackageReleaseNotes>
+        <Version>1.0.7106.21407</Version>
     </PropertyGroup>
 
     <ItemGroup>

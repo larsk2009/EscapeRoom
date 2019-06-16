@@ -1,8 +1,8 @@
-﻿<Project>
+<Project>
   <PropertyGroup>
    <Copyright>copyright © Lars Koopmans</Copyright>
    <Product>ER-NET</Product>
-   <Company></Company>
+   <Company />
    <Authors>Lars Koopmans</Authors>
    <Owners>Lars Koopmans</Owners>
 </PropertyGroup>
