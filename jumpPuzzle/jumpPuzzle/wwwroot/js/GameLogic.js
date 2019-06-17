@@ -27,14 +27,17 @@ const rectangle_width = 500;
 const rectangle_height = 400;
 
 var tree = new Tree(CommandEnum.CODE);
-var currentPlayNode = tree._root; //Note that the game is currently at
+var currentPlayNode = tree._root; //Node that the game is currently at
 var hasNewTree = false; //When the three has been (re)build
 
 var treeDepth = 0; //How deep into the tree we are
 var InTreeLocation = []; //Where in the branch of the tree we are
 InTreeLocation.push(0);
 
+var requestingAnimation = true;
+
 Update();
+
 
 function Update() {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -151,12 +154,13 @@ function Update() {
         context.font = "30px Arial";
         context.fillText("YOU LOSE!", canvas.width / 2 - 100, canvas.height / 2 - 100);
     } else {
-        requestAnimationFrame(Update);
+        if (requestingAnimation) {
+            requestAnimationFrame(Update);
+        }
     }
 }
 
 function DecodeInput() {
-    tree = new Tree(CommandEnum.CODE);
     const textArea = document.getElementById("codeArea");
     const text = textArea.value;
     const split = text.split('\n');
@@ -193,7 +197,14 @@ function DecodeInput() {
         }
     }
     currentPlayNode = tree._root;
+    treeDepth = 0; 
+    InTreeLocation = [];
+    InTreeLocation.push(0);
+
     hasNewTree = true;
+    requestingAnimation = true;
+    Update.jumpAmount = undefined;
+
     Update();
 }
 

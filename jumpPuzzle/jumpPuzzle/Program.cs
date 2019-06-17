@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore;
+﻿using ER_NET.Client;
+using ER_NET.Shared;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace jumpPuzzle
@@ -7,6 +9,8 @@ namespace jumpPuzzle
     {
         public static void Main(string[] args)
         {
+            var engine = new ErNetClientEngine("Software Puzzle", UdpSender.Instance, new UdpParser());
+
             CreateWebHostBuilder(args).Build().Run();
         }
 

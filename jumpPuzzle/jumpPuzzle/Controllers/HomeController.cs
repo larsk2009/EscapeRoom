@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using System.Threading.Tasks;
+using ER_NET.Client;
 using jumpPuzzle.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,6 +36,19 @@ namespace jumpPuzzle.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
+        }
+
+        public async Task<IActionResult> GetDisplayNumber()
+        {
+            if (ErNetClientEngine.Instance != null)
+            {
+                var instance = ErNetClientEngine.Instance;
+                var displayNumber = await instance.GetDisplayNumber();
+
+                return Ok(displayNumber);
+            }
+
+            return BadRequest();
         }
     }
 }

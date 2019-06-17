@@ -20,7 +20,7 @@ namespace AspNetCore
         #pragma warning disable 1998
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
-#line 1 "D:\Users\larsk\Documents\BeCreative software\EscapeRoom\jumpPuzzle\jumpPuzzle\Views\Home\Index.cshtml"
+#line 1 "F:\users\lars\documents\GitHub\EscapeRoom\jumpPuzzle\jumpPuzzle\Views\Home\Index.cshtml"
   
     ViewData["Title"] = "Home Page";
 

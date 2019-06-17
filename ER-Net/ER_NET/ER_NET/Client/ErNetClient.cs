@@ -17,7 +17,10 @@ namespace ER_NET.Client
         
         public event EventHandler OnReset;
 
-        public ErNetVariables Variables;
+        private ErNetVariables Variables;
+
+        private static ErNetClientEngine _instance = null;
+        public static ErNetClientEngine Instance => _instance;
 
         /// <summary>
         /// Preferably use the public Instance for the client. The public constructor is used in tests
@@ -31,12 +34,14 @@ namespace ER_NET.Client
             parser.Start();
             
             Variables = new ErNetVariables(_sender);
+
+            _instance = this;
         }
 
         #region GetVariables
         
-        public async Task<int> GetDisplayNumber() => await Variables.GetDisplayNumber(_puzzleName, _controlunitIP);
-        public async Task<int> GetSolution() => await Variables.GetSolution(_puzzleName, _controlunitIP);
+        public async Task<int> GetDisplayNumberAsync() => await Variables.GetDisplayNumberAsync(_puzzleName, _controlunitIP);
+        public async Task<int> GetSolutionAsync() => await Variables.GetSolutionAsync(_puzzleName, _controlunitIP);
         
         #endregion
 
