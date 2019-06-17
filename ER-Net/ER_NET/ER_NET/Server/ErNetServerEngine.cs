@@ -38,7 +38,15 @@ namespace ER_NET.Server
                 var devices = new List<string>();
                 foreach (var key in _connectedDevices.Keys)
                 {
-                    devices.Add(key + "\t Nummer: " + GetDisplayNumberByName(key));
+                    var displayNumber = GetDisplayNumberByName(key);
+                    if (displayNumber == -1)
+                    {
+                        devices.Add(key + "\t ");
+                    }
+                    else
+                    {
+                        devices.Add(key + "\t Nummer: " + displayNumber);
+                    }
                 }
 
                 return devices;

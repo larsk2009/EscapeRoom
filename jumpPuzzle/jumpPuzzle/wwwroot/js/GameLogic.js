@@ -126,6 +126,18 @@ function Update() {
 
     context.drawImage(img, x, y, img.width * 1.55, img.height * 1.55);
 
+       
+    context.fillStyle = "#ff1700";
+    context.strokeStyle = "#000000";
+    context.fillRect(canvas.width - 205, canvas.height/2 - 150, 200, 100);
+    context.strokeRect(canvas.width - 205, canvas.height/2 - 150, 200, 100);
+
+    context.fillStyle = "#000000";
+    context.font = "30px Arial";
+    context.fillText("FINISH!", canvas.width- 150, canvas.height / 2 - 90);
+    
+    context.strokeRect(canvas.width - 5, canvas.height/2-150, 1, 200);
+
     SelectNextSprite();
 
     if (CheckWinCondition()) {

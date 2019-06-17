@@ -11,7 +11,7 @@ namespace ErNetClient
         {
             var sender = UdpSender.Instance;
             var parser = new UdpParser();
-            ErNetClientEngine client = new ErNetClientEngine("SoftwarePuzzle", sender, parser);
+            ER_NET.Client.ErNetClient client = new ER_NET.Client.ErNetClient("SoftwarePuzzle", sender, parser);
 
             string input;
             do

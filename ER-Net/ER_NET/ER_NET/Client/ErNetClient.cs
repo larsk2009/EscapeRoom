@@ -7,7 +7,7 @@ using ER_NET.Shared;
 
 namespace ER_NET.Client
 {
-    public class ErNetClientEngine
+    public class ErNetClient
     {
         private ICommunicationSender _sender;
         private ICommunicationParser _parser;
@@ -22,7 +22,7 @@ namespace ER_NET.Client
         /// <summary>
         /// Preferably use the public Instance for the client. The public constructor is used in tests
         /// </summary>
-        public ErNetClientEngine(string PuzzleName, ICommunicationSender sender, ICommunicationParser parser)
+        public ErNetClient(string PuzzleName, ICommunicationSender sender, ICommunicationParser parser)
         {
             _puzzleName = PuzzleName;
             _parser = parser;
