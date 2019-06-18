@@ -12,7 +12,7 @@ namespace ControlUnit_webserver
     {
         public static void Main(string[] args)
         {
-            using (var controller = new PinController(new FileIo(), new SysfsPinMapper()))
+            /*using (var controller = new PinController(new FileIo(), new SysfsPinMapper()))
             {
                 var pin = controller.GetGpioPin("PA12");
 
@@ -28,7 +28,7 @@ namespace ControlUnit_webserver
                     pin.PinValue = false;
                     Thread.Sleep(dimTimeInMilliseconds);
                 }
-            }
+            }*/
             
             CreateWebHostBuilder(args).Build().Run();
         }

@@ -60,6 +60,7 @@ namespace ER_NET.Server
         public event EventHandler<EventArgs> OnDevicesListChanged;
         public event EventHandler<EventArgs> OnReset;
         public event EventHandler<EventArgs> OnTimerTick;
+        public event EventHandler<EventArgs> OnStatusChanged;
 
         #endregion
 
@@ -80,6 +81,7 @@ namespace ER_NET.Server
         private System.Timers.Timer _timer;
         private TimeSpan _timeLeft;
         public string TimeLeft => _timeLeft.ToString(@"mm\:ss");
+        public string Status;
 
         public ErNetServerEngine(ICommunicationParser parser, IDiscoveryServer discoveryServer,
             ICommunicationSender communicationSender)
@@ -97,6 +99,12 @@ namespace ER_NET.Server
             {
                 _timeLeft = _timeLeft.Subtract(TimeSpan.FromSeconds(1));
                 RaiseTimerTickEvent();
+                if (_timeLeft.TotalMilliseconds == 0)
+                {
+                    _timer.Stop();
+                    Status = "Failed";
+                    RaiseStatusChangedEvent();
+                }
             };
             _timer.Enabled = false;
             _timeLeft = TimeSpan.FromMinutes(10);
@@ -113,6 +121,8 @@ namespace ER_NET.Server
             GenerateNewSolution();
             _parser.Start();
             _parser.OnCommunicationEvent += OnParserOnOnCommunicationEvent;
+
+            Status = "Idle";
         }
 
         #region RaiseEvents
@@ -132,16 +142,25 @@ namespace ER_NET.Server
             OnTimerTick?.Invoke(this, new EventArgs());
         }
 
+        protected virtual void RaiseStatusChangedEvent()
+        {
+            OnStatusChanged?.Invoke(this, new EventArgs());
+        }
+
         #endregion
 
         public void StartTimer()
         {
             _timer.Start();
+            Status = "Started";
+            RaiseStatusChangedEvent();
         }
 
         public void StopTimer()
         {
             _timer.Stop();
+            Status = "Stopped";
+            RaiseStatusChangedEvent();
         }
         public bool SetPuzzles(List<string> puzzles)
         {
@@ -277,10 +296,12 @@ namespace ER_NET.Server
             }
 
             _timer.Stop();
-            _timeLeft = TimeSpan.FromMinutes(10);
-            
+            _timeLeft = TimeSpan.FromSeconds(10);
+
+            Status = "Idle";
             RaiseTimerTickEvent();
             RaiseResetEvent();
+            RaiseStatusChangedEvent();
         }
 
         public bool IsDeviceConnected(string name)

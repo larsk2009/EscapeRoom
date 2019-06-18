@@ -11,7 +11,7 @@ namespace ErNetClient
         {
             var sender = UdpSender.Instance;
             var parser = new UdpParser();
-            ER_NET.Client.ErNetClient client = new ER_NET.Client.ErNetClient("SoftwarePuzzle", sender, parser);
+            ER_NET.Client.ErNetClientEngine clientEngine = new ER_NET.Client.ErNetClientEngine("SoftwarePuzzle", sender, parser);
 
             string input;
             do
@@ -23,7 +23,7 @@ namespace ErNetClient
                 {
                     Task.Run(async () =>
                     {
-                        var displayNumber = await client.GetDisplayNumber();
+                        var displayNumber = await clientEngine.GetDisplayNumberAsync();
                         Console.WriteLine(displayNumber.ToString());
                         Console.Write("> ");
                     });
@@ -31,7 +31,7 @@ namespace ErNetClient
                 {
                     Task.Run(async () =>
                     {
-                        var solution = await client.GetSolution();
+                        var solution = await clientEngine.GetSolutionAsync();
                         Console.WriteLine(solution.ToString());
                         Console.Write("> ");
                     });

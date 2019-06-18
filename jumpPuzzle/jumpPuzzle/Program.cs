@@ -9,7 +9,7 @@ namespace jumpPuzzle
     {
         public static void Main(string[] args)
         {
-            var engine = new ErNetClientEngine("Software Puzzle", UdpSender.Instance, new UdpParser());
+            var engine = new ErNetClientEngine("SoftwarePuzzle", UdpSender.Instance, new UdpParser());
 
             CreateWebHostBuilder(args).Build().Run();
         }
