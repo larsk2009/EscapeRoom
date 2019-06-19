@@ -285,16 +285,13 @@ void RandomizeStartValues()
 	for (int i; i < 6; i++)
 	{
 		StartValues[i] = random() % 2;
-		if (StartValues[i] == 0) {
-			sr.set(2*i, HIGH);
-			sr.set(2*i+1, LOW);
-		}
-		else
-		{
-			sr.set(2 * i, LOW);
-			sr.set(2 * i + 1, HIGH);
-		}
 	}
+	wires[0].Type  = (WireType)StartValues[0];
+	wires[1].Type  = (WireType)StartValues[1];
+	wires[3].Type  = (WireType)StartValues[2];
+	wires[4].Type  = (WireType)StartValues[3];
+	wires[11].Type = (WireType)StartValues[4];
+	wires[6].Type  = (WireType)StartValues[5];
 }
 
 void RandomSSNumber()
@@ -374,7 +371,7 @@ void RandomSSNumber()
 void setup()
 {
 	Serial.begin(115200);
-	randomSeed(analogRead(0));
+	randomSeed(analogRead(1));
 	delay(10);
 
   pinMode(PinA, OUTPUT);
@@ -384,29 +381,8 @@ void setup()
   pinMode(ClearDisplay, OUTPUT);
 
 
-  //sr.set(0, HIGH);
-  //sr.set(2, HIGH);
-  //sr.set(4, HIGH);
-  //sr.set(6, HIGH);
-  //sr.set(8, HIGH);
-  //sr.set(10, HIGH);
-  //sr.set(12, HIGH);
-  //sr.set(16, HIGH);
-  //sr.set(18, HIGH);
-  //sr.set(20, HIGH);
-  //sr.set(22, HIGH);
-  //sr.set(24, HIGH);
-  //sr.set(26, HIGH);
-  //sr.set(28, HIGH);
   sr.setAllLow();
-  //RandomizeStartValues();
-  Serial.print(StartValues[0]);
-  Serial.print(StartValues[1]);
-  Serial.print(StartValues[2]);
-  Serial.print(StartValues[3]);
-  Serial.print(StartValues[4]);
-  Serial.println(StartValues[5]);
-  Serial.println("Setup Done!");
+
 
   //READER 0
   readers[0] = portReader(portReader::AND_GATE);
@@ -496,6 +472,14 @@ void setup()
 	  delay(10);
   }
 
+  RandomizeStartValues();
+  Serial.print(StartValues[0]);
+  Serial.print(StartValues[1]);
+  Serial.print(StartValues[2]);
+  Serial.print(StartValues[3]);
+  Serial.print(StartValues[4]);
+  Serial.println(StartValues[5]);
+  Serial.println("Setup Done!");
 }
 
 void loop()
