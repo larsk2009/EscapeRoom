@@ -1,19 +1,13 @@
 #define LedPin 13
 #define SolenoidPin 12
-#define SegmentC 6
-
-int HandDetection = 600;
-int CoilDetection = 85; //deze waarde hangt heel erg sterk af van de voedingsspanning en moet dus nog even naar gekeken worden
-int HandsPin = A3;
-int CoilPin = A0;
 
 #include "ER_NET.h"
 
-#define BCD_A 32
-#define BCD_B 28
-#define BCD_C 26
-#define BCD_D 30
-#define BCD_CLEAR 34
+#define BCD_A 30
+#define BCD_B 26
+#define BCD_C 24
+#define BCD_D 28
+#define BCD_CLEAR 32
 
 int HandDetection = 700;
 int CoilDetection = 80; //deze waarde hangt heel erg sterk af van de voedingsspanning en moet dus nog even naar gekeken worden
@@ -21,22 +15,27 @@ int HandsPin = A3;
 int CoilPin = A0;
 
 bool NeedNewNumber = true;
+bool hatch_open = false;
 int DisplayNumber = 0;
 
 ErNet erNet;
-
 
 void setup() {
   Serial.begin(115200); //  setup serial
   pinMode(LedPin, OUTPUT); //led
   pinMode(SolenoidPin, OUTPUT); //solenoid
-  erNet.Setup();
+
+  erNet.Setup("FecPuzzle", 0x10, 0x50, 0x22, 0x30, 0xF2, 0xED);
   SetupDisplay();
 }
 
 void loop() {
   HandPuzzle();
-  CoilPuzzle();
+  
+  if (hatch_open == true)
+  {
+    CoilPuzzle();
+  }
 
   erNet.Loop();
   erNet.SetResetCallback(&OnReset);
@@ -48,11 +47,13 @@ void loop() {
 
 void HandPuzzle() {
   int HandsValue = analogRead(HandsPin);  // read the input pin
-  //Serial.println(HandsValue); // debug value
+  //Serial.println(ReadValue); // debug value
   if (HandsValue < HandDetection) {
     //Hand detected
     digitalWrite(LedPin, HIGH);
     digitalWrite(SolenoidPin, HIGH);
+    hatch_open = true;
+    delay(100);
   }
   else
   {
@@ -63,10 +64,12 @@ void HandPuzzle() {
 
 void CoilPuzzle() {
   int CoilValue = analogRead(CoilPin);
-
   if (CoilValue > CoilDetection) { //Coil detected
-    Serial.println(CoilValue);
+    //Serial.println(CoilValue);
+    //zet het 7 segment display aan
+    Serial.println(DisplayNumber);
     ShowNumber(DisplayNumber);
+    digitalWrite(LedPin, HIGH);
   }
 }
 
@@ -75,6 +78,10 @@ void OnReset() {
   Serial.println("RESET RECEIVED");
   digitalWrite(BCD_CLEAR, HIGH);
   NeedNewNumber = true;
+  hatch_open = false;
+  digitalWrite(SolenoidPin, HIGH);
+  delay(10000);
+  digitalWrite(SolenoidPin, LOW);
 }
 
 void SetupDisplay() {
