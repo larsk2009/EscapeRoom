@@ -70,9 +70,22 @@ void portReader::CalculateOutput() {
 				Output->Type = Z;
 			}
 			else {
-				Output->Type = (WireType)!Inputs[0]->Type;
+        switch(Inputs[0]->Type){
+          case H:
+          Output->Type = L;
+          break;
+          case L:
+          Output->Type = H;
+          break;
+          case Z:
+          Output->Type = Z;
+          break;
+        }
 			}
 			break;
+    case portReader::NO_GATE:
+      Output->Type = Z;
+      break;
 		default:
 			break;
 		}

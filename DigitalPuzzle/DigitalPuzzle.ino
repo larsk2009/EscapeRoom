@@ -1,4 +1,4 @@
-﻿#include <ShiftRegister74HC595.h>
+#include <ShiftRegister74HC595.h>
 #include <EEPROM.h>
 #include "rfid1.h"
 #include "portReader.h"
@@ -82,7 +82,7 @@ uchar *ReadRFID(int ReaderSelect)
 			IDStorage[i] = 0; //Set IDStorage to 0 when no card is detected
 		}
     TagForReader[ReaderSelect] = 0;
-		return;
+		return IDStorage;
 	}
 	//Prevent conflict, return the 4 bytes Serial number of the card
 	status = rfid.anticoll(str);
@@ -110,7 +110,7 @@ uchar *ReadRFID(int ReaderSelect)
    3 = NAND; 4 = NOR; 5 = XOR; 6 = NOT; 7 = WIRE;
  *************************************************************/
 int CompareNFC(unsigned char tagID[]) {
-	int gate = 0;
+	int gate = 0; //no gate
 
 	if (tagID[0] == EEPROM.read(0)) {
 		if (tagID[1] == EEPROM.read(1)) {
@@ -365,8 +365,38 @@ void RandomSSNumber()
 }
 
 
-
-
+void calculateReader(int Reader){
+	switch (CompareNFC(ReadRFID(Reader)))
+	{
+		case 0:
+			readers[Reader] = portReader(portReader::NO_GATE);
+		break;
+		case 1:
+			readers[Reader] = portReader(portReader::AND_GATE);
+		break;
+		case 2:
+			readers[Reader] = portReader(portReader::AND_GATE);
+		break;
+		case 3:
+			readers[Reader] = portReader(portReader::OR_GATE);
+		break;
+		case 4:
+			readers[Reader] = portReader(portReader::NAND_GATE);
+		break;
+		case 5:
+			readers[Reader] = portReader(portReader::NOR_GATE);
+		break;
+		case 6:
+			readers[Reader] = portReader(portReader::XOR_GATE);
+		break;
+		case 7:
+			readers[Reader] = portReader(portReader::INVERTER);
+		break;
+		case 8:
+			readers[Reader] = portReader(portReader::WIRE);
+		break;
+	}
+}
 
 void setup()
 {
@@ -385,7 +415,7 @@ void setup()
 
 
   //READER 0
-  readers[0] = portReader(portReader::AND_GATE);
+  readers[0] = portReader(portReader::NO_GATE);
 
   wires[0] = LedStrip(L, 11, 10);
   wires[1] = LedStrip(H, 9, 8);
@@ -396,7 +426,7 @@ void setup()
   readers[0].Output = &wires[2];
 
   //READER 1
-  readers[1] = portReader(portReader::AND_GATE);
+  readers[1] = portReader(portReader::NO_GATE);
 
   wires[3] = LedStrip(H, 7, 6);
   wires[4] = LedStrip(L, 5, 4);
@@ -406,7 +436,7 @@ void setup()
   readers[1].Output = &wires[5];
 
   //READER 2
-  readers[2] = portReader(portReader::WIRE);
+  readers[2] = portReader(portReader::NO_GATE);
 
   wires[6] = LedStrip(H, 1, 0);
   wires[7] = LedStrip(NC, -1, -1);
@@ -416,7 +446,7 @@ void setup()
   readers[2].Output = &wires[8];
 
   //READER 3
-  readers[3] = portReader(portReader::WIRE);
+  readers[3] = portReader(portReader::NO_GATE);
 
   wires[9] = LedStrip(NC, -1, -1);
   wires[10] = LedStrip(Z, 23, 22);
@@ -425,7 +455,7 @@ void setup()
   readers[3].Output = &wires[10];
 
   //READER 4
-  readers[4] = portReader(portReader::AND_GATE);
+  readers[4] = portReader(portReader::NO_GATE);
 
   wires[11] = LedStrip(H, 3, 2);
   wires[12] = LedStrip(Z, 21, 20);
@@ -434,7 +464,7 @@ void setup()
   readers[4].Output = &wires[12];
 
   //READER 5
-  readers[5] = portReader(portReader::AND_GATE);
+  readers[5] = portReader(portReader::NO_GATE);
 
   wires[13] = LedStrip(Z, 27, 26);
   readers[5].Inputs[0] = readers[3].Output;
@@ -442,7 +472,7 @@ void setup()
   readers[5].Output = &wires[13];
 
   //READER 6
-  readers[6] = portReader(portReader::AND_GATE);
+  readers[6] = portReader(portReader::NO_GATE);
 
   wires[14] = LedStrip(Z, 25, 24);
   readers[6].Inputs[0] = readers[4].Output;
@@ -450,7 +480,7 @@ void setup()
   readers[6].Output = &wires[14];
 
   //READER 7
-  readers[7] = portReader(portReader::NAND_GATE);
+  readers[7] = portReader(portReader::NO_GATE);
 
   wires[15] = LedStrip(Z, 29, 28);
   readers[7].Inputs[0] = readers[5].Output;
@@ -486,7 +516,13 @@ void loop()
 {
   ReadSerial();
   //ApplyResults();
-
+  for (int i = 0; i < AMOUNT_OF_READERS; i++){
+	  calculateReader(i);
+    readers[i].CalculateOutput();
+  }
+  for (int i = 0; i < AMOUNT_OF_READERS; i++){
+    readers[i].CalculateOutput();
+  }
   for (int i = 0; i < AMOUNT_OF_WIRES; i++) {
 	  LedStrip strip = wires[i];
 	  if (strip.RedPin == -1 || strip.GreenPin == -1) {
