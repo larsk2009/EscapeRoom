@@ -10,25 +10,18 @@ const int AMOUNT_OF_READERS = 8;
 portReader readers[AMOUNT_OF_READERS];
 LedStrip wires[AMOUNT_OF_WIRES];
 
-
-const int ReaderResultPins[8] = { 38,40,42,44,46,48,50,52 };
-const int StartValuePins[6] = { 2,3,4,5,6,7 };
-
+//7 segment display???
 const int PinA = 31;
 const int PinB = 33;
 const int PinC = 35;
 const int PinD = 37;
 const int ClearDisplay = 39;
 
-int count = 0;
-
 //(number of shift registers, data pin, clock pin, latch pin)
 ShiftRegister74HC595 sr(4, 7, 5, 6);
 RFID1 rfid;      //Create a variable type to read the RFID scanner 
 
 int StartValues[6] = { 1,1,1,1,1,1 };
-bool ReaderResult[8] = { 0,0,0,0,0,0,0,0 };
-bool TagForReader[8] = { 0,0,0,0,0,0,0,0 };
 
 uchar IDStorage[5]; //Array to store your UID of the tag
 
@@ -81,7 +74,6 @@ uchar *ReadRFID(int ReaderSelect)
 		{
 			IDStorage[i] = 0; //Set IDStorage to 0 when no card is detected
 		}
-    TagForReader[ReaderSelect] = 0;
 		return IDStorage;
 	}
 	//Prevent conflict, return the 4 bytes Serial number of the card
@@ -94,7 +86,6 @@ uchar *ReadRFID(int ReaderSelect)
 		Serial.print(": ");
 		rfid.showCardID(IDStorage);//show the card 
 		Serial.println();
-        TagForReader[ReaderSelect] = 1;
 		delay(10);  //delay of 100ms
 		rfid.halt(); //command the card into sleep mode 
 		return IDStorage;
@@ -294,6 +285,7 @@ void RandomizeStartValues()
 	wires[6].Type  = (WireType)StartValues[5];
 }
 
+//waar is deze functie precies voor?
 void RandomSSNumber()
 {
   int RandomNumber = 0;
@@ -423,7 +415,7 @@ void setup()
 
   readers[0].Inputs[0] = &wires[0];
   readers[0].Inputs[1] = &wires[1];
-  readers[0].Output = &wires[2];
+  readers[0].Output    = &wires[2];
 
   //READER 1
   readers[1] = portReader(portReader::NO_GATE);
@@ -433,7 +425,7 @@ void setup()
   wires[5] = LedStrip(Z, 17, 16);
   readers[1].Inputs[0] = &wires[3];
   readers[1].Inputs[1] = &wires[4];
-  readers[1].Output = &wires[5];
+  readers[1].Output    = &wires[5];
 
   //READER 2
   readers[2] = portReader(portReader::NO_GATE);
@@ -443,7 +435,7 @@ void setup()
   wires[8] = LedStrip(Z, 13, 12);
   readers[2].Inputs[0] = &wires[6];
   readers[2].Inputs[1] = &wires[7];
-  readers[2].Output = &wires[8];
+  readers[2].Output    = &wires[8];
 
   //READER 3
   readers[3] = portReader(portReader::NO_GATE);
@@ -452,7 +444,7 @@ void setup()
   wires[10] = LedStrip(Z, 23, 22);
   readers[3].Inputs[0] = readers[0].Output;
   readers[3].Inputs[1] = &wires[9];
-  readers[3].Output = &wires[10];
+  readers[3].Output    = &wires[10];
 
   //READER 4
   readers[4] = portReader(portReader::NO_GATE);
@@ -461,7 +453,7 @@ void setup()
   wires[12] = LedStrip(Z, 21, 20);
   readers[4].Inputs[0] = readers[1].Output;
   readers[4].Inputs[1] = &wires[11];
-  readers[4].Output = &wires[12];
+  readers[4].Output    = &wires[12];
 
   //READER 5
   readers[5] = portReader(portReader::NO_GATE);
@@ -469,7 +461,7 @@ void setup()
   wires[13] = LedStrip(Z, 27, 26);
   readers[5].Inputs[0] = readers[3].Output;
   readers[5].Inputs[1] = readers[1].Output;
-  readers[5].Output = &wires[13];
+  readers[5].Output    = &wires[13];
 
   //READER 6
   readers[6] = portReader(portReader::NO_GATE);
@@ -477,7 +469,7 @@ void setup()
   wires[14] = LedStrip(Z, 25, 24);
   readers[6].Inputs[0] = readers[4].Output;
   readers[6].Inputs[1] = readers[2].Output;
-  readers[6].Output = &wires[14];
+  readers[6].Output    = &wires[14];
 
   //READER 7
   readers[7] = portReader(portReader::NO_GATE);
@@ -485,7 +477,7 @@ void setup()
   wires[15] = LedStrip(Z, 29, 28);
   readers[7].Inputs[0] = readers[5].Output;
   readers[7].Inputs[1] = readers[6].Output;
-  readers[7].Output = &wires[15];
+  readers[7].Output    = &wires[15];
 
   for (int i = 0; i < AMOUNT_OF_READERS; i++) {
 	  readers[i].CalculateOutput();
@@ -515,14 +507,14 @@ void setup()
 void loop()
 {
   ReadSerial();
-  //ApplyResults();
+
+  //lees alle readers en zet de outputs op de goede waardes
   for (int i = 0; i < AMOUNT_OF_READERS; i++){
 	  calculateReader(i);
     readers[i].CalculateOutput();
   }
-  for (int i = 0; i < AMOUNT_OF_READERS; i++){
-    readers[i].CalculateOutput();
-  }
+
+  //update de waardes van alle ledstrips
   for (int i = 0; i < AMOUNT_OF_WIRES; i++) {
 	  LedStrip strip = wires[i];
 	  if (strip.RedPin == -1 || strip.GreenPin == -1) {
@@ -532,10 +524,4 @@ void loop()
 	  sr.set(strip.GreenPin, strip.GreenValue);
 	  sr.set(strip.RedPin, strip.RedValue);
   }
-
-  //Serial.println("TagForReader:");
-  //for(int i; i<8; i++)
-  //{
-  //  Serial.println(TagForReader[i]);
-  //}
 }
