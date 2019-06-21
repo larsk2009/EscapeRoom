@@ -296,7 +296,7 @@ namespace ER_NET.Server
             }
 
             _timer.Stop();
-            _timeLeft = TimeSpan.FromSeconds(10);
+            _timeLeft = TimeSpan.FromMinutes(10);
 
             Status = "Idle";
             RaiseTimerTickEvent();

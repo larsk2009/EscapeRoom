@@ -8,15 +8,20 @@
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="bundleconfig.json" t="Include" />
         <e p="Controllers" t="Include">
           <e p="HomeController.cs" t="Include" />
         </e>
+        <e p="Hubs" t="Include">
+          <e p="ResetDevicesHub.cs" t="Include" />
+        </e>
         <e p="jumpPuzzle.csproj" t="IncludeRecursive" />
+        <e p="libman.json" t="Include" />
         <e p="Models" t="Include">
           <e p="ErrorViewModel.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Release" t="Include">
             <e p="netcoreapp2.1" t="Include">
               <e p="jumpPuzzle.AssemblyInfo.cs" t="Include" />
             </e>
@@ -119,6 +124,14 @@
               <e p="jquery.validate.unobtrusive.js" t="Include" />
               <e p="jquery.validate.unobtrusive.min.js" t="Include" />
               <e p="LICENSE.txt" t="Include" />
+            </e>
+            <e p="signalr" t="Include">
+              <e p="dist" t="Include">
+                <e p="browser" t="Include">
+                  <e p="signalr.js" t="Include" />
+                  <e p="signalr.min.js" t="Include" />
+                </e>
+              </e>
             </e>
           </e>
         </e>

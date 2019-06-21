@@ -2,16 +2,16 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="9a9bc81f-0a23-41ae-856c-2a2d89ab66e8" name="OrangePi" url="http://192.168.1.101">
-        <fileTransfer host="192.168.1.101" port="22" rootFolder="/home/ControlUnit" accessType="SFTP">
+      <webServer id="9a9bc81f-0a23-41ae-856c-2a2d89ab66e8" name="OrangePi" url="http://192.168.1.102">
+        <fileTransfer host="192.168.1.102" port="22" rootFolder="/home/ControlUnit" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
-      <webServer id="818185b1-35cc-4d28-8460-14ba26584994" name="OrangePi_webserver" url="http://192.168.1.101">
-        <fileTransfer host="192.168.1.101" port="22" rootFolder="/home/ControlUnit/webserver" accessType="SFTP">
+      <webServer id="818185b1-35cc-4d28-8460-14ba26584994" name="OrangePi_webserver" url="http://192.168.1.102">
+        <fileTransfer host="192.168.1.102" port="22" rootFolder="/home/ControlUnit/webserver" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
