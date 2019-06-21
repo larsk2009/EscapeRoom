@@ -1,11 +1,18 @@
 #include <ShiftRegister74HC595.h>
+#include "portReader.h"
 #include <EEPROM.h>
 #include "rfid1.h"
-#include "portReader.h"
 #include "LedStrip.h"
 
 const int AMOUNT_OF_WIRES = 16;
 const int AMOUNT_OF_READERS = 8;
+
+//RFID Pins
+const int IRQ_PIN = 12;
+const int SCK_PIN = 13;
+const int MOSI_PIN = 9;
+const int SDA_PIN = 10;
+const int RST_PIN = 11;
 
 portReader readers[AMOUNT_OF_READERS];
 LedStrip wires[AMOUNT_OF_WIRES];
@@ -37,37 +44,37 @@ uchar *ReadRFID(int ReaderSelect)
 	switch (ReaderSelect) //Select one of the eight readers 
 	{                     //Pin Configuration of RFID.begin (IRQ_PIN,SCK_PIN,MOSI_PIN,MISO_PIN,SDA_PIN,RST_PIN)
 	case 0:
-		rfid.begin(12, 13, 9, 24, 10, 11);
+		rfid.begin(IRQ_PIN, SCK_PIN, MOSI_PIN, 24, SDA_PIN, RST_PIN);
 		break;
 	case 1:
-		rfid.begin(12, 13, 9, 26, 10, 11);
+		rfid.begin(IRQ_PIN, SCK_PIN, MOSI_PIN, 26, SDA_PIN, RST_PIN);
 		break;
 	case 2:
-		rfid.begin(12, 13, 9, 28, 10, 11);
+		rfid.begin(IRQ_PIN, SCK_PIN, MOSI_PIN, 28, SDA_PIN, RST_PIN);
 		break;
 	case 3:
-		rfid.begin(12, 13, 9, 30, 10, 11);
+		rfid.begin(IRQ_PIN, SCK_PIN, MOSI_PIN, 30, SDA_PIN, RST_PIN);
 		break;
 	case 4:
-		rfid.begin(12, 13, 9, 22, 10, 11);
+		rfid.begin(IRQ_PIN, SCK_PIN, MOSI_PIN, 22, SDA_PIN, RST_PIN);
 		break;
 	case 5:
-		rfid.begin(12, 13, 9, 34, 10, 11);
+		rfid.begin(IRQ_PIN, SCK_PIN, MOSI_PIN, 34, SDA_PIN, RST_PIN);
 		break;
 	case 6:
-		rfid.begin(12, 13, 9, 32, 10, 11);
+		rfid.begin(IRQ_PIN, SCK_PIN, MOSI_PIN, 32, SDA_PIN, RST_PIN);
 		break;
 	case 7:
-		rfid.begin(12, 13, 9, 36, 10, 11);
+		rfid.begin(IRQ_PIN, SCK_PIN, MOSI_PIN, 36, SDA_PIN, RST_PIN);
 		break;
 	}
-	delay(10);  //delay 100ms
+	//delay(1);  //delay 1ms
 	rfid.init(); //initialize the RFID
 
 	uchar status;
-	uchar str[MAX_LEN];
+	uchar Tag_ID[MAX_LEN];
 	// Search card, return card types
-	status = rfid.request(PICC_REQIDL, str);
+	status = rfid.request(PICC_REQIDL, Tag_ID);
 	if (status != MI_OK)
 	{
 		for (int i; i < 5; i++)
@@ -77,16 +84,16 @@ uchar *ReadRFID(int ReaderSelect)
 		return IDStorage;
 	}
 	//Prevent conflict, return the 4 bytes Serial number of the card
-	status = rfid.anticoll(str);
+	status = rfid.anticoll(Tag_ID);
 	if (status == MI_OK)
 	{
-		memcpy(IDStorage, str, 5);
+		memcpy(IDStorage, Tag_ID, 5);
 		Serial.print("Reader ");
 		Serial.print(ReaderSelect);
 		Serial.print(": ");
 		rfid.showCardID(IDStorage);//show the card 
 		Serial.println();
-		delay(10);  //delay of 100ms
+		//delay(1);  //delay of 100ms
 		rfid.halt(); //command the card into sleep mode 
 		return IDStorage;
 	}
@@ -101,129 +108,75 @@ uchar *ReadRFID(int ReaderSelect)
    3 = NAND; 4 = NOR; 5 = XOR; 6 = NOT; 7 = WIRE;
  *************************************************************/
 int CompareNFC(unsigned char tagID[]) {
-	int gate = 0; //no gate
+	portReader::GateType gate = portReader::NO_GATE; //no gate
 
-	if (tagID[0] == EEPROM.read(0)) {
-		if (tagID[1] == EEPROM.read(1)) {
-			if (tagID[2] == EEPROM.read(2)) {
-				if (tagID[3] == EEPROM.read(3)) {
-					gate = 1; //and gate
-					Serial.println("AND GATE");
-				}
-			}
-		}
+	if (tagID[0] == EEPROM.read(0) && tagID[1] == EEPROM.read(1) && tagID[2] == EEPROM.read(2) && tagID[3] == EEPROM.read(3)) {
+		gate = portReader::AND_GATE; 
+		Serial.println("AND GATE");
 	}
-	if (tagID[0] == EEPROM.read(4)) {
-		if (tagID[1] == EEPROM.read(5)) {
-			if (tagID[2] == EEPROM.read(6)) {
-				if (tagID[3] == EEPROM.read(7)) {
-					gate = 2; // and gate
-					Serial.println("AND GATE");
-				}
-			}
-		}
+	if (tagID[0] == EEPROM.read(4) && tagID[1] == EEPROM.read(5) && (tagID[2] == EEPROM.read(6) && tagID[3] == EEPROM.read(7))) {
+		gate = portReader::AND_GATE; 
+		Serial.println("AND GATE");
 	}
-	if (tagID[0] == EEPROM.read(8)) {
-		if (tagID[1] == EEPROM.read(9)) {
-			if (tagID[2] == EEPROM.read(10)) {
-				if (tagID[3] == EEPROM.read(11)) {
-					gate = 3; //or gate
-					Serial.println("OR GATE");
-				}
-			}
-		}
+	if (tagID[0] == EEPROM.read(8) && tagID[1] == EEPROM.read(9) && tagID[2] == EEPROM.read(10) && tagID[3] == EEPROM.read(11)) {
+		gate = portReader::OR_GATE; 
+		Serial.println("OR GATE");
 	}
-	if (tagID[0] == EEPROM.read(12)) {
-		if (tagID[1] == EEPROM.read(13)) {
-			if (tagID[2] == EEPROM.read(14)) {
-				if (tagID[3] == EEPROM.read(15)) {
-					gate = 4; // nand gate
-					Serial.println("NAND GATE");
-				}
-			}
-		}
+	if (tagID[0] == EEPROM.read(12) && tagID[1] == EEPROM.read(13) && tagID[2] == EEPROM.read(14) && tagID[3] == EEPROM.read(15)) {
+		gate = portReader::NAND_GATE; 
+		Serial.println("NAND GATE");
 	}
-	if (tagID[0] == EEPROM.read(16)) {
-		if (tagID[1] == EEPROM.read(17)) {
-			if (tagID[2] == EEPROM.read(18)) {
-				if (tagID[3] == EEPROM.read(19)) {
-					gate = 5; //nor gate
-					Serial.println("NOR GATE");
-				}
-			}
-		}
+	if (tagID[0] == EEPROM.read(16) && tagID[1] == EEPROM.read(17) && tagID[2] == EEPROM.read(18) && tagID[3] == EEPROM.read(19)) {
+		gate = portReader::NOR_GATE; 
+		Serial.println("NOR GATE");
 	}
-	if (tagID[0] == EEPROM.read(20)) {
-		if (tagID[1] == EEPROM.read(21)) {
-			if (tagID[2] == EEPROM.read(22)) {
-				if (tagID[3] == EEPROM.read(23)) {
-					gate = 6; //xor gate
-					Serial.println("XOR GATE");
-				}
-			}
-		}
+	if (tagID[0] == EEPROM.read(20) && tagID[1] == EEPROM.read(21) && tagID[2] == EEPROM.read(22) && tagID[3] == EEPROM.read(23)) {
+		gate = portReader::XOR_GATE; 
+		Serial.println("XOR GATE");
 	}
-	if (tagID[0] == EEPROM.read(24)) {
-		if (tagID[1] == EEPROM.read(25)) {
-			if (tagID[2] == EEPROM.read(26)) {
-				if (tagID[3] == EEPROM.read(27)) {
-					gate = 7; //not gate
-					Serial.println("NOT GATE");
-				}
-			}
-		}
+	if (tagID[0] == EEPROM.read(24) && tagID[1] == EEPROM.read(25) && tagID[2] == EEPROM.read(26) && tagID[3] == EEPROM.read(27)) {
+		gate = portReader::INVERTER; 
+		Serial.println("NOT GATE");
 	}
-	if (tagID[0] == EEPROM.read(28)) {
-		if (tagID[1] == EEPROM.read(29)) {
-			if (tagID[2] == EEPROM.read(30)) {
-				if (tagID[3] == EEPROM.read(31)) {
-					gate = 8; //wire
-					Serial.println("WIRE");
-				}
-			}
-		}
+	if (tagID[0] == EEPROM.read(28) && tagID[1] == EEPROM.read(29) && tagID[2] == EEPROM.read(30) && tagID[3] == EEPROM.read(31)) {
+		gate = portReader::WIRE; 
+		Serial.println("WIRE");
 	}
 	return gate;
 }
 
 
 /*************************************************************
- * Function：ReadSerial
- * Description：Reads the incoming serial message and process
-   this.
+ * Function：ProcessSerial
+ * Description：Read the incoming serial message and process it
  * Input parameter：none
  * Return：none
  *************************************************************/
-void ReadSerial()
+void ProcessSerial()
 {
 	String Q;
 	String ReadString;
 
-	while (Serial.available())
+	while (Serial.available()>0)
 	{
-		delay(10);
-		if (Serial.available() > 0)
+		char c = Serial.read();
+		if (isControl(c))
 		{
-			char c = Serial.read();
-			if (isControl(c))
-			{
-				break;
-			}
-			ReadString += c;
+			break;
 		}
+		ReadString += c;
 	}
-	Q = ReadString;
 	//-------Checking Serial Read---------
-	if (Q == "CAL")
+	if (ReadString == "CAL")
 	{
 		CalibrateTags();
 		Serial.println("Calibrating Done!");
 	}
-	else if (Q == "RESTART")
+	else if (ReadString == "RESTART")
 	{
 		RandomizeStartValues();
 	}
-	else if (Q == "HELP")
+	else if (ReadString == "HELP")
 	{
 		Serial.println("--------------------------------------");
 		Serial.println("---------        MENU        ---------");
@@ -277,116 +230,95 @@ void RandomizeStartValues()
 	{
 		StartValues[i] = random() % 2;
 	}
-	wires[0].Type  = (WireType)StartValues[0];
-	wires[1].Type  = (WireType)StartValues[1];
-	wires[3].Type  = (WireType)StartValues[2];
-	wires[4].Type  = (WireType)StartValues[3];
-	wires[11].Type = (WireType)StartValues[4];
-	wires[6].Type  = (WireType)StartValues[5];
+	wires[0].Value  = (WireValues)StartValues[0];
+	wires[1].Value  = (WireValues)StartValues[1];
+	wires[3].Value  = (WireValues)StartValues[2];
+	wires[4].Value  = (WireValues)StartValues[3];
+	wires[11].Value = (WireValues)StartValues[4];
+	wires[6].Value  = (WireValues)StartValues[5];
 }
 
-//waar is deze functie precies voor?
-void RandomSSNumber()
+void UpdateReader(int Reader){
+	readers[Reader].Gate = portReader::GateType(CompareNFC(ReadRFID(Reader)));
+}
+
+void CreateLayout()
 {
-  int RandomNumber = 0;
-  RandomNumber = random(0,9);
+	//READER 0
+	readers[0] = portReader(portReader::NO_GATE);
 
-  switch(RandomNumber)
-  {
-    case 0:
-      digitalWrite(PinA, LOW);
-      digitalWrite(PinB, LOW);
-      digitalWrite(PinC, LOW);
-      digitalWrite(PinD, LOW);
-      break;
-    case 1:
-      digitalWrite(PinA, HIGH);
-      digitalWrite(PinB, LOW);
-      digitalWrite(PinC, LOW);
-      digitalWrite(PinD, LOW);
-      break; 
-    case 2:
-      digitalWrite(PinA, LOW);
-      digitalWrite(PinB, HIGH);
-      digitalWrite(PinC, LOW);
-      digitalWrite(PinD, LOW);
-      break;
-    case 3:
-      digitalWrite(PinA, HIGH);
-      digitalWrite(PinB, HIGH);
-      digitalWrite(PinC, LOW);
-      digitalWrite(PinD, LOW);
-      break; 
-    case 4:
-      digitalWrite(PinA, LOW);
-      digitalWrite(PinB, LOW);
-      digitalWrite(PinC, HIGH);
-      digitalWrite(PinD, LOW);
-      break;
-    case 5:
-      digitalWrite(PinA, HIGH);
-      digitalWrite(PinB, LOW);
-      digitalWrite(PinC, HIGH);
-      digitalWrite(PinD, LOW);
-      break; 
-    case 6:
-      digitalWrite(PinA, LOW);
-      digitalWrite(PinB, LOW);
-      digitalWrite(PinC, HIGH);
-      digitalWrite(PinD, LOW);
-      break;
-    case 7:
-      digitalWrite(PinA, HIGH);
-      digitalWrite(PinB, HIGH);
-      digitalWrite(PinC, HIGH);
-      digitalWrite(PinD, LOW);
-      break; 
-    case 8:
-      digitalWrite(PinA, LOW);
-      digitalWrite(PinB, LOW);
-      digitalWrite(PinC, LOW);
-      digitalWrite(PinD, HIGH);
-      break;
-    case 9:
-      digitalWrite(PinA, HIGH);
-      digitalWrite(PinB, LOW);
-      digitalWrite(PinC, LOW);
-      digitalWrite(PinD, HIGH);
-      break; 
-  }
-}
+	wires[0] = LedStrip(L, 11, 10);
+	wires[1] = LedStrip(H, 9, 8);
+	wires[2] = LedStrip(Z, 19, 18);
 
+	readers[0].Inputs[0] = &wires[0];
+	readers[0].Inputs[1] = &wires[1];
+	readers[0].Output    = &wires[2];
 
-void calculateReader(int Reader){
-	switch (CompareNFC(ReadRFID(Reader)))
-	{
-		case 0:
-			readers[Reader] = portReader(portReader::NO_GATE);
-		break;
-		case 1:
-			readers[Reader] = portReader(portReader::AND_GATE);
-		break;
-		case 2:
-			readers[Reader] = portReader(portReader::AND_GATE);
-		break;
-		case 3:
-			readers[Reader] = portReader(portReader::OR_GATE);
-		break;
-		case 4:
-			readers[Reader] = portReader(portReader::NAND_GATE);
-		break;
-		case 5:
-			readers[Reader] = portReader(portReader::NOR_GATE);
-		break;
-		case 6:
-			readers[Reader] = portReader(portReader::XOR_GATE);
-		break;
-		case 7:
-			readers[Reader] = portReader(portReader::INVERTER);
-		break;
-		case 8:
-			readers[Reader] = portReader(portReader::WIRE);
-		break;
+	//READER 1
+	readers[1] = portReader(portReader::NO_GATE);
+
+	wires[3] = LedStrip(H, 7, 6);
+	wires[4] = LedStrip(L, 5, 4);
+	wires[5] = LedStrip(Z, 17, 16);
+	readers[1].Inputs[0] = &wires[3];
+	readers[1].Inputs[1] = &wires[4];
+	readers[1].Output    = &wires[5];
+
+	//READER 2
+	readers[2] = portReader(portReader::NO_GATE);
+
+	wires[6] = LedStrip(H, 1, 0);
+	wires[7] = LedStrip(NC, -1, -1);
+	wires[8] = LedStrip(Z, 13, 12);
+	readers[2].Inputs[0] = &wires[6];
+	readers[2].Inputs[1] = &wires[7];
+	readers[2].Output    = &wires[8];
+
+	//READER 3
+	readers[3] = portReader(portReader::NO_GATE);
+
+	wires[9] = LedStrip(NC, -1, -1);
+	wires[10] = LedStrip(Z, 23, 22);
+	readers[3].Inputs[0] = readers[0].Output;
+	readers[3].Inputs[1] = &wires[9];
+	readers[3].Output    = &wires[10];
+
+	//READER 4
+	readers[4] = portReader(portReader::NO_GATE);
+
+	wires[11] = LedStrip(H, 3, 2);
+	wires[12] = LedStrip(Z, 21, 20);
+	readers[4].Inputs[0] = readers[1].Output;
+	readers[4].Inputs[1] = &wires[11];
+	readers[4].Output    = &wires[12];
+
+	//READER 5
+	readers[5] = portReader(portReader::NO_GATE);
+
+	wires[13] = LedStrip(Z, 27, 26);
+	readers[5].Inputs[0] = readers[3].Output;
+	readers[5].Inputs[1] = readers[1].Output;
+	readers[5].Output    = &wires[13];
+
+	//READER 6
+	readers[6] = portReader(portReader::NO_GATE);
+
+	wires[14] = LedStrip(Z, 25, 24);
+	readers[6].Inputs[0] = readers[4].Output;
+	readers[6].Inputs[1] = readers[2].Output;
+	readers[6].Output    = &wires[14];
+
+	//READER 7
+	readers[7] = portReader(portReader::NO_GATE);
+
+	wires[15] = LedStrip(Z, 29, 28);
+	readers[7].Inputs[0] = readers[5].Output;
+	readers[7].Inputs[1] = readers[6].Output;
+	readers[7].Output    = &wires[15];
+
+	for (int i = 0; i < AMOUNT_OF_READERS; i++) {
+		readers[i].CalculateOutput();
 	}
 }
 
@@ -394,7 +326,6 @@ void setup()
 {
 	Serial.begin(115200);
 	randomSeed(analogRead(1));
-	delay(10);
 
   pinMode(PinA, OUTPUT);
   pinMode(PinB, OUTPUT);
@@ -402,88 +333,11 @@ void setup()
   pinMode(PinD, OUTPUT);
   pinMode(ClearDisplay, OUTPUT);
 
-
   sr.setAllLow();
 
+  CreateLayout();
 
-  //READER 0
-  readers[0] = portReader(portReader::NO_GATE);
-
-  wires[0] = LedStrip(L, 11, 10);
-  wires[1] = LedStrip(H, 9, 8);
-  wires[2] = LedStrip(Z, 19, 18);
-
-  readers[0].Inputs[0] = &wires[0];
-  readers[0].Inputs[1] = &wires[1];
-  readers[0].Output    = &wires[2];
-
-  //READER 1
-  readers[1] = portReader(portReader::NO_GATE);
-
-  wires[3] = LedStrip(H, 7, 6);
-  wires[4] = LedStrip(L, 5, 4);
-  wires[5] = LedStrip(Z, 17, 16);
-  readers[1].Inputs[0] = &wires[3];
-  readers[1].Inputs[1] = &wires[4];
-  readers[1].Output    = &wires[5];
-
-  //READER 2
-  readers[2] = portReader(portReader::NO_GATE);
-
-  wires[6] = LedStrip(H, 1, 0);
-  wires[7] = LedStrip(NC, -1, -1);
-  wires[8] = LedStrip(Z, 13, 12);
-  readers[2].Inputs[0] = &wires[6];
-  readers[2].Inputs[1] = &wires[7];
-  readers[2].Output    = &wires[8];
-
-  //READER 3
-  readers[3] = portReader(portReader::NO_GATE);
-
-  wires[9] = LedStrip(NC, -1, -1);
-  wires[10] = LedStrip(Z, 23, 22);
-  readers[3].Inputs[0] = readers[0].Output;
-  readers[3].Inputs[1] = &wires[9];
-  readers[3].Output    = &wires[10];
-
-  //READER 4
-  readers[4] = portReader(portReader::NO_GATE);
-
-  wires[11] = LedStrip(H, 3, 2);
-  wires[12] = LedStrip(Z, 21, 20);
-  readers[4].Inputs[0] = readers[1].Output;
-  readers[4].Inputs[1] = &wires[11];
-  readers[4].Output    = &wires[12];
-
-  //READER 5
-  readers[5] = portReader(portReader::NO_GATE);
-
-  wires[13] = LedStrip(Z, 27, 26);
-  readers[5].Inputs[0] = readers[3].Output;
-  readers[5].Inputs[1] = readers[1].Output;
-  readers[5].Output    = &wires[13];
-
-  //READER 6
-  readers[6] = portReader(portReader::NO_GATE);
-
-  wires[14] = LedStrip(Z, 25, 24);
-  readers[6].Inputs[0] = readers[4].Output;
-  readers[6].Inputs[1] = readers[2].Output;
-  readers[6].Output    = &wires[14];
-
-  //READER 7
-  readers[7] = portReader(portReader::NO_GATE);
-
-  wires[15] = LedStrip(Z, 29, 28);
-  readers[7].Inputs[0] = readers[5].Output;
-  readers[7].Inputs[1] = readers[6].Output;
-  readers[7].Output    = &wires[15];
-
-  for (int i = 0; i < AMOUNT_OF_READERS; i++) {
-	  readers[i].CalculateOutput();
-  }
-
-
+  //Boot show
   for (int i = 0; i < 32; i++) {
 	  sr.set(i, HIGH);
 	  delay(10);
@@ -495,22 +349,17 @@ void setup()
   }
 
   RandomizeStartValues();
-  Serial.print(StartValues[0]);
-  Serial.print(StartValues[1]);
-  Serial.print(StartValues[2]);
-  Serial.print(StartValues[3]);
-  Serial.print(StartValues[4]);
-  Serial.println(StartValues[5]);
+
   Serial.println("Setup Done!");
 }
 
 void loop()
 {
-  ReadSerial();
+  ProcessSerial();
 
   //lees alle readers en zet de outputs op de goede waardes
   for (int i = 0; i < AMOUNT_OF_READERS; i++){
-	  calculateReader(i);
+	  UpdateReader(i);
     readers[i].CalculateOutput();
   }
 

@@ -8,83 +8,83 @@ portReader::portReader(GateType gate) {
 }
 
 void portReader::CalculateOutput() {
-	if ((Inputs[0]->Type == Z || Inputs[1]->Type == Z) && Gate != WIRE && Gate != INVERTER) {
-		Output->Type = Z;
+	if ((Inputs[0]->Value == Z || Inputs[1]->Value == Z) && Gate != WIRE && Gate != INVERTER) {
+		Output->Value = Z;
 	}
-	else if ((Inputs[0]->Type == NC || Inputs[1]->Type == NC) && Gate != WIRE && Gate != INVERTER) {
-		Output->Type = Z;
+	else if ((Inputs[0]->Value == NC || Inputs[1]->Value == NC) && Gate != WIRE && Gate != INVERTER) {
+		Output->Value = Z;
 	}
 	else {
 		switch (Gate)
 		{
 		case portReader::AND_GATE:
-			if (Inputs[0]->Type && Inputs[1]->Type) {
-				Output->Type = H;
+			if (Inputs[0]->Value && Inputs[1]->Value) {
+				Output->Value = H;
 			}
 			else {
-				Output->Type = L;
+				Output->Value = L;
 			}
 			break;
 		case portReader::OR_GATE:
-			if (Inputs[0]->Type || Inputs[1]->Type) {
-				Output->Type = H;
+			if (Inputs[0]->Value || Inputs[1]->Value) {
+				Output->Value = H;
 			}
 			else {
-				Output->Type = L;
+				Output->Value = L;
 			}
 			break;
 		case portReader::NAND_GATE:
-			if (Inputs[0]->Type && Inputs[1]->Type) {
-				Output->Type = L;
+			if (Inputs[0]->Value && Inputs[1]->Value) {
+				Output->Value = L;
 			}
 			else {
-				Output->Type = H;
+				Output->Value = H;
 			}
 			break;
 		case portReader::NOR_GATE:
-			if (Inputs[0]->Type || Inputs[1]->Type) {
-				Output->Type = L;
+			if (Inputs[0]->Value || Inputs[1]->Value) {
+				Output->Value = L;
 			}
 			else {
-				Output->Type = H;
+				Output->Value = H;
 			}
 			break;
 		case portReader::XOR_GATE:
-			if (!Inputs[0]->Type != !Inputs[1]->Type) {
-				Output->Type = H;
+			if (!Inputs[0]->Value != !Inputs[1]->Value) {
+				Output->Value = H;
 			}
 			else {
-				Output->Type = L;
+				Output->Value = L;
 			}
 			break;
 		case portReader::WIRE:
-			if (Inputs[0]->Type == NC || Inputs[1]->Type != NC) {
-				Output->Type = Z;
+			if (Inputs[0]->Value == NC || Inputs[1]->Value != NC) {
+				Output->Value = Z;
 			}
 			else {
-				Output->Type = Inputs[0]->Type;
+				Output->Value = Inputs[0]->Value;
 			}
 			break;
 		case portReader::INVERTER:
-			if (Inputs[0]->Type == NC || Inputs[1]->Type != NC) {
-				Output->Type = Z;
+			if (Inputs[0]->Value == NC || Inputs[1]->Value != NC) {
+				Output->Value = Z;
 			}
 			else {
-        switch(Inputs[0]->Type){
+        switch(Inputs[0]->Value){
           case H:
-          Output->Type = L;
+          Output->Value = L;
           break;
           case L:
-          Output->Type = H;
+          Output->Value = H;
           break;
           case Z:
-          Output->Type = Z;
+          Output->Value = Z;
           break;
         }
 			}
 			break;
     case portReader::NO_GATE:
-      Output->Type = Z;
+      Output->Value = Z;
       break;
 		default:
 			break;

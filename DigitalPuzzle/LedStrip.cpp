@@ -5,9 +5,9 @@ LedStrip::LedStrip() : LedStrip(NC, -1, -1)
 {
 }
 
-LedStrip::LedStrip(WireType type, int greenPin, int redPin)
+LedStrip::LedStrip(WireValues type, int greenPin, int redPin)
 {
-	Type = type;
+	Value = type;
 	GreenPin = greenPin;
 	RedPin = redPin;
 }
@@ -16,11 +16,11 @@ void LedStrip::CalcualtePinValues() {
 	if (GreenPin == -1 || RedPin == -1) {
 		return;
 	}
-	if (Type == WireType::H) {
+	if (Value == WireValues::H) {
 		GreenValue = HIGH;
 		RedValue = LOW;
 	}
-	else if (Type == WireType::L) {
+	else if (Value == WireValues::L) {
 		GreenValue = LOW;
 		RedValue = HIGH;
 	}
