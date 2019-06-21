@@ -13,7 +13,7 @@ ErNet erNet;
 
 void setup() {
   Serial.begin(115200); //  setup serial
-  erNet.Setup();
+  erNet.Setup("AnalogPuzzle", 0x10, 0x50, 0x22, 0x30, 0xF2, 0xEE);
   SetupDisplay();
 }
 
@@ -24,6 +24,7 @@ void loop() {
   if (erNet.GetDisplayNumber(&DisplayNumber) && NeedNewNumber) {
     NeedNewNumber = false;
   }
+  ShowNumber(DisplayNumber);
 }
 
 //Do reset things
