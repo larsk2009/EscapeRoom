@@ -41,6 +41,8 @@ function Update() {
     context.fillStyle = "#d90eef";
     context.fillRect(rectangle_x, rectangle_y, rectangle_width, rectangle_height);
 
+    let noGravity = false;
+
     if (hasNewTree) {
         if (currentPlayNode.method == CommandEnum.CODE || currentPlayNode.method == CommandEnum.REPEAT) {
             TraverseIntoTree();
@@ -80,21 +82,47 @@ function Update() {
                 TraverseOutTree();
             }
         } else if (currentPlayNode.method.includes("spring")) {
-            const amount = currentPlayNode.method.split('(')[1].replace(')', '').replace(';', '');
-            Jump(Number(amount));
+            if (typeof Update.jumpAmount == 'undefined') {
+                // It has not... perform the initialization
+                Update.jumpAmount = 0;
+            }
+
+            noGravity = true;
+
+            let amount = 0;
+            if (Update.jumpAmount === 0) {
+                let amount = currentPlayNode.method.split('(')[1].replace(')', '').replace(';', '');
+                Update.jumpAmount = amount;
+            } else {
+                if (Update.jumpAmount < 5) {
+                    amount = Update.jumpAmount;
+                    Update.jumpAmount = 0;
+                } else {
+                    amount = 5;
+                    Update.jumpAmount -= 5;
+                }
+            }
+
+            Jump(Number(5));
             //Move to sibling or up tree
             const length = currentPlayNode.parent.children.length;
             const index = InTreeLocation[treeDepth];
-            if (index < length - 1) {
-                currentPlayNode = currentPlayNode.parent.children[index + 1];
-                InTreeLocation[treeDepth]++;
-            } else {
-                TraverseOutTree();
+            if (Update.jumpAmount === 0) {
+                if (index < length - 1) {
+                    currentPlayNode = currentPlayNode.parent.children[index + 1];
+                    InTreeLocation[treeDepth]++;
+                } else {
+                    TraverseOutTree();
+                }
             }
         }
     }
 
-    DoGravity();
+    if (!noGravity) {
+        DoGravity();
+    } else {
+        noGravity = false;
+    }
 
     context.drawImage(img, x, y, img.width * 1.55, img.height * 1.55);
 
@@ -178,7 +206,7 @@ function SelectNextSprite() {
 
 function DoGravity() {
     if ((y < start_y && (x + sprite_1.width) < rectangle_x) || (((y + sprite_1.height + 110) < rectangle_y) && (x + sprite_1.width) > rectangle_x)) {
-        y += 5;
+        y += 2.5;
     }
 }
 
@@ -186,14 +214,16 @@ function DoGravity() {
  * @return {boolean}
  */
 function CheckWinCondition() {
-    return x >= canvas.width - 100 && y <= 100;
+    return x >= canvas.width - 100 && y <= 105;
 }
 
 /**
  * @return {boolean}
  */
 function CheckLoseCondition() {
-    return x + sprite_1.width >= rectangle_x && y + sprite_1.height + 100 >= rectangle_y;
+    let checkIsInBox = x + sprite_1.width >= rectangle_x && y + sprite_1.height + 100 >= rectangle_y;
+    let HasHitHead = y <= 0;
+    return checkIsInBox || HasHitHead;
 
 }
 

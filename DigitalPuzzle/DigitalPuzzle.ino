@@ -190,11 +190,11 @@ void ProcessSerial()
 
 
 /*************************************************************
- * Function：PutTagInEEPROM
- * Description：Stores an UID Tag at a given address
- * Input parameter：tagID in uchar and address where the UID
+   Function：PutTagInEEPROM
+   Description：Stores an UID Tag at a given address
+   Input parameter：tagID in uchar and address where the UID
    needs to be saved.
- * Return：none
+   Return：none
  *************************************************************/
 void PutTagInEEPROM(unsigned char tagID[], int address) {
 	for (int i = 0; i <= 3; i++) {
@@ -207,8 +207,8 @@ void PutTagInEEPROM(unsigned char tagID[], int address) {
  * Function：CalibrateTags()
  * Description：Performs the PutTagInEEPROM function x amount
    of times. This 'x' is the amount of readers
- * Input parameter：none
- * Return：none
+   Input parameter：none
+   Return：none
  *************************************************************/
 void CalibrateTags() {
 	for (int i = 0; i < 8; i++) {
