@@ -1,12 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Net;
-using System.Security.Cryptography;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 using ER_NET.Shared;
 
 using Timer = System.Timers.Timer;
@@ -100,7 +95,7 @@ namespace ER_NET.Server
             {
                 _timeLeft = _timeLeft.Subtract(TimeSpan.FromSeconds(1));
                 RaiseTimerTickEvent();
-                if (_timeLeft.TotalMilliseconds == 0)
+                if ((int)_timeLeft.TotalMilliseconds == 0)
                 {
                     _timer.Stop();
                     Status = "Failed";
@@ -268,7 +263,7 @@ namespace ER_NET.Server
                     var displayNumber = GetDisplayNumberByName(message.Name);
 
                     var response = new Message
-                        {Name = _discoveryServer.Name, MessageType = "DisplayNumber", Value = displayNumber.ToString()};
+                    { Name = _discoveryServer.Name, MessageType = "DisplayNumber", Value = displayNumber.ToString() };
                     await _communicationSender.SendMessageAsync(response.ToBytes(), eventArgs.RemoteIp,
                         CommunicationPorts.CommunicationPort);
                 }
@@ -283,7 +278,8 @@ namespace ER_NET.Server
                 };
                 await _communicationSender.SendMessageAsync(response.ToBytes(), eventArgs.RemoteIp,
                     CommunicationPorts.CommunicationPort);
-            } else if (message.MessageType == "RoomSolved")
+            }
+            else if (message.MessageType == "RoomSolved")
             {
                 var response = new Message
                 {
@@ -294,6 +290,9 @@ namespace ER_NET.Server
                 await _communicationSender.SendMessageAsync(response.ToBytes(), eventArgs.RemoteIp,
                     CommunicationPorts.CommunicationPort);
                 RaiseRoomSolvedEvent();
+                _timer.Stop();
+                Status = "Solved";
+                RaiseStatusChangedEvent();
             }
         }
 

@@ -39,6 +39,11 @@ namespace ControlUnit_webserver.Controllers
             {
                 _hubContext.Clients.All.SendAsync("StatusChanged", ErNetServerEngine.Instance.Status);
             };
+
+            ErNetServerEngine.Instance.OnRoomSolved += (sender, args) =>
+            {
+                _hubContext.Clients.All.SendAsync("RoomSolved", ErNetServerEngine.Instance.Status);
+            };
         }
         
         public IActionResult Index()
