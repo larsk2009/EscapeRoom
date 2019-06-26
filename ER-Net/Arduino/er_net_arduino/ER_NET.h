@@ -12,7 +12,7 @@ class ErNet {
         void                Setup(const char* _puzzleName, char mac_0, char mac_1, char mac_2, char mac_3, char mac_4, char mac_5);
         void                Loop();
 
-        void                SetSolved(bool isSolved);
+        void                PuzzleSolved();   
         bool                GetDisplayNumber(int *number);
         bool                GetSolution(unsigned long *solution);
 
