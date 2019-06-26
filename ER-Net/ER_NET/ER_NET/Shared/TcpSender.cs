@@ -6,9 +6,9 @@ using ER_NET.Server;
 
 namespace ER_NET.Shared
 {
-    public class TcpSender : ITcpSender
+    public class TcpSender : ICommunicationSender
     {
-        public async void SendMessage(byte[] data, IPAddress ip, uint port)
+        public async Task SendMessageAsync(byte[] data, IPAddress ip, uint port)
         {
                 await Task.Run(() =>
                 {

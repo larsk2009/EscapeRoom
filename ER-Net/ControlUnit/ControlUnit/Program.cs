@@ -10,14 +10,17 @@ namespace ControlUnit
     {
         static void Main(string[] args)
         {
-            var parser = new TcpParser();
-            var server = new DiscoveryServer();
-            var tcpSender = new TcpSender();
-            var engine = new ErNetServerEngine(parser, server, tcpSender);
+            var parser = new UdpParser();
+            var server = new DiscoveryServer(UdpSender.Instance);
+            var udpSender = UdpSender.Instance;
+            var engine = new ErNetServerEngine(parser, server, udpSender);
+
+            Console.WriteLine("Control Unit started");
 
             string input;
             do
             {
+                Console.Write("> ");
                 input = Console.ReadLine();
                 switch (input)
                 {

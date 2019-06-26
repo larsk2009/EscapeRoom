@@ -7,7 +7,7 @@ namespace ER_NET_tests.Mocks
 {
     public class MockDiscoveryServer : IDiscoveryServer
     {
-        public Guid guid { get; set; }
+        public string Name { get; set; }
         public bool IsDiscovery = false;
         public bool IsDiscoveryAck = false;
         public void ContinuousDiscovery()

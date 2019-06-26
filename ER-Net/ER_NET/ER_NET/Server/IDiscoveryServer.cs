@@ -6,7 +6,8 @@ namespace ER_NET.Server
 {
     public interface IDiscoveryServer
     {
-        Guid guid { get; set; }
+        //Guid guid { get; set; }
+        string Name { get; set; }
 
         void ContinuousDiscovery();
         void DiscoveryAcknowledgeReceived(Message message, IPAddress ipAddress);
