@@ -149,7 +149,9 @@ function Update() {
 
     context.strokeRect(canvas.width - 5, canvas.height / 2 - 150, 1, 200);
 
-    SelectNextSprite();
+    if ((typeof  currentPlayNode.method == "string" && !currentPlayNode.method.includes("spring"))) {
+        SelectNextSprite();
+    }
 
     if (CheckWinCondition()) {
         //Show win
@@ -158,8 +160,8 @@ function Update() {
         context.fillText("YOU WIN!", canvas.width / 2 - 100, canvas.height / 2 - 100);
         GetDisplayNumber(function (data) {
             context.fillStyle = "#4dee00";
-            context.font = "30px Arial";
-            context.fillText(data, canvas.width / 2 - 100, canvas.height / 2 - 50);
+            context.font = "120px Arial";
+            context.fillText(data, canvas.width / 2 - 100, canvas.height / 2);
         });
     } else if (CheckLoseCondition()) {
         //Show lose
@@ -232,7 +234,7 @@ function SelectNextSprite() {
         SelectNextSprite.counter = 0;
     }
     SelectNextSprite.counter++;
-    if (SelectNextSprite.counter > 15) {
+    if (SelectNextSprite.counter > 5) {
         SelectNextSprite.counter = 0;
         if (img == sprite_0) {
             img = sprite_1;

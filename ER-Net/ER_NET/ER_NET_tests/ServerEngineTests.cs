@@ -1,6 +1,7 @@
 using System;
 using System.Net;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ER_NET.Server;
@@ -139,10 +140,41 @@ namespace ER_NET_tests
         {
             var parser = new MockCommunicationParser();
             var server = new MockDiscoveryServer();
-            var tcpSender = new MockCommunicationSender();
-            var engine = new ErNetServerEngine(parser, server, tcpSender);
+            var sender = new MockCommunicationSender();
+            var engine = new ErNetServerEngine(parser, server, sender);
 
             Assert.True(engine.GetDisplayNumberByName("test") == -1);
+        }
+
+        [Fact]
+        void SolutionCorrectMessageTest()
+        {
+            var parser = new MockCommunicationParser();
+            var server = new MockDiscoveryServer();
+            var sender = new MockCommunicationSender();
+            var engine = new ErNetServerEngine(parser, server, sender);
+            bool eventFired = false;
+            engine.OnRoomSolved += (senderObj, args) => { eventFired = true; };
+
+            var message = new Message
+            {
+                Name = "testPuzzle",
+                MessageType = "RoomSolved",
+                Value = null
+            };
+            parser.RaiseTcpEvent(new CommunicationEventArgs(message, IPAddress.Broadcast));
+
+            Thread.Sleep(100);
+            Assert.True(eventFired);
+            Assert.True(Equals(sender.lastIp, IPAddress.Broadcast));
+            var lastMessage = Message.FromJson(Encoding.ASCII.GetString(sender.lastMessageSent));
+            var responseMessage = new Message
+            {
+                Name = server.Name,
+                MessageType = "RoomSolved",
+                Value = null
+            };
+            Assert.True(lastMessage.Equals(responseMessage));
         }
     }
 }

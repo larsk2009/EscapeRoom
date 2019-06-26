@@ -61,6 +61,7 @@ namespace ER_NET.Server
         public event EventHandler<EventArgs> OnReset;
         public event EventHandler<EventArgs> OnTimerTick;
         public event EventHandler<EventArgs> OnStatusChanged;
+        public event EventHandler<EventArgs> OnRoomSolved;
 
         #endregion
 
@@ -145,6 +146,11 @@ namespace ER_NET.Server
         protected virtual void RaiseStatusChangedEvent()
         {
             OnStatusChanged?.Invoke(this, new EventArgs());
+        }
+
+        protected virtual void RaiseRoomSolvedEvent()
+        {
+            OnRoomSolved?.Invoke(this, new EventArgs());
         }
 
         #endregion
@@ -277,6 +283,17 @@ namespace ER_NET.Server
                 };
                 await _communicationSender.SendMessageAsync(response.ToBytes(), eventArgs.RemoteIp,
                     CommunicationPorts.CommunicationPort);
+            } else if (message.MessageType == "RoomSolved")
+            {
+                var response = new Message
+                {
+                    Name = _discoveryServer.Name,
+                    MessageType = "RoomSolved",
+                    Value = null
+                };
+                await _communicationSender.SendMessageAsync(response.ToBytes(), eventArgs.RemoteIp,
+                    CommunicationPorts.CommunicationPort);
+                RaiseRoomSolvedEvent();
             }
         }
 
