@@ -12,7 +12,7 @@ ErNet erNet;
 #define Digit_3 A2
 #define Digit_4 A3
 #define Digit_5 A4
-#define Big_Red_Button 10
+#define Big_Red_Button 12
 #define Magnet_Switch 8
 
 
@@ -26,6 +26,7 @@ char hundredths = '2';
 char tenths = '5';
 char ones = '2';
 
+bool hasSolution = false;
 char TheAwnser[5] = {ten_thousands, thousands, hundredths, tenths, ones};
 
 
@@ -78,9 +79,11 @@ void setup() {
   pinMode(Digit_5, OUTPUT);
   pinMode(Big_Red_Button, INPUT);
   pinMode(Magnet_Switch, OUTPUT);
-  digitalWrite(Magnet_Switch, HIGH);
+  
   Serial.begin(9600);
-  //erNet.Setup();
+  erNet.Setup("Totempaal", 0x10, 0x51, 0x22, 0x30, 0xF2, 0xF3);
+  erNet.SetResetCallback(&OnReset);
+  
   cli();//stop interrupts
 
 //set timer1 interrupt at 285Hz
@@ -164,7 +167,7 @@ void Release() {
 }
 
 void Finished() {
-
+ 
 }
 
 void ChangeNumb(char Number)
@@ -295,6 +298,12 @@ void ControlDisplays(int Display)
 
   }
 }
+void OnReset(){
+  Serial.println("RESET RECEIVED");
+  digitalWrite(Magnet_Switch, HIGH);
+
+  hasSolution = false;
+}
 
 ISR(TIMER1_COMPA_vect) { //change the 0 to 1 for timer1 and 2 for timer2
   NumbMem();
@@ -305,18 +314,36 @@ ISR(TIMER1_COMPA_vect) { //change the 0 to 1 for timer1 and 2 for timer2
   if (i > 4) {
     i = 0;
   }
+  
 
 }
 void loop()
 {
   
 
-erNet.Loop();
-  if (Enter == HIGH) {
+  erNet.Loop();
+  if(!hasSolution) {
+   unsigned long solution = 0;
+    if(erNet.GetSolution(&solution)) {
+      hasSolution = true;
+
+      Serial.println("has solution");
+      for(int i = 0; i < 5; i++) {
+        TheAwnser[i] = (solution % 10) + '0';
+        solution = solution / 10;
+        Serial.print(TheAwnser[i]);
+      }
+      Serial.println();
+    }
+  }
+  else if (Enter == HIGH) {
     Compare();
   }
-  if (digitalRead(Big_Red_Button) == HIGH) {
-    Finished();
+
+
+ /*if (digitalRead(Big_Red_Button) == HIGH) {
     Serial.println("Finished");
-  }
+    Finished();
+    
+  }*/
 }
