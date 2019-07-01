@@ -24,8 +24,8 @@ void RFID1::showCardID(uchar *id)
     int IDlen=4;
 
     for(int i=0; i<IDlen; i++){
-        Serial.print(0x0F & (id[i]>>4), HEX);
-        Serial.print(0x0F & id[i],HEX);
+        //Serial.print(0x0F & (id[i]>>4), HEX);
+        //Serial.print(0x0F & id[i],HEX);
     }
     //Serial.println();
 	//Serial.println();

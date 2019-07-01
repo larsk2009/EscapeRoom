@@ -1,8 +1,22 @@
+#include <UIPEthernet.h>
+#include <ArduinoJson.h>
 #include <ShiftRegister74HC595.h>
 #include "portReader.h"
 #include <EEPROM.h>
 #include "rfid1.h"
 #include "LedStrip.h"
+#include "ER_NET.h"
+
+#define BCD_A 37
+#define BCD_B 33
+#define BCD_C 31
+#define BCD_D 35
+#define BCD_CLEAR 39
+
+bool NeedNewNumber = true;
+int DisplayNumber = 0;
+
+ErNet erNet;
 
 const int AMOUNT_OF_WIRES = 16;
 const int AMOUNT_OF_READERS = 8;
@@ -88,11 +102,11 @@ uchar *ReadRFID(int ReaderSelect)
 	if (status == MI_OK)
 	{
 		memcpy(IDStorage, Tag_ID, 5);
-		Serial.print("Reader ");
-		Serial.print(ReaderSelect);
-		Serial.print(": ");
+		//Serial.print("Reader ");
+		//Serial.print(ReaderSelect);
+		//Serial.print(": ");
 		rfid.showCardID(IDStorage);//show the card 
-		Serial.println();
+		//Serial.println();
 		//delay(1);  //delay of 100ms
 		rfid.halt(); //command the card into sleep mode 
 		return IDStorage;
@@ -112,35 +126,27 @@ int CompareNFC(unsigned char tagID[]) {
 
 	if (tagID[0] == EEPROM.read(0) && tagID[1] == EEPROM.read(1) && tagID[2] == EEPROM.read(2) && tagID[3] == EEPROM.read(3)) {
 		gate = portReader::AND_GATE; 
-		Serial.println("AND GATE");
 	}
 	if (tagID[0] == EEPROM.read(4) && tagID[1] == EEPROM.read(5) && (tagID[2] == EEPROM.read(6) && tagID[3] == EEPROM.read(7))) {
 		gate = portReader::AND_GATE; 
-		Serial.println("AND GATE");
 	}
 	if (tagID[0] == EEPROM.read(8) && tagID[1] == EEPROM.read(9) && tagID[2] == EEPROM.read(10) && tagID[3] == EEPROM.read(11)) {
 		gate = portReader::OR_GATE; 
-		Serial.println("OR GATE");
 	}
 	if (tagID[0] == EEPROM.read(12) && tagID[1] == EEPROM.read(13) && tagID[2] == EEPROM.read(14) && tagID[3] == EEPROM.read(15)) {
 		gate = portReader::NAND_GATE; 
-		Serial.println("NAND GATE");
 	}
 	if (tagID[0] == EEPROM.read(16) && tagID[1] == EEPROM.read(17) && tagID[2] == EEPROM.read(18) && tagID[3] == EEPROM.read(19)) {
 		gate = portReader::NOR_GATE; 
-		Serial.println("NOR GATE");
 	}
 	if (tagID[0] == EEPROM.read(20) && tagID[1] == EEPROM.read(21) && tagID[2] == EEPROM.read(22) && tagID[3] == EEPROM.read(23)) {
 		gate = portReader::XOR_GATE; 
-		Serial.println("XOR GATE");
 	}
 	if (tagID[0] == EEPROM.read(24) && tagID[1] == EEPROM.read(25) && tagID[2] == EEPROM.read(26) && tagID[3] == EEPROM.read(27)) {
 		gate = portReader::INVERTER; 
-		Serial.println("NOT GATE");
 	}
 	if (tagID[0] == EEPROM.read(28) && tagID[1] == EEPROM.read(29) && tagID[2] == EEPROM.read(30) && tagID[3] == EEPROM.read(31)) {
 		gate = portReader::WIRE; 
-		Serial.println("WIRE");
 	}
 	return gate;
 }
@@ -322,16 +328,59 @@ void CreateLayout()
 	}
 }
 
+void OnReset() {
+	Serial.println("RESET RECEIVED");
+	digitalWrite(BCD_CLEAR, HIGH);
+	NeedNewNumber = true;
+	//Boot show
+	for (int i = 0; i < 32; i++) {
+		sr.set(i, HIGH);
+		delay(10);
+	}
+
+	for (int i = 0; i < 32; i++) {
+		sr.set(i, LOW);
+		delay(10);
+	}
+	RandomizeStartValues();
+}
+
+void SetupDisplay() {
+	pinMode(BCD_A, OUTPUT);
+	pinMode(BCD_B, OUTPUT);
+	pinMode(BCD_C, OUTPUT);
+	pinMode(BCD_D, OUTPUT);
+	pinMode(BCD_CLEAR, OUTPUT);
+
+	digitalWrite(BCD_A, LOW);
+	digitalWrite(BCD_B, LOW);
+	digitalWrite(BCD_C, LOW);
+	digitalWrite(BCD_D, LOW);
+
+	digitalWrite(BCD_CLEAR, HIGH);
+}
+
+void ShowNumber(int number) {
+	if (number <= 0 || number > 9) {
+		return;
+	}
+	else {
+		digitalWrite(BCD_A, (number & (1 << 0)) >> 0);
+		digitalWrite(BCD_B, (number & (1 << 1)) >> 1);
+		digitalWrite(BCD_C, (number & (1 << 2)) >> 2);
+		digitalWrite(BCD_D, (number & (1 << 3)) >> 3);
+
+		digitalWrite(BCD_CLEAR, LOW);
+	}
+}
+
 void setup()
 {
-	Serial.begin(115200);
-	randomSeed(analogRead(1));
+  Serial.begin(115200);
+  randomSeed(analogRead(1));
 
-  pinMode(PinA, OUTPUT);
-  pinMode(PinB, OUTPUT);
-  pinMode(PinC, OUTPUT);
-  pinMode(PinD, OUTPUT);
-  pinMode(ClearDisplay, OUTPUT);
+  erNet.Setup("DigitalPuzzle", 0x10, 0x50, 0x22, 0x30, 0xF2, 0xFF);
+  SetupDisplay();
 
   sr.setAllLow();
 
@@ -356,10 +405,16 @@ void setup()
 void loop()
 {
   ProcessSerial();
+  erNet.Loop();
+  erNet.SetResetCallback(&OnReset);
+
+  if (erNet.GetDisplayNumber(&DisplayNumber) && NeedNewNumber) {
+	  NeedNewNumber = false;
+  }
 
   //lees alle readers en zet de outputs op de goede waardes
   for (int i = 0; i < AMOUNT_OF_READERS; i++){
-	  UpdateReader(i);
+	UpdateReader(i);
     readers[i].CalculateOutput();
   }
 
@@ -373,4 +428,12 @@ void loop()
 	  sr.set(strip.GreenPin, strip.GreenValue);
 	  sr.set(strip.RedPin, strip.RedValue);
   }
+	if (wires[15].Value == H)
+	{
+		ShowNumber(DisplayNumber);
+	}
+	else
+	{
+		digitalWrite(BCD_CLEAR, HIGH);
+	}
 }
