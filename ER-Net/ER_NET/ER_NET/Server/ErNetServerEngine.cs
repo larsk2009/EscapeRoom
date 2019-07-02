@@ -1,12 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Net;
-using System.Security.Cryptography;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 using ER_NET.Shared;
 
 using Timer = System.Timers.Timer;
@@ -38,7 +33,15 @@ namespace ER_NET.Server
                 var devices = new List<string>();
                 foreach (var key in _connectedDevices.Keys)
                 {
-                    devices.Add(key + "\t Nummer: " + GetDisplayNumberByName(key));
+                    var displayNumber = GetDisplayNumberByName(key);
+                    if (displayNumber == -1)
+                    {
+                        devices.Add(key + "\t ");
+                    }
+                    else
+                    {
+                        devices.Add(key + "\t Nummer: " + displayNumber);
+                    }
                 }
 
                 return devices;
@@ -52,6 +55,8 @@ namespace ER_NET.Server
         public event EventHandler<EventArgs> OnDevicesListChanged;
         public event EventHandler<EventArgs> OnReset;
         public event EventHandler<EventArgs> OnTimerTick;
+        public event EventHandler<EventArgs> OnStatusChanged;
+        public event EventHandler<EventArgs> OnRoomSolved;
 
         #endregion
 
@@ -72,6 +77,7 @@ namespace ER_NET.Server
         private System.Timers.Timer _timer;
         private TimeSpan _timeLeft;
         public string TimeLeft => _timeLeft.ToString(@"mm\:ss");
+        public string Status;
 
         public ErNetServerEngine(ICommunicationParser parser, IDiscoveryServer discoveryServer,
             ICommunicationSender communicationSender)
@@ -89,6 +95,12 @@ namespace ER_NET.Server
             {
                 _timeLeft = _timeLeft.Subtract(TimeSpan.FromSeconds(1));
                 RaiseTimerTickEvent();
+                if ((int)_timeLeft.TotalMilliseconds == 0)
+                {
+                    _timer.Stop();
+                    Status = "Failed";
+                    RaiseStatusChangedEvent();
+                }
             };
             _timer.Enabled = false;
             _timeLeft = TimeSpan.FromMinutes(10);
@@ -105,6 +117,8 @@ namespace ER_NET.Server
             GenerateNewSolution();
             _parser.Start();
             _parser.OnCommunicationEvent += OnParserOnOnCommunicationEvent;
+
+            Status = "Idle";
         }
 
         #region RaiseEvents
@@ -124,16 +138,30 @@ namespace ER_NET.Server
             OnTimerTick?.Invoke(this, new EventArgs());
         }
 
+        protected virtual void RaiseStatusChangedEvent()
+        {
+            OnStatusChanged?.Invoke(this, new EventArgs());
+        }
+
+        protected virtual void RaiseRoomSolvedEvent()
+        {
+            OnRoomSolved?.Invoke(this, new EventArgs());
+        }
+
         #endregion
 
         public void StartTimer()
         {
             _timer.Start();
+            Status = "Started";
+            RaiseStatusChangedEvent();
         }
 
         public void StopTimer()
         {
             _timer.Stop();
+            Status = "Stopped";
+            RaiseStatusChangedEvent();
         }
         public bool SetPuzzles(List<string> puzzles)
         {
@@ -235,7 +263,7 @@ namespace ER_NET.Server
                     var displayNumber = GetDisplayNumberByName(message.Name);
 
                     var response = new Message
-                        {Name = _discoveryServer.Name, MessageType = "DisplayNumber", Value = displayNumber.ToString()};
+                    { Name = _discoveryServer.Name, MessageType = "DisplayNumber", Value = displayNumber.ToString() };
                     await _communicationSender.SendMessageAsync(response.ToBytes(), eventArgs.RemoteIp,
                         CommunicationPorts.CommunicationPort);
                 }
@@ -250,6 +278,21 @@ namespace ER_NET.Server
                 };
                 await _communicationSender.SendMessageAsync(response.ToBytes(), eventArgs.RemoteIp,
                     CommunicationPorts.CommunicationPort);
+            }
+            else if (message.MessageType == "RoomSolved")
+            {
+                var response = new Message
+                {
+                    Name = _discoveryServer.Name,
+                    MessageType = "RoomSolved",
+                    Value = null
+                };
+                await _communicationSender.SendMessageAsync(response.ToBytes(), eventArgs.RemoteIp,
+                    CommunicationPorts.CommunicationPort);
+                RaiseRoomSolvedEvent();
+                _timer.Stop();
+                Status = "Solved";
+                RaiseStatusChangedEvent();
             }
         }
 
@@ -270,9 +313,11 @@ namespace ER_NET.Server
 
             _timer.Stop();
             _timeLeft = TimeSpan.FromMinutes(10);
-            
+
+            Status = "Idle";
             RaiseTimerTickEvent();
             RaiseResetEvent();
+            RaiseStatusChangedEvent();
         }
 
         public bool IsDeviceConnected(string name)

@@ -27,12 +27,24 @@
     <ClInclude Include="softspi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="portReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LedStrip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rfid1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="softspi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="portReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LedStrip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

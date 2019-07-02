@@ -34,13 +34,23 @@ namespace ControlUnit_webserver.Controllers
             {
                 _hubContext.Clients.All.SendAsync("TimerUpdate", ErNetServerEngine.Instance.TimeLeft);
             };
+
+            ErNetServerEngine.Instance.OnStatusChanged += (sender, args) =>
+            {
+                _hubContext.Clients.All.SendAsync("StatusChanged", ErNetServerEngine.Instance.Status);
+            };
+
+            ErNetServerEngine.Instance.OnRoomSolved += (sender, args) =>
+            {
+                _hubContext.Clients.All.SendAsync("RoomSolved", ErNetServerEngine.Instance.Status);
+            };
         }
         
         public IActionResult Index()
         {
             var viewModel = new ControlPageViewModel
             {
-                Status = "Success",
+                Status = ErNetServerEngine.Instance.Status,
                 PlayTime = ErNetServerEngine.Instance.TimeLeft,
                 Devices = ErNetServerEngine.Instance.Devices,
                 Solution = ErNetServerEngine.Instance.Solution

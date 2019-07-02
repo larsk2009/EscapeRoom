@@ -1,13 +1,27 @@
 ﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using ER_NET.Client;
+using jumpPuzzle.Hubs;
 using jumpPuzzle.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace jumpPuzzle.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IHubContext<ResetDevicesHub> _hubContext;
+
+        public HomeController(IHubContext<ResetDevicesHub> hubContext)
+        {
+            _hubContext = hubContext;
+
+            ErNetClientEngine.Instance.OnReset += async (sender, args) =>
+            {
+                await _hubContext.Clients.All.SendAsync("ResetReceived");
+            };
+        }
+
         public IActionResult Index()
         {
             return View();

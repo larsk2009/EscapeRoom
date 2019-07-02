@@ -5,8 +5,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="BuildBundlerMinifier" Version="2.9.406" />
         <PackageReference Include="ER_NET" Version="1.2.0.1" />
+        <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.4.1" />
         <PackageReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
     </ItemGroup>
 
 </Project>

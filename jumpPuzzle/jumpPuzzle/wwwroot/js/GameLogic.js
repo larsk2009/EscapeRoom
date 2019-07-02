@@ -38,6 +38,14 @@ var requestingAnimation = true;
 
 Update();
 
+var connection = new signalR.HubConnectionBuilder().withUrl("/resetdevicehub").build();
+
+connection.on("ResetReceived", function () {
+        location.reload();
+    });
+
+connection.start();
+
 
 function Update() {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -129,13 +137,32 @@ function Update() {
 
     context.drawImage(img, x, y, img.width * 1.55, img.height * 1.55);
 
-    SelectNextSprite();
+
+    context.fillStyle = "#ff1700";
+    context.strokeStyle = "#000000";
+    context.fillRect(canvas.width - 205, canvas.height / 2 - 150, 200, 100);
+    context.strokeRect(canvas.width - 205, canvas.height / 2 - 150, 200, 100);
+
+    context.fillStyle = "#000000";
+    context.font = "30px Arial";
+    context.fillText("FINISH!", canvas.width - 150, canvas.height / 2 - 90);
+
+    context.strokeRect(canvas.width - 5, canvas.height / 2 - 150, 1, 200);
+
+    if ((typeof  currentPlayNode.method == "string" && !currentPlayNode.method.includes("spring"))) {
+        SelectNextSprite();
+    }
 
     if (CheckWinCondition()) {
         //Show win
         context.fillStyle = "#4dee00";
         context.font = "30px Arial";
         context.fillText("YOU WIN!", canvas.width / 2 - 100, canvas.height / 2 - 100);
+        GetDisplayNumber(function (data) {
+            context.fillStyle = "#4dee00";
+            context.font = "120px Arial";
+            context.fillText(data, canvas.width / 2 - 100, canvas.height / 2);
+        });
     } else if (CheckLoseCondition()) {
         //Show lose
         context.fillStyle = "#ee002b";
@@ -185,7 +212,7 @@ function DecodeInput() {
         }
     }
     currentPlayNode = tree._root;
-    treeDepth = 0; 
+    treeDepth = 0;
     InTreeLocation = [];
     InTreeLocation.push(0);
 
@@ -196,12 +223,18 @@ function DecodeInput() {
     Update();
 }
 
+function GetDisplayNumber(callback) {
+    $.get("home/getdisplaynumber", function (data) {
+        callback(data);
+    });
+}
+
 function SelectNextSprite() {
     if (typeof SelectNextSprite.counter == 'undefined') {
         SelectNextSprite.counter = 0;
     }
     SelectNextSprite.counter++;
-    if (SelectNextSprite.counter > 15) {
+    if (SelectNextSprite.counter > 5) {
         SelectNextSprite.counter = 0;
         if (img == sprite_0) {
             img = sprite_1;
@@ -280,5 +313,5 @@ function Jump(height) {
         height = 500;
     }
     y -= height; //Decrease y because origin is in the top left corner of the canvas 
-                 // so jumping actually decreases the distance from the origin instead of increasing it
+    // so jumping actually decreases the distance from the origin instead of increasing it
 }

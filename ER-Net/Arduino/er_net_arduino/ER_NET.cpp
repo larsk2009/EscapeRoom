@@ -108,6 +108,26 @@ void ErNet::ParseUdpMessage(IPAddress ip, char *data, uint16_t len){
     }
 }
 
+void ErNet::PuzzleSolved() {
+    if(udp.beginPacket(IPAddress(controlUnitIP[0], controlUnitIP[1], controlUnitIP[2], controlUnitIP[3]), communicationPort)) {
+        StaticJsonDocument<JSON_OBJECT_SIZE(3)> doc;
+        //doc["Guid"] = "8fb5d28b-6d33-422a-a041-2d11b39c3051";
+        doc["Name"].set(puzzleName);
+        doc["MessageType"] = "RoomSolved";
+        doc["Value"] = "null";
+
+        char json[128];
+
+        serializeJson(doc, json);
+
+        udp.print("ER-NET\n");
+        udp.print(json);
+        udp.endPacket();
+
+        udp.stop();
+    }
+}
+
 void ErNet::onDiscovery(IPAddress ip) {
     controlUnitIP[0] = ip[0];
     controlUnitIP[1] = ip[1];

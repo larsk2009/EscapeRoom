@@ -35,6 +35,11 @@ connection.on("TimerUpdate", function(timerValue) {
     timerElement.textContent = timerValue;
 });
 
+connection.on("StatusChanged", function(status) {
+    var statusElement = document.getElementById("statusHeader");
+    statusElement.textContent = status;
+});
+
 connection.start();
 
 document.getElementById("resetBtn").addEventListener("click", function (ev) {

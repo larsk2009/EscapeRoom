@@ -4,6 +4,7 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp2.1</TargetFramework>
         <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+        <Configurations>Debug;Release;arm</Configurations>
     </PropertyGroup>
 
     <ItemGroup>

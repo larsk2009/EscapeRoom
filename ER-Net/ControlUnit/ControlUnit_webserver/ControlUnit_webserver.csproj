@@ -4,6 +4,8 @@
         <TargetFramework>netcoreapp2.1</TargetFramework>
         <DebugType>full</DebugType>
         <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
+        <Configurations>Debug;Release;arm</Configurations>
+        <Platforms>AnyCPU;linux-arm</Platforms>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,6 +16,7 @@
         <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
         <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.1" />
         <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+        <PackageReference Include="UtilityDelta.Gpio" Version="4.3.0" />
     </ItemGroup>
 
     <ItemGroup>

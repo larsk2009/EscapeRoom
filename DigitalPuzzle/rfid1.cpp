@@ -33,7 +33,7 @@ void RFID1::showCardID(uchar *id)
 /**********************************************************
  * Function：ShowCardType
  * Description：Show Card type
- * Input parameter：Type string
+ * Input parameter：Value string
  * Return：Null
  **********************************************************/
 void RFID1::showCardType(uchar* type)
