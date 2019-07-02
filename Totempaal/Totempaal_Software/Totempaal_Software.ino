@@ -1,3 +1,7 @@
+#include <ER_NET.h>
+#include <Keypad.h>
+ErNet erNet;
+
 #define C_Input 2
 #define B_Input 3
 #define D_Input 4
@@ -8,9 +12,9 @@
 #define Digit_3 A2
 #define Digit_4 A3
 #define Digit_5 A4
-#define Big_Red_Button 10
+#define Big_Red_Button 12
 #define Magnet_Switch 8
-#include <Keypad.h>
+
 
 char NumberOnDisplay[5] = {'0', '0', '0', '0', '0'};
 int SegmentSelect = 0;
@@ -22,6 +26,7 @@ char hundredths = '2';
 char tenths = '5';
 char ones = '2';
 
+bool hasSolution = false;
 char TheAwnser[5] = {ten_thousands, thousands, hundredths, tenths, ones};
 
 
@@ -56,8 +61,8 @@ char hexaKeys[ROWS][COLS] = {
   {'*', '0', '#'}
 };
 
-byte rowPins[ROWS] = {25, 26, 27, 28}; // Grey, Yellow, Purple, Green
-byte colPins[COLS] = {22, 23, 24}; //Green, Blue, Yellow
+byte rowPins[ROWS] = {23, 25, 27, 29}; // Blue, Yellow, Orange, White
+byte colPins[COLS] = {22, 24, 26}; //Orange, Blue, White
 
 Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
 
@@ -74,8 +79,29 @@ void setup() {
   pinMode(Digit_5, OUTPUT);
   pinMode(Big_Red_Button, INPUT);
   pinMode(Magnet_Switch, OUTPUT);
-  digitalWrite(Magnet_Switch, HIGH);
+  
   Serial.begin(9600);
+  erNet.Setup("Totempaal", 0x10, 0x51, 0x22, 0x30, 0xF2, 0xF3);
+  erNet.SetResetCallback(&OnReset);
+  
+  cli();//stop interrupts
+
+//set timer1 interrupt at 285Hz
+  TCCR1A = 0;// set entire TCCR1A register to 0
+  TCCR1B = 0;// same for TCCR1B
+  TCNT1  = 0;//initialize counter value to 0
+  // set compare match register for 1hz increments
+  OCR1A = 7000;// = (16*10^6) / (285*8) - 1 (must be <65536)
+  // turn on CTC mode
+  TCCR1B |= (1 << WGM12);
+  // Set CS10 and CS12 bits for 8 prescaler
+  TCCR1B |= (1 << CS11);  
+  // enable timer compare interrupt
+  TIMSK1 |= (1 << OCIE1A);
+
+  sei();//allow interrupts*/
+
+
 }
 
 
@@ -137,11 +163,11 @@ void Compare() {
 }
 void Release() {
   digitalWrite(Magnet_Switch, LOW);
-  Serial.println("hello");
+  
 }
 
 void Finished() {
-
+ 
 }
 
 void ChangeNumb(char Number)
@@ -272,24 +298,52 @@ void ControlDisplays(int Display)
 
   }
 }
+void OnReset(){
+  Serial.println("RESET RECEIVED");
+  digitalWrite(Magnet_Switch, HIGH);
 
+  hasSolution = false;
+}
 
-void loop()
-{
+ISR(TIMER1_COMPA_vect) { //change the 0 to 1 for timer1 and 2 for timer2
   NumbMem();
-  delay(1);
+ delay(1);
   ChangeNumb(NumberOnDisplay[i]);
   ControlDisplays(i);
-  i++;
-  if (Enter == HIGH) {
-    Compare();
-  }
-  if (digitalRead(Big_Red_Button) == HIGH) {
-    Finished();
-    Serial.println("Finished");
-  }
+  i++;  
   if (i > 4) {
     i = 0;
   }
+  
 
+}
+void loop()
+{
+  
+
+  erNet.Loop();
+  if(!hasSolution) {
+   unsigned long solution = 0;
+    if(erNet.GetSolution(&solution)) {
+      hasSolution = true;
+
+      Serial.println("has solution");
+      for(int i = 0; i < 5; i++) {
+        TheAwnser[i] = (solution % 10) + '0';
+        solution = solution / 10;
+        Serial.print(TheAwnser[i]);
+      }
+      Serial.println();
+    }
+  }
+  else if (Enter == HIGH) {
+    Compare();
+  }
+
+
+ /*if (digitalRead(Big_Red_Button) == HIGH) {
+    Serial.println("Finished");
+    Finished();
+    
+  }*/
 }
