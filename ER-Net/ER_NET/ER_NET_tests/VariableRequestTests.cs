@@ -28,8 +28,8 @@ namespace ER_NET_tests
             eventArgs = new CommunicationEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
             parser.RaiseTcpEvent(eventArgs);
 
-            Assert.True(tcpSender.lastIp.Equals(IPAddress.Parse("192.168.2.10")));
-            var jsonResponse = Encoding.ASCII.GetString(tcpSender.lastMessageSent);
+            Assert.True(tcpSender.LastIp.Equals(IPAddress.Parse("192.168.2.10")));
+            var jsonResponse = Encoding.ASCII.GetString(tcpSender.LastMessageSent);
             var message = Message.FromJson(jsonResponse);
             Assert.True(message.MessageType == "DisplayNumber");
             int DisplayNumber;

@@ -22,7 +22,7 @@ namespace ER_NET_tests
             var json = $"ER-NET\n{{\"Name\":\"{name}\",\"MessageType\":\"Discovery\"}}";
             var message = Message.FromJson(json);
 
-            var lastMessage = Message.FromJson(Encoding.ASCII.GetString(sender.lastMessageSent));
+            var lastMessage = Message.FromJson(Encoding.ASCII.GetString(sender.LastMessageSent));
 
             Assert.True(lastMessage.Name == name);
             Assert.True(lastMessage.MessageType == "Discovery");
@@ -42,17 +42,17 @@ namespace ER_NET_tests
 
             Thread.Sleep(TimeSpan.FromSeconds(3));
 
-            var lastMessage = Message.FromJson(Encoding.ASCII.GetString(sender.lastMessageSent));
+            var lastMessage = Message.FromJson(Encoding.ASCII.GetString(sender.LastMessageSent));
 
             Assert.True(lastMessage.Name == name);
             Assert.True(lastMessage.MessageType == "Discovery");
 
-            sender.lastMessageSent = null;
+            sender.LastMessageSent = null;
             
             Thread.Sleep(TimeSpan.FromSeconds(3));
 
             
-            lastMessage = Message.FromJson(Encoding.ASCII.GetString(sender.lastMessageSent));
+            lastMessage = Message.FromJson(Encoding.ASCII.GetString(sender.LastMessageSent));
 
             Assert.True(lastMessage.Name == name);
             Assert.True(lastMessage.MessageType == "Discovery");

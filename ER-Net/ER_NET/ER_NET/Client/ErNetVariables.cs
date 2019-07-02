@@ -44,15 +44,21 @@ namespace ER_NET.Client
             return true;
         }
 
-        public async Task<int> GetDisplayNumberAsync(string puzzleName, IPAddress controlunitIP)
+        public async Task<int> GetDisplayNumberAsync(string puzzleName, IPAddress controlunitIp)
         {
+            if (Equals(controlunitIp, IPAddress.None))
+            {
+                //No IP has been set yet so we return -1
+                //return -1;
+            }
+
             var message = new Message
             {
                 Name = puzzleName,
                 MessageType = "GetDisplayNumber"
             };
 
-            await _sender.SendMessageAsync(message.ToBytes(), controlunitIP, CommunicationPorts.CommunicationPort);
+            await _sender.SendMessageAsync(message.ToBytes(), controlunitIp, CommunicationPorts.CommunicationPort);
 
             if (await CheckQueueAsync("DisplayNumber"))
             {

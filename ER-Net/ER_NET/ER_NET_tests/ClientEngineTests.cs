@@ -19,5 +19,15 @@ namespace ER_NET_tests
             Assert.NotNull(ErNetClientEngine.Instance);
             Assert.True(ErNetClientEngine.Instance == engine);
         }
+
+        [Fact]
+        async void NoIpSetTest()
+        {
+            var engine = new ErNetClientEngine("testPuzzle", new MockCommunicationSender(), new MockCommunicationParser());
+
+            var number = await engine.GetDisplayNumberAsync();
+
+            Assert.Equal(-1, number);
+        }
     }
 }
