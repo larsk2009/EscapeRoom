@@ -25,11 +25,12 @@ namespace ER_NET.Client
         /// <summary>
         /// Preferably use the public Instance for the client. The public constructor is used in tests
         /// </summary>
-        public ErNetClientEngine(string PuzzleName, ICommunicationSender sender, ICommunicationParser parser)
+        public ErNetClientEngine(string puzzleName, ICommunicationSender sender, ICommunicationParser parser)
         {
-            _puzzleName = PuzzleName;
+            _puzzleName = puzzleName;
             _parser = parser;
             _sender = sender;
+            _controlunitIP = IPAddress.None;
             parser.OnCommunicationEvent += OnCommunication;
             parser.Start();
             
