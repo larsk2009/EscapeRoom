@@ -22,7 +22,7 @@ canvas {
     width: 100%;
 }
 
-textarea {
+#codeArea {
     background-color: black;
     color: green;
     border: none;
@@ -30,10 +30,11 @@ textarea {
     height: 90%;
     overflow-y: hidden;
     resize: none;
+    font-size: 30px;
 }
 
 /* Removes the highlight from the textarea */
-textarea:focus {
+#codeArea:focus {
     outline-width: 0;
 }
 

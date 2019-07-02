@@ -13,22 +13,23 @@ namespace ER_NET_tests
         [Fact]
         void GetNumberTest()
         {
-            var parser = new MockTcpParser();
+            var parser = new MockCommunicationParser();
             var server = new MockDiscoveryServer();
-            var tcpSender = new MockTcpSender();
+            var tcpSender = new MockCommunicationSender();
             var engine = new ErNetServerEngine(parser, server, tcpSender);
+            engine.GenerateNewSolution();
 
-            Guid guid = Guid.Parse("e57d5d61-4e98-42b3-a096-81fd249b2cef");
-            var testJson = $"ER-NET\n{{\"Guid\":\"{guid}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
-            var eventArgs = new TcpEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
+            string name = "DigitalPuzzle";
+            var testJson = $"ER-NET\n{{\"Name\":\"{name}\",\"MessageType\":\"DiscoveryAcknowledge\"}}";
+            var eventArgs = new CommunicationEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
             parser.RaiseTcpEvent(eventArgs);
             
-            testJson = $"ER-NET\n{{\"Guid\":\"{guid}\",\"MessageType\":\"GetDisplayNumber\",\"Value\":\"null\"}}";
-            eventArgs = new TcpEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
+            testJson = $"ER-NET\n{{\"Name\":\"{name}\",\"MessageType\":\"GetDisplayNumber\",\"Value\":\"null\"}}";
+            eventArgs = new CommunicationEventArgs(Message.FromJson(testJson), IPAddress.Parse("192.168.2.10"));
             parser.RaiseTcpEvent(eventArgs);
 
-            Assert.True(tcpSender.lastIp.Equals(IPAddress.Parse("192.168.2.10")));
-            var jsonResponse = Encoding.ASCII.GetString(tcpSender.lastMessageSent);
+            Assert.True(tcpSender.LastIp.Equals(IPAddress.Parse("192.168.2.10")));
+            var jsonResponse = Encoding.ASCII.GetString(tcpSender.LastMessageSent);
             var message = Message.FromJson(jsonResponse);
             Assert.True(message.MessageType == "DisplayNumber");
             int DisplayNumber;

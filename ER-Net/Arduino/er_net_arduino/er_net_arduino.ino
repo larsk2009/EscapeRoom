@@ -2,16 +2,16 @@
 
 ErNet erNet;
 
-#define BCD_A 11
-#define BCD_B 9
-#define BCD_C 8
-#define BCD_D 10
-#define BCD_CLEAR 12
+#define BCD_A 32
+#define BCD_B 28
+#define BCD_C 26
+#define BCD_D 30
+#define BCD_CLEAR 34
 
 void setup(){
   Serial.begin(115200);
 
-  erNet.Setup();
+  erNet.Setup("DigitalPuzzle", 0x70, 0x69, 0x69, 0x2D, 0x30, 0x31);
 
   SetupDisplay();
 }
@@ -20,10 +20,14 @@ void loop(){
   //this must be called for ethercard functions to work.
   erNet.Loop();
   erNet.SetResetCallback(&OnReset);
-  int test;
-  if(erNet.GetDisplayNumber(&test)) {
-    Serial.println(test);
-    ShowNumber(test);
+  unsigned long solution;
+  int number;
+  if(erNet.GetDisplayNumber(&number)) {
+    Serial.println(number);
+    ShowNumber(number);
+  }
+  if(erNet.GetSolution(&solution)) {
+    Serial.println((unsigned long) solution);
   }
 }
 

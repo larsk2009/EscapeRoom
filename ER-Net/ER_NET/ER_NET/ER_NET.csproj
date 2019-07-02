@@ -2,6 +2,15 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.1</TargetFramework>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+        <Authors>Lars Koopmans</Authors>
+        <Company>Lars Koopmans</Company>
+        <Product>ER_NET</Product>
+        <Description>Package to use ER-Net with dotnet core</Description>
+        <PackageId>ER_NET</PackageId>
+        <PackageReleaseNotes>Small bug fix</PackageReleaseNotes>
+        <Version>1.2.0.1</Version>
     </PropertyGroup>
 
     <ItemGroup>

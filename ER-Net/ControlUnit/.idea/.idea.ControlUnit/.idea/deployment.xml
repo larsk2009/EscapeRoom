@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="OrangePi_webserver">
+    <serverData>
+      <paths name="OrangePi">
+        <serverdata>
+          <mappings>
+            <mapping local="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.reporters.netcoreapp10.dll" web="/" />
+            <mapping local="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" web="/" />
+            <mapping local="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/../ER_NET/ER_NET" web="/" />
+            <mapping local="$PROJECT_DIR$/../ER_NET/ER_NET_tests" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="OrangePi_webserver">
+        <serverdata>
+          <mappings>
+            <mapping local="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.reporters.netcoreapp10.dll" web="/" />
+            <mapping local="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" web="/" />
+            <mapping local="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/../ER_NET/ER_NET" web="/" />
+            <mapping local="$PROJECT_DIR$/../ER_NET/ER_NET_tests" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
