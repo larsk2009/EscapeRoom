@@ -166,8 +166,8 @@ namespace ER_NET_tests
 
             Thread.Sleep(100);
             Assert.True(eventFired);
-            Assert.True(Equals(sender.lastIp, IPAddress.Broadcast));
-            var lastMessage = Message.FromJson(Encoding.ASCII.GetString(sender.lastMessageSent));
+            Assert.True(Equals(sender.LastIp, IPAddress.Broadcast));
+            var lastMessage = Message.FromJson(Encoding.ASCII.GetString(sender.LastMessageSent));
             var responseMessage = new Message
             {
                 Name = server.Name,

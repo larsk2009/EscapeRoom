@@ -49,7 +49,7 @@ namespace ER_NET.Client
             if (Equals(controlunitIp, IPAddress.None))
             {
                 //No IP has been set yet so we return -1
-                //return -1;
+                return -1;
             }
 
             var message = new Message
@@ -64,7 +64,7 @@ namespace ER_NET.Client
             {
                 var receivedMessage = _receivedMessages.Dequeue();
                 int displayNumber;
-                if (Int32.TryParse(receivedMessage.Value, out displayNumber))
+                if (int.TryParse(receivedMessage.Value, out displayNumber))
                 {
                     return displayNumber;
                 }
